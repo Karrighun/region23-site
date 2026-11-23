@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Матчи — ХК «Регион 23»</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Extra+Condensed:ital,wght@0,700;0,800;0,900;1,800;1,900&family=Onest:wght@400;500;600;700;800&family=Unbounded:wght@700;800&family=Golos+Text:wght@400;500;600;700&family=Dela+Gothic+One&family=Russo+One&family=Oswald:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+<style>
+.next{display:grid;grid-template-columns:1.3fr 1fr;gap:18px}
+.big{padding:clamp(22px,3vw,36px);border-radius:22px;background:radial-gradient(ellipse at 100% 0%,rgba(227,38,43,.25),transparent 55%),linear-gradient(160deg,#111f48,#0a1330);border:1px solid rgba(227,38,43,.35)}
+.big .vs{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;margin:22px 0}
+.big .tm{display:flex;flex-direction:column;align-items:center;gap:10px;font-family:var(--display);font-size:26px;font-weight:600;text-align:center}
+.big .tm img,.big .tm .crest{width:72px;height:72px;font-size:26px;border-radius:16px}
+.big .mid{font-family:var(--display);font-size:52px;font-weight:700}
+.big .mid small{display:block;font-family:var(--text);font-size:12px;color:var(--mute);font-weight:600;text-align:center}
+.cd{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;text-align:center;margin-bottom:20px}
+.cd div{background:rgba(255,255,255,.06);border-radius:12px;padding:10px 0}
+.cd b{display:block;font-family:var(--display);font-size:30px}
+.cd span{font-size:10px;color:var(--mute);text-transform:uppercase;letter-spacing:.1em}
+.side{display:grid;gap:18px}
+.side .card{padding:22px}
+.side h3{font-family:var(--display);font-size:22px;text-transform:uppercase;margin:8px 0}
+.side p{color:var(--mute);font-size:14px;line-height:1.55}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}
+.tabs button{font:700 13px var(--text);color:var(--w);background:rgba(255,255,255,.05);border:1px solid var(--line);padding:10px 16px;border-radius:30px;cursor:pointer}
+.tabs button[aria-pressed="true"]{background:var(--red);border-color:var(--red)}
+.mrow[hidden]{display:none}
+.summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin-bottom:28px}
+.summary .card{padding:22px}
+.podium{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.pod{padding:24px;border-radius:18px;border:1px solid var(--line);background:var(--card);text-align:center}
+.pod b{font-family:var(--display);font-size:64px;line-height:1;display:block}
+.pod.g b{color:#ffd27a}.pod.s b{color:#d7e0ee}.pod.br b{color:#e0a272}
+.pod h3{font-family:var(--display);font-size:24px;text-transform:uppercase;margin-top:8px}
+.pod p{color:var(--mute);font-size:13px;margin-top:4px}
+.note{font-size:12px;color:var(--mute);margin-top:14px}
+@media (max-width:900px){.next{grid-template-columns:1fr}.summary{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.podium{grid-template-columns:1fr}.big .tm{font-size:20px}.big .tm img,.big .tm .crest{width:56px;height:56px}}
+.cal{display:grid;grid-template-columns:1fr;gap:24px}
+.cal-h{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+.cal-h h3{font-family:var(--display);font-size:clamp(28px,3vw,40px);text-transform:uppercase;line-height:1.06}
+.cal-h button{width:44px;height:44px;border:1px solid var(--line);background:none;color:#fff;font-size:20px;cursor:pointer}
+.cal-h button:hover{background:#fff;color:var(--n0)}
+.cal-h button:disabled{opacity:.3;cursor:default;background:none;color:#fff}
+.cal-g{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
+.cal-g .wd{font:700 11px var(--text);letter-spacing:.14em;text-transform:uppercase;color:var(--mute);padding:6px 8px}
+.cal-g .d{position:relative;min-height:88px;padding:8px;background:var(--card);border:1px solid var(--line);font:700 14px var(--text);color:var(--mute);text-align:left;vertical-align:top;display:block}
+.cal-g .d.o{opacity:.25}
+.cal-g .d.today{box-shadow:inset 0 0 0 2px #fff}
+.cal-g button.d{cursor:pointer;color:#fff}
+.cal-g button.d:hover,.cal-g button.d[aria-pressed=true]{border-color:var(--red);background:#14214a}
+.cal-g .ev{display:block;margin-top:8px;padding:5px 6px;font:700 12px/1.25 var(--text);color:#fff;background:rgba(255,255,255,.08);border-left:3px solid var(--mute)}
+.cal-g .ev.w{border-left-color:var(--win)}.cal-g .ev.u{border-left-color:var(--red);background:rgba(227,38,43,.18)}
+.cal-g .ev b{display:block;font-family:var(--display);font-size:18px;font-weight:800}
+.cal-l{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:10px}
+.cal-i{display:grid;grid-template-columns:minmax(76px,auto) 1fr;gap:14px;padding:16px;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--mute)}
+.cal-i.w{border-left-color:var(--win)}.cal-i.u{border-left-color:var(--red)}
+.cal-i.on{background:#14214a}
+.cal-i .dt{font-family:var(--display);font-size:30px;line-height:1.06}.cal-i .dt small{display:block;max-width:96px;font:600 11px var(--text);color:var(--mute);margin-top:4px}
+.cal-i h4{font-family:var(--display);font-size:22px;text-transform:uppercase;line-height:1.1}
+.cal-i p{font-size:13px;color:var(--mute);margin-top:4px}
+.cal-i .sc{font-family:var(--display);font-size:26px;color:var(--win)}.cal-i.u .sc,.cal-i.p .sc{color:#fff}
+.cal-g .ev span{display:block;white-space:normal;overflow-wrap:normal;hyphens:manual;font-size:12px;line-height:1.2;margin-top:2px}
+.cal-g .ev{display:grid;grid-template-columns:28px 1fr;gap:2px 6px;align-items:center}
+.cal-g .ev .cr{grid-row:span 2;width:28px;height:28px}
+.cal-g .ev b{grid-column:2}
+.cr{display:inline-grid;place-items:center;flex:none;font:800 10px/1 var(--text);color:#fff;letter-spacing:.02em}
+.cr img{width:100%;height:100%;object-fit:cover}
+.cal-i{grid-template-columns:minmax(76px,auto) 1fr auto!important;align-items:center}
+.cal-i .vs{display:flex;align-items:center;gap:8px;font:700 11px var(--text);color:var(--mute)}
+.cal-i .vs .cr{width:40px;height:40px;font-size:13px}
+@media (max-width:480px){.cal-i{grid-template-columns:62px 1fr!important}.cal-i .vs{grid-column:1/-1;justify-content:flex-start}.cal-g .ev{grid-template-columns:1fr}.cal-g .ev .cr{display:none}.cal-g .ev span{font-size:9px}}
+.cal-leg{display:flex;gap:16px;flex-wrap:wrap;margin-top:12px;font-size:12px;color:var(--mute)}
+.cal-leg i{display:inline-block;width:10px;height:10px;margin-right:6px;vertical-align:-1px}
+@media (max-width:960px){.cal-g .d{min-height:64px;padding:5px}.cal-g .ev{font-size:10px;padding:3px 4px;grid-template-columns:1fr}.cal-g .ev .cr{display:none}.cal-g .ev b{font-size:14px}.cal-g .ev span{display:none}}
+@media (max-width:480px){.cal-g{gap:2px}.cal-g .wd{padding:4px 2px;font-size:9px;letter-spacing:.04em}.cal-g .d{min-height:52px;font-size:12px}.cal-g .ev{margin-top:4px}}
+</style>
+</head>
+<body data-page="matches">
+<section class="phero">
+  <div class="bg" style="background-image:url(img/g-action1.webp)"></div>
+  <div class="ghost" aria-hidden="true">МАТЧИ</div>
+  <div class="wrap">
+    <span class="eyebrow">Сезон 2026/27</span>
+    <h1>Матчи <em>и счёт</em></h1>
+    <p>«Регион 23» играет в двух турнирах: Ночная хоккейная лига Краснодарского края и Кубок Южной столицы (Сочи, Анапа, Ставрополь, Краснодар). Здесь — ближайшие игры, результаты и прямые эфиры.</p>
+  </div>
+</section>
+
+<section class="sec tight-b" aria-labelledby="h-next">
+  <div class="wrap">
+    <div class="shead rv"><h2 id="h-next">Ближайший <em>матч</em></h2></div>
+    <div class="nD"><div class="wide3 rv">
+      <div class="d3"><b class="tnum">28</b><span>ноября<br>сб · 18:00</span></div>
+      <div class="t3"><img src="../../assets/logo.svg" alt=""><b>Регион 23</b><i>vs</i><b>Титан</b><img src="img/crest-titan.png" alt=""></div>
+      <div class="cdW tnum" data-count="2026-11-28T18:00:00+03:00"><div><b>00</b><span>дн</span></div><div><b>00</b><span>ч</span></div><div><b>00</b><span>мин</span></div><div><b>00</b><span>сек</span></div></div>
+      <a class="go" href="tickets.html">Билеты<br><b class="tnum">500 / 300 ₽</b></a>
+    </div></div>
+  </div>
+</section>
+
+<section class="sec tight-t" aria-labelledby="h-cal">
+  <div class="wrap">
+    <div class="shead rv"><div><span class="eyebrow">Календарь</span><h2 id="h-cal">Матчи <em>по датам</em></h2></div><p>Сыгранные матчи — со счётом, будущие — со временем и местом. Нажмите на день, чтобы увидеть детали.</p></div>
+    <div class="cal rv">
+      <div><div class="cal-h"><button type="button" data-m="-1" aria-label="Предыдущий месяц">←</button><h3 aria-live="polite"></h3><button type="button" data-m="1" aria-label="Следующий месяц">→</button></div>
+        <div class="cal-g"></div>
+        <div class="cal-leg"><span><i style="background:var(--win)"></i>Сыгран, победа</span><span><i style="background:var(--red)"></i>Будущий матч</span><span><i style="background:var(--mute)"></i>Счёт уточняется</span></div></div>
+      <div class="cal-l" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec alt" aria-labelledby="h-res">
+  <div class="wrap">
+    <div class="shead rv"><div><span class="eyebrow">Календарь и результаты</span><h2 id="h-res">Сезон <em>2026/27</em></h2></div><p>Обновляется после каждого матча по данным Telegram-канала клуба.</p></div>
+    <div class="summary">
+      <div class="card stat rv"><b class="tnum">8</b><span>сыграно матчей</span></div>
+      <div class="card stat rv"><b class="tnum" style="color:var(--win)">8</b><span>побед, одна — по буллитам</span></div>
+      <div class="card stat rv"><b class="tnum">59:10</b><span>шайбы (с победным буллитом)</span></div>
+      <div class="card stat rv"><b class="tnum">3</b><span>сухих матча</span></div>
+    </div>
+    <div class="tabs" role="group" aria-label="Фильтр по турниру">
+      <button type="button" data-f="all" aria-pressed="true">Все</button>
+      <button type="button" data-f="kus" aria-pressed="false">Кубок Южной столицы</button>
+      <button type="button" data-f="nhl" aria-pressed="false">НХЛ края</button>
+      <button type="button" data-f="fr" aria-pressed="false">Благотворительные</button>
+    </div>
+    <div class="card rv" id="list">
+      <div class="mrow" data-t="fr"><div class="d tnum">28.11<small>Сб · 18:00</small></div><div class="t"><img src="../../assets/logo.svg" alt="">Регион 23</div><div class="score u tnum">18:00<small>Анапа</small></div><div class="t r">Титан<span class="crest">ТИ</span></div><div class="x"><span class="chip red">Благотворительный</span><a class="btn red sm" href="tickets.html">Билеты</a></div></div>
+      <div class="mrow" data-t="nhl"><div class="d tnum">22.11<small>Вс · 20:15</small></div><div class="t"><span class="crest">ГВ</span>Гвардия</div><div class="score w tnum">3:6<small>Победа</small></div><div class="t r">Регион 23<img src="../../assets/logo.svg" alt=""></div><div class="x"><span class="chip">НХЛ края</span>Кубанка — Даниил Гасюков</div></div>
+      <div class="mrow" data-t="kus"><div class="d tnum">22.11<small>Вс · 09:00</small></div><div class="t"><img src="../../assets/logo.svg" alt="">Регион 23</div><div class="score w tnum">2:0<small>Победа</small></div><div class="t r">One Timer<span class="crest">OT</span></div><div class="x"><span class="chip">Кубок ЮС</span>MVP — Артём Россохатский</div></div>
+      <div class="mrow" data-t="kus"><div class="d tnum">21.11<small>Сб · 18:00</small></div><div class="t"><img src="../../assets/logo.svg" alt="">Регион 23</div><div class="score w tnum">10:1<small>Победа</small></div><div class="t r">One Timer<span class="crest">OT</span></div><div class="x"><span class="chip">Кубок ЮС</span>MVP — Даниил Ильин</div></div>
+      <div class="mrow" data-t="kus"><div class="d tnum">16.11<small>Пн · 20:15</small></div><div class="t"><span class="crest">КЛ</span>Ключ</div><div class="score w tnum">2:3<small>Буллиты</small></div><div class="t r">Регион 23<img src="../../assets/logo.svg" alt=""></div><div class="x"><span class="chip">Кубок ЮС</span>MVP — Максим Полежаев</div></div>
+      <div class="mrow" data-t="nhl"><div class="d tnum">10–14.11<small>НХЛ края</small></div><div class="t"><img src="../../assets/logo.svg" alt="">Регион 23</div><div class="score w tnum">15:2<small>Победа</small></div><div class="t r">Черномор­транс­нефть<span class="crest">ЧТ</span></div><div class="x"><span class="chip">НХЛ края</span>Кубанка — Григорий Ворвулев</div></div>
+      <div class="mrow" data-t="nhl"><div class="d tnum">05.11<small>Чт · НХЛ края</small></div><div class="t"><img src="../../assets/logo.svg" alt="">Регион 23</div><div class="score w tnum">9:0<small>Победа</small></div><div class="t r">Шторм<span class="crest">ШТ</span></div><div class="x"><span class="chip">НХЛ края</span>MVP — Александр Батырев, 4 очка</div></div>
+      <div class="mrow" data-t="nhl"><div class="d tnum">01.11<small>Вс · НХЛ края</small></div><div class="t"><span class="crest">ГВ</span>Гвардия</div><div class="score w tnum">2:3<small>Победа</small></div><div class="t r">Регион 23<img src="../../assets/logo.svg" alt=""></div><div class="x"><span class="chip">НХЛ края</span>MVP — Артём Селиверстов</div></div>
+      <div class="mrow" data-t="nhl"><div class="d tnum">29.10<small>Чт · старт сезона</small></div><div class="t"><img src="../../assets/logo.svg" alt="">Регион 23</div><div class="score w tnum">11:0<small>Победа</small></div><div class="t r">Черномор­транс­нефть<span class="crest">ЧТ</span></div><div class="x"><span class="chip">НХЛ края</span>Без зрителей</div></div>
+    </div>
+    <p class="note">Прямые эфиры матчей — в VK Видео, ссылка появляется в Telegram-канале клуба за час до начала.</p>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="h-prev">
+  <div class="wrap">
+    <div class="shead rv"><div><span class="eyebrow">Сезон 2025/26</span><h2 id="h-prev">Первый Кубок <em>Южной столицы</em></h2></div><p>Досрочное чемпионство после двух побед над One Timer в Сочи (5:2 и 3:2), в финальном матче — 7:2 над «Ключом».</p></div>
+    <div class="podium">
+      <div class="pod g rv"><b>1</b><h3>Регион 23</h3><p>Анапа · MVP турнира — Сергей Купцов, лучший нападающий — Александр Лавроненко</p></div>
+      <div class="pod s rv"><b>2</b><h3>One Timer</h3><p>Сочи · лучший вратарь — Марат Ярмухаметов</p></div>
+      <div class="pod br rv"><b>3</b><h3>Ключ</h3><p>Краснодар · лучший защитник — Артём Агафонов</p></div>
+    </div>
+    <div class="shead rv" style="margin-top:64px"><div><span class="eyebrow">#ХоккейФест2026 · Сириус</span><h2>Лига Надежды. <em>Большой кубок</em></h2></div><p>Итог — 4-е место. В группе не хватило одной шайбы до борьбы за первое место.</p></div>
+    <div class="card rv">
+      <div class="mrow"><div class="d tnum">11.05<small>Групповой этап</small></div><div class="t"><img src="../../assets/logo.svg" alt="">Регион 23</div><div class="score w tnum">12:0<small>Победа</small></div><div class="t r">Ядрёные Кабаны<span class="crest">ЯК</span></div><div class="x">Покер Кушнерёва, 150-я шайба в НХЛ</div></div>
+      <div class="mrow"><div class="d tnum">12.05<small>Групповой этап</small></div><div class="t"><span class="crest">ИН</span>Ингрупп</div><div class="score w tnum">2:4<small>Победа</small></div><div class="t r">Регион 23<img src="../../assets/logo.svg" alt=""></div><div class="x">Пермь</div></div>
+      <div class="mrow"><div class="d tnum">13.05<small>Групповой этап</small></div><div class="t"><img src="../../assets/logo.svg" alt="">Регион 23</div><div class="score w tnum">8:0<small>Победа</small></div><div class="t r">Планета<span class="crest">ПЛ</span></div><div class="x">100-я шайба Картежникова в НХЛ</div></div>
+      <div class="mrow"><div class="d tnum">14.05<small>Матч за 3-е место</small></div><div class="t"><img src="../../assets/logo.svg" alt="">Регион 23</div><div class="score" style="color:var(--loss)">П<small>Поражение</small></div><div class="t r">Ван Таймер<span class="crest">ВТ</span></div><div class="x">4-е место фестиваля</div></div>
+    </div>
+  </div>
+</section>
+<script>
+(function(){
+  /* матчи для календаря; s: w — победа, u — будущий матч, p — счёт уточняется */
+  var M=[
+    {d:'2026-05-11',o:'Ядрёные Кабаны',sc:'12:0',s:'w',t:'Лига Надежды. БК',p:'Сириус · покер Кушнерёва'},
+    {d:'2026-05-12',o:'Ингрупп',sc:'4:2',s:'w',t:'Лига Надежды. БК',p:'Сириус'},
+    {d:'2026-05-13',o:'Планета',sc:'8:0',s:'w',t:'Лига Надежды. БК',p:'Сириус · 100-я шайба Картежникова'},
+    {d:'2026-10-29',o:'Черномор­транс­нефть',sc:'11:0',s:'w',t:'НХЛ края',p:'Старт сезона, без зрителей'},
+    {d:'2026-11-01',o:'Гвардия',sc:'3:2',s:'w',t:'НХЛ края',p:'Выезд · MVP Артём Селиверстов'},
+    {d:'2026-11-05',o:'Шторм',sc:'9:0',s:'w',t:'НХЛ края',p:'MVP Александр Батырев, 4 очка'},
+    {d:'2026-11-14',o:'Черномор­транс­нефть',sc:'15:2',s:'w',t:'НХЛ края',p:'Кубанка — Григорий Ворвулев'},
+    {d:'2026-11-16',o:'Ключ',sc:'3:2 Б',s:'w',t:'Кубок ЮС',p:'Выезд · победа по буллитам'},
+    {d:'2026-11-21',o:'One Timer',sc:'10:1',s:'w',t:'Кубок ЮС',p:'18:00 · MVP Даниил Ильин'},
+    {d:'2026-11-22',o:'One Timer',sc:'2:0',s:'w',t:'Кубок ЮС',p:'09:00 · MVP Артём Россохатский'},
+    {d:'2026-11-22',o:'Гвардия',sc:'6:3',s:'w',t:'НХЛ края',p:'Краснодар, Ice Palace (малая) · кубанка — Даниил Гасюков'},
+    {d:'2026-11-28',o:'Титан',sc:'18:00',s:'u',t:'Благотворительный',p:'Анапа · билеты 500 / 300 ₽',a:'tickets.html'}
+  ];
+  /* эмблемы: логотип клуба, «Титан» — с афиши, остальные — монограммы в цветах команд (до получения логотипов) */
+  var C={'Регион 23':{img:'../../assets/logo.svg'},'Титан':{img:'img/crest-titan2.webp'},
+    'Гвардия':{img:'img/crest-gvardiya.webp'},'Шторм':{img:'img/crest-shtorm.webp'},'Черномортранснефть':{img:'img/crest-chtn.webp'},'Ключ':{img:'img/crest-klyuch.webp'},
+    'One Timer':{img:'img/crest-onetimer.webp'},'Ядрёные Кабаны':{t:'ЯК',bg:'#4d7a2a'},'Ингрупп':{t:'ИН',bg:'#7a2a4d'},'Планета':{t:'ПЛ',bg:'#2a5f7a'}};
+  function cr(n){n=n.replace(/­/g,"");var c=C[n]||{t:n.slice(0,2).toUpperCase(),bg:'#334'};return '<span class="cr" style="background:'+(c.bg||'transparent')+'" title="'+n+'">'+(c.img?'<img src="'+c.img+'" alt="">':c.t)+'</span>'}
+  var MON=['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'];
+  var months=[];M.forEach(function(m){var k=m.d.slice(0,7);if(months.indexOf(k)<0)months.push(k)});months.sort();
+  var now=new Date(),pad=function(n){return String(n).padStart(2,'0')};
+  var todayKey=now.getFullYear()+'-'+pad(now.getMonth()+1)+'-'+pad(now.getDate());
+  var key=months.indexOf(todayKey.slice(0,7))>-1?todayKey.slice(0,7):months[months.length-1];
+  var g=document.querySelector('.cal-g'),h=document.querySelector('.cal-h h3'),L=document.querySelector('.cal-l'),sel=null;
+  function list(items){L.innerHTML=items.map(function(m){var dd=m.d.split('-'),tag=m.a?'a':'div';
+    return '<'+tag+(m.a?' href="'+m.a+'"':'')+' class="cal-i '+m.s+(sel===m.d?' on':'')+'"><div class="dt tnum">'+dd[2]+'.'+dd[1]+'<small>'+m.t+'</small></div><div><h4>Регион 23 — '+m.o+'</h4><span class="sc tnum">'+m.sc+'</span><p>'+m.p+'</p></div><div class="vs">'+cr('Регион 23')+'vs'+cr(m.o)+'</div></'+tag+'>'}).join('')||'<p style="color:var(--mute)">В этом месяце матчей нет</p>'}
+  function draw(){
+    var y=+key.slice(0,4),mo=+key.slice(5)-1,start=(new Date(y,mo,1).getDay()+6)%7,days=new Date(y,mo+1,0).getDate();
+    h.textContent=MON[mo]+' '+y;
+    var html=['Пн','Вт','Ср','Чт','Пт','Сб','Вс'].map(function(w){return '<div class="wd">'+w+'</div>'}).join('');
+    for(var i=0;i<start;i++)html+='<div class="d o"></div>';
+    for(var d=1;d<=days;d++){var k=key+'-'+pad(d),ev=M.filter(function(m){return m.d===k}),cls='d'+(k===todayKey?' today':'');
+      if(ev.length)html+='<button type="button" class="'+cls+'" data-k="'+k+'" aria-pressed="'+(sel===k)+'" aria-label="'+d+' '+MON[mo]+': '+ev.map(function(m){return 'Регион 23 — '+m.o+', '+m.sc}).join('; ')+'">'+d+ev.map(function(m){return '<span class="ev '+m.s+'">'+cr(m.o)+'<b class="tnum">'+m.sc+'</b><span>'+m.o+'</span></span>'}).join('')+'</button>';
+      else html+='<div class="'+cls+'">'+d+'</div>'}
+    g.innerHTML=html;
+    var ix=months.indexOf(key);document.querySelector('[data-m="-1"]').disabled=ix<=0;document.querySelector('[data-m="1"]').disabled=ix>=months.length-1;
+    list(M.filter(function(m){return sel?m.d===sel:m.d.slice(0,7)===key}));
+  }
+  document.querySelector('.cal-h').addEventListener('click',function(e){var b=e.target.closest('[data-m]');if(!b||b.disabled)return;key=months[months.indexOf(key)+(+b.dataset.m)];sel=null;draw()});
+  g.addEventListener('click',function(e){var b=e.target.closest('button.d');if(!b)return;sel=sel===b.dataset.k?null:b.dataset.k;draw()});
+  draw();
+})();
+</script>
+<script src="site.js"></script>
+<script src="../../assets/anim.js"></script>
+<script src="../../assets/media.js"></script>
+<script>
+document.querySelectorAll('.tabs button').forEach(b=>b.addEventListener('click',()=>{
+  const f=b.dataset.f;document.querySelectorAll('.tabs button').forEach(x=>x.setAttribute('aria-pressed',x===b));
+  document.querySelectorAll('#list .mrow').forEach(r=>r.hidden=!(f==='all'||r.dataset.t===f));
+}));
+</script>
+</body>
+</html>

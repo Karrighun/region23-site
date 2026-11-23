@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Команда — ХК «Регион 23»</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Extra+Condensed:ital,wght@0,700;0,800;0,900;1,800;1,900&family=Onest:wght@400;500;600;700;800&family=Unbounded:wght@700;800&family=Golos+Text:wght@400;500;600;700&family=Dela+Gothic+One&family=Russo+One&family=Oswald:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+<style>
+.grp{margin-top:56px}
+.grp:first-of-type{margin-top:0}
+.grp h3{font-family:var(--display);font-size:clamp(26px,3vw,38px);text-transform:uppercase;display:flex;align-items:baseline;gap:14px;margin-bottom:18px}
+.grp h3 span{font-family:var(--text);font-size:13px;color:var(--mute);font-weight:600;letter-spacing:.06em}
+.roster{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px}
+.pc .cap em{display:block;font-style:normal;font-size:12px;color:#ffd27a;margin-top:6px;line-height:1.35}
+.coach{display:grid;grid-template-columns:280px 1fr;gap:24px;align-items:center;padding:20px;border-radius:22px;background:var(--card);border:1px solid var(--line)}
+.coach .pc{aspect-ratio:1}
+.coach h4{font-family:var(--display);font-size:30px;text-transform:uppercase;line-height:1;margin:10px 0}
+.coach p{color:#c6d2e6;line-height:1.6;font-size:15px}
+.coach ul{list-style:none;margin-top:14px;display:flex;gap:8px;flex-wrap:wrap}
+.staff{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.filter{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:28px}
+.filter a{font:700 13px var(--text);padding:10px 16px;border-radius:30px;border:1px solid var(--line);background:rgba(255,255,255,.04)}
+.filter a:hover{background:rgba(255,255,255,.1)}
+.note{font-size:12px;color:var(--mute);margin-top:20px;line-height:1.6}
+@media (max-width:1100px){.roster{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (max-width:900px){.roster{grid-template-columns:repeat(3,minmax(0,1fr))}.staff{grid-template-columns:1fr}}
+@media (max-width:600px){.roster{grid-template-columns:repeat(2,minmax(0,1fr))}.coach{grid-template-columns:1fr}.pc .cap{padding:30px 10px 10px}.pc .cap b{font-size:15px}.pc .cap span{font-size:10px}.pc .cap em{display:none}}
+.roster .pc{cursor:pointer}
+.roster .pc:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+.roster .pc:after{content:"Открыть карточку";position:absolute;top:12px;right:12px;font:700 11px var(--text);background:rgba(5,10,24,.8);padding:6px 8px;opacity:0;transition:opacity .25s}
+.roster .pc:hover:after{opacity:1}
+.roster .pc .num~*:last-child{}
+dialog.pcd{margin:auto;padding:0;border:0;background:var(--n1);color:var(--w);width:min(1060px,94vw);max-height:92svh;overflow:auto}
+dialog.pcd::backdrop{background:rgba(3,6,15,.82);backdrop-filter:blur(6px)}
+dialog.pcd[open]{animation:plin .35s cubic-bezier(.2,.7,.1,1)}
+@keyframes plin{from{opacity:0;transform:translateY(16px) scale(.98)}}
+.pcd .in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.pcd .ph{position:relative;background:#000;aspect-ratio:1}
+.pcd .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 20%}
+.pcd .ph.mono{display:grid;place-items:center;background:radial-gradient(ellipse at 50% 30%,#1b2a55,#060b18)}.pcd .ph.mono img{width:40%;height:auto;opacity:.3}
+.pcd .bd{padding:clamp(24px,3.4vw,44px);display:flex;flex-direction:column;gap:14px;border-left:3px solid var(--red)}
+.pcd .tags{display:flex;gap:6px;flex-wrap:wrap}
+.pcd .tags span{font:700 12px var(--text);padding:6px 9px;background:rgba(255,255,255,.07)}
+.pcd .tags span.r{background:var(--red)}
+.pcd h2{font-family:var(--display);font-size:clamp(40px,4.4vw,64px);line-height:1;text-transform:uppercase}
+.pcd dl{display:grid;grid-template-columns:auto 1fr;gap:10px 18px;font-size:15px;border-top:1px solid var(--line);padding-top:16px}
+.pcd dt{color:var(--mute);font-weight:600}
+.pcd .ach{font-size:15px;line-height:1.5;color:#ffd27a}
+.pcd .x{position:absolute;top:10px;right:10px;width:44px;height:44px;background:rgba(5,10,24,.8);color:#fff;border:0;font-size:26px;cursor:pointer;z-index:2}
+.pcd .nav{display:flex;gap:8px;margin-top:auto;padding-top:10px}
+.pcd .nav button{font:700 13px var(--text);color:#fff;background:none;border:1px solid var(--line);padding:11px 14px;cursor:pointer}
+.pcd .nav button:hover{background:#fff;color:var(--n0)}
+@media (max-width:760px){.pcd .in{grid-template-columns:1fr}.pcd .ph{aspect-ratio:4/3}.pcd .bd{border-left:0;border-top:3px solid var(--red)}}
+</style>
+</head>
+<body data-page="team">
+<section class="phero">
+  <div class="bg" style="background-image:url(img/g-team1.webp)"></div>
+  <div class="ghost" aria-hidden="true">23</div>
+  <div class="wrap">
+    <span class="eyebrow">Состав · сезон 2026/27</span>
+    <h1>Наша <em>команда</em></h1>
+    <p>Вратари, защитники, нападающие и тренерский штаб «Региона 23». Капитан — Дмитрий Мариев, ассистенты — Александр Куприянов и Тагир Хакимов.</p>
+  </div>
+</section>
+
+<section class="sec" aria-label="Состав команды">
+  <div class="wrap">
+    <nav class="filter" aria-label="Разделы состава"><a href="#g">Вратари</a><a href="#d">Защитники</a><a href="#f">Нападающие</a><a href="#p">Полевые игроки</a><a href="#s">Тренеры и штаб</a></nav>
+
+    <div class="grp" id="g"><h3>Вратари <span>2</span></h3>
+      <div class="roster">
+        <div class="pc rv"><img src="img/p-denisyuk.webp" alt="Кирилл Денисюк" loading="lazy"><div class="cap"><b>Кирилл Денисюк</b><span>Вратарь · Жлобин, Беларусь</span><em>Лучший вратарь НХЛ края 25/26</em></div></div>
+        <div class="pc rv"><img src="img/p-belousov.webp" alt="Владимир Белоусов" loading="lazy"><div class="cap"><b>Владимир Белоусов</b><span>Вратарь</span><em>Лучший игрок финала НХЛ края 2026</em></div></div>
+      </div>
+    </div>
+
+    <div class="grp" id="d"><h3>Защитники <span>3</span></h3>
+      <div class="roster">
+        <div class="pc rv"><span class="badge">A</span><img src="img/p-kupriyanov.webp" alt="Александр Куприянов" loading="lazy"><div class="cap"><b>Александр Куприянов</b><span>Защитник · ассистент капитана</span><em>Лучший защитник НХЛ края 25/26 · 50 матчей за клуб</em></div></div>
+        <div class="pc rv"><img src="img/p-kopylov.webp" alt="Валерий Копылов" loading="lazy"><div class="cap"><b>Валерий Копылов</b><span>Защитник · хоккейный судья</span></div></div>
+        <div class="pc rv"><img src="img/p-savchikov.webp" alt="Станислав Савчиков" loading="lazy"><div class="cap"><b>Станислав Савчиков</b><span>Защитник · из «Гвардии», 2026</span></div></div>
+      </div>
+    </div>
+
+    <div class="grp" id="f"><h3>Нападающие <span>5</span></h3>
+      <div class="roster">
+        <div class="pc ph rv"><img class="mono" src="../../assets/logo.svg" alt=""><div class="cap"><b>Дмитрий Кушнерёв</b><span>Нападающий</span><em>150 шайб в НХЛ · Клуб Макарова</em></div></div>
+        <div class="pc rv"><img src="img/p-lavronenko.webp" alt="Александр Лавроненко" loading="lazy"><div class="cap"><b>Александр Лавроненко</b><span>Нападающий</span><em>Лучший нападающий Кубка ЮС 25/26</em></div></div>
+        <div class="pc rv"><img src="img/p-kartezhnikov.webp" alt="Максим Картежников" loading="lazy"><div class="cap"><b>Максим Картежников</b><span>Нападающий</span><em>100 шайб в НХЛ</em></div></div>
+        <div class="pc rv"><span class="badge">A</span><img src="img/p-khakimov.webp" alt="Тагир Хакимов" loading="lazy"><div class="cap"><b>Тагир Хакимов</b><span>Нападающий · ассистент капитана</span></div></div>
+        <div class="pc rv"><img src="img/p-yunusov.webp" alt="Руслан Юнусов" loading="lazy"><div class="cap"><b>Руслан Юнусов</b><span>Нападающий</span></div></div>
+      </div>
+    </div>
+
+    <div class="grp" id="p"><h3>Полевые игроки <span>11</span></h3>
+      <div class="roster">
+        <div class="pc rv"><span class="badge">K</span><img src="img/p-mariev.webp" alt="Дмитрий Мариев" loading="lazy"><div class="cap"><b>Дмитрий Мариев</b><span>Капитан</span></div></div>
+        <div class="pc rv"><span class="num">88</span><img src="img/p-michurin.webp" alt="Александр Мичурин" loading="lazy"><div class="cap"><b>Александр Мичурин</b><span>Полевой игрок</span></div></div>
+        <div class="pc rv"><span class="num">33</span><img src="img/p-vorvulev.webp" alt="Григорий Ворвулев" loading="lazy"><div class="cap"><b>Григорий Ворвулев</b><span>Полевой игрок</span></div></div>
+        <div class="pc rv"><img src="img/p-seliverstov.webp" alt="Артём Селиверстов" loading="lazy"><div class="cap"><b>Артём Селиверстов</b><span>Полевой игрок</span></div></div>
+        <div class="pc rv"><img src="img/p-belyaev.webp" alt="Георгий Беляев" loading="lazy"><div class="cap"><b>Георгий Беляев</b><span>Полевой игрок</span></div></div>
+        <div class="pc rv"><img src="img/p-belous.webp" alt="Дмитрий Белоус" loading="lazy"><div class="cap"><b>Дмитрий Белоус</b><span>Полевой игрок</span></div></div>
+        <div class="pc ph rv"><img class="mono" src="../../assets/logo.svg" alt=""><div class="cap"><b>Александр Батырев</b><span>Полевой игрок</span><em>MVP матча со «Штормом» — 4 очка</em></div></div>
+        <div class="pc ph rv"><img class="mono" src="../../assets/logo.svg" alt=""><div class="cap"><b>Дмитрий Гронский</b><span>Полевой игрок</span></div></div>
+        <div class="pc ph rv"><img class="mono" src="../../assets/logo.svg" alt=""><div class="cap"><b>Максим Полежаев</b><span>Новичок 2026</span></div></div>
+        <div class="pc ph rv"><img class="mono" src="../../assets/logo.svg" alt=""><div class="cap"><b>Даниил Ильин</b><span>Новичок 2026</span></div></div>
+        <div class="pc ph rv"><img class="mono" src="../../assets/logo.svg" alt=""><div class="cap"><b>Артём Россохатский</b><span>Новичок 2026</span></div></div>
+      </div>
+    </div>
+
+    <div class="grp" id="s"><h3>Тренеры и штаб</h3>
+      <div class="staff">
+        <div class="coach rv"><div class="pc"><img src="img/p-gasyukov.webp" alt="Даниил Гасюков" loading="lazy"></div><div><span class="eyebrow">Главный тренер</span><h4>Даниил Юрьевич Гасюков</h4><p>Воспитанник системы СКА, прошёл путь от МХЛ до ВХЛ и КХЛ. Три года был капитаном «СКА» в МХЛ, в сезоне 2013/14 — лучший снайпер среди защитников. В Анапе развивает хоккей для взрослых и детей.</p><ul><li class="chip gold">Лучший тренер НХЛ края 25/26</li></ul></div></div>
+        <div class="coach rv"><div class="pc"><img src="img/p-kuptsov.webp" alt="Сергей Купцов" loading="lazy"></div><div><span class="eyebrow">Второй тренер</span><h4>Сергей Сергеевич Купцов</h4><p>Экс-игрок КХЛ («Нефтехимик»), президент Федерации хоккея города-курорта Анапа. Самый ценный игрок первого Кубка Южной столицы.</p><ul><li class="chip gold">MVP Кубка ЮС 25/26</li></ul></div></div>
+      </div>
+      <p class="note">Сервисмен команды — Павел Черняцев. Позиции части игроков уточняются у клуба; фото без портрета появятся после клубной фотосессии.</p>
+    </div>
+  </div>
+</section>
+<dialog class="pcd" id="pl" aria-labelledby="pl-n"><button class="x" type="button" aria-label="Закрыть">×</button><div class="in">
+  <div class="ph"><img alt=""></div>
+  <div class="bd"><div class="tags"></div><h2 id="pl-n"></h2><p class="ach"></p>
+    <dl><dt>Позиция</dt><dd data-f="pos"></dd><dt>Команда</dt><dd>ХК «Регион 23», Анапа</dd><dt>Сезон</dt><dd>2026/27 · НХЛ края, Кубок Южной столицы</dd></dl>
+    <a class="more" data-f="tg" target="_blank" rel="noopener">Новости об игроке в Telegram →</a>
+    <div class="nav"><button type="button" data-d="-1">← Предыдущий</button><button type="button" data-d="1">Следующий →</button></div></div>
+</div></dialog>
+<script>
+(function(){
+  var cards=[].slice.call(document.querySelectorAll('.roster .pc')),d=document.getElementById('pl'),cur=0,FULL={};
+  function load(u){var i=FULL[u];if(!i){i=FULL[u]=new Image();i.decoding='async';i.src=u}
+    return i.decode?i.decode().catch(function(){}):Promise.resolve()}
+  // все полноразмерные фото (~17 × 40 КБ) подгружаем в фоне после загрузки страницы
+  addEventListener('load',function(){(window.requestIdleCallback||setTimeout)(function(){cards.forEach(function(c){var im=c.querySelector('img:not(.mono)');if(im)load(im.getAttribute('src').replace('img/p-','img/full/p-'))})})});
+  function open(i){cur=(i+cards.length)%cards.length;var c=cards[cur],img=c.querySelector('img:not(.mono)');
+    var name=c.querySelector('.cap b').textContent,role=c.querySelector('.cap span').textContent,em=c.querySelector('.cap em');
+    var ph=d.querySelector('.ph'),pi=ph.querySelector('img');
+    if(img){ph.classList.remove('mono');pi.alt=name;
+      // сразу — уже загруженное фото с карточки, полноразмерное подменяем, когда оно готово (без «лага» лица)
+      var full=img.getAttribute('src').replace('img/p-','img/full/p-'),pre=FULL[full];
+      pi.src=pre&&pre.complete&&pre.naturalWidth?full:img.currentSrc||img.src;
+      if(!(pre&&pre.complete&&pre.naturalWidth)){var want=cur;load(full).then(function(){if(cur===want)pi.src=full})}
+      [cur-1,cur+1].forEach(function(k){var c2=cards[(k+cards.length)%cards.length].querySelector('img:not(.mono)');if(c2)load(c2.getAttribute('src').replace('img/p-','img/full/p-'))})}
+    else{ph.classList.add('mono');pi.src='../../assets/logo.svg';pi.alt=''}
+    var b=c.querySelector('.badge'),n=c.querySelector('.num'),t=[];
+    if(b)t.push('<span class="r">'+(b.textContent==='K'?'Капитан':'Ассистент капитана')+'</span>');
+    if(n)t.push('<span>№ '+n.textContent+'</span>');
+    t.push('<span>'+c.closest('.grp').querySelector('h3').firstChild.textContent.trim()+'</span>');
+    d.querySelector('.tags').innerHTML=t.join('');
+    d.querySelector('#pl-n').textContent=name;
+    d.querySelector('[data-f=pos]').textContent=role;
+    var a=d.querySelector('.ach');a.textContent=em?em.textContent:'';a.hidden=!em;
+    d.querySelector('[data-f=tg]').href='https://t.me/s/XKREGION23?q='+encodeURIComponent(name.split(' ').pop());
+    if(!d.open)d.showModal();
+  }
+  cards.forEach(function(c,i){c.tabIndex=0;c.setAttribute('role','button');c.setAttribute('aria-label','Карточка: '+c.querySelector('.cap b').textContent);
+    c.addEventListener('click',function(){open(i)});c.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open(i)}})});
+  d.querySelector('.x').addEventListener('click',function(){d.close()});
+  d.addEventListener('click',function(e){if(e.target===d)d.close();var b=e.target.closest('[data-d]');if(b)open(cur+ +b.dataset.d)});
+  d.addEventListener('keydown',function(e){if(e.key==='ArrowRight')open(cur+1);if(e.key==='ArrowLeft')open(cur-1)});
+  d.addEventListener('close',function(){cards[cur].focus()});
+})();
+</script>
+<script src="site.js"></script>
+<script src="../../assets/anim.js"></script>
+<script src="../../assets/media.js"></script>
+</body>
+</html>

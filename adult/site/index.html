@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ХК «Регион 23» — хоккейная команда Анапы</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Extra+Condensed:ital,wght@0,700;0,800;0,900;1,800;1,900&family=Onest:wght@400;500;600;700;800&family=Unbounded:wght@700;800&family=Golos+Text:wght@400;500;600;700&family=Dela+Gothic+One&family=Russo+One&family=Oswald:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+<style>
+.arena{position:relative;height:100svh;min-height:680px;overflow:hidden;background:radial-gradient(ellipse 80% 60% at 60% 0%,var(--n2) 0%,var(--n1) 40%,var(--n0) 80%)}
+.L{position:absolute;inset:0;will-change:transform;pointer-events:none}
+.beam{position:absolute;top:-10%;width:22vw;height:120%;transform-origin:50% 0;background:linear-gradient(180deg,rgba(191,227,255,.35),rgba(191,227,255,0) 75%);filter:blur(14px);clip-path:polygon(44% 0,56% 0,100% 100%,0 100%);mix-blend-mode:screen;opacity:.5}
+.b1{left:8%;animation:sweep 9s ease-in-out infinite}.b2{left:40%;animation:sweep 11s ease-in-out infinite reverse;opacity:.3}.b3{left:74%;animation:sweep 8s ease-in-out infinite 1.5s}
+@keyframes sweep{0%,100%{transform:rotate(16deg)}50%{transform:rotate(-14deg)}}
+.giant{top:9%;text-align:center;font-family:var(--display);font-weight:700;font-size:clamp(110px,24vw,420px);line-height:.8;letter-spacing:-.02em;background:linear-gradient(180deg,rgba(191,227,255,.5),rgba(191,227,255,.04));-webkit-background-clip:text;background-clip:text;color:transparent}
+.photo img,.player img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:68% 30%}
+.photo img{filter:brightness(.5) saturate(.85) blur(1.5px);transform:scale(1.04);-webkit-mask-image:linear-gradient(90deg,rgba(0,0,0,.35),#000 55%);mask-image:linear-gradient(90deg,rgba(0,0,0,.35),#000 55%)}
+.player img{filter:drop-shadow(0 0 40px rgba(80,140,255,.25)) contrast(1.04)}
+.redline{top:auto;bottom:12%;height:6px;background:var(--red);opacity:.6;box-shadow:0 0 30px rgba(227,38,43,.6)}
+.shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,10,24,.88),rgba(5,10,24,.35) 45%,transparent 65%),linear-gradient(0deg,var(--n0) 0%,transparent 25%)}
+#snow{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.content{position:absolute;z-index:8;left:var(--pad);bottom:clamp(56px,11vh,110px);max-width:560px}
+.content h1{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:clamp(44px,6vw,96px);line-height:.9;margin:20px 0 0}
+.content h1 em{font-style:normal;color:var(--red)}
+.content p{margin:18px 0 28px;color:#c6d2e6;line-height:1.6;max-width:450px}
+.row{display:flex;gap:12px;flex-wrap:wrap}
+.mc{position:absolute;z-index:8;right:var(--pad);bottom:clamp(56px,11vh,110px);width:330px;padding:20px;border-radius:18px;background:rgba(10,22,54,.58);border:1px solid rgba(191,227,255,.16);backdrop-filter:blur(14px)}
+.mc small{font-size:11px;letter-spacing:.16em;text-transform:uppercase;opacity:.65}
+.teams{display:flex;align-items:center;justify-content:space-between;margin:12px 0;font-family:var(--display);font-size:22px;font-weight:600}
+.teams span{display:flex;align-items:center;gap:10px}.teams img{width:34px;height:34px}
+.cd{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;text-align:center}
+.cd div{background:rgba(255,255,255,.06);border-radius:10px;padding:8px 0}
+.cd b{display:block;font-family:var(--display);font-size:24px}
+.cd span{font-size:10px;opacity:.55;text-transform:uppercase;letter-spacing:.1em}
+.mc .last{display:flex;justify-content:space-between;margin-top:12px;padding-top:12px;border-top:1px solid var(--line);font-size:12px;color:var(--mute)}
+.mc .last b{font-family:var(--display);font-size:16px;color:#fff;font-weight:500}
+
+.trophies{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.tro{padding:26px 22px;border-radius:18px;background:linear-gradient(160deg,#101d42,#0a1330);border:1px solid var(--line);position:relative;overflow:hidden}
+.tro b{display:block;font-family:var(--display);font-weight:700;font-size:64px;line-height:.9;color:#fff}
+.tro b em{font-style:normal;color:var(--red);font-size:.55em;vertical-align:top;margin-left:4px}
+.tro h3{font-family:var(--display);font-weight:600;font-size:20px;text-transform:uppercase;margin:12px 0 8px;line-height:1.1}
+.tro p{color:var(--mute);font-size:13px;line-height:1.5}
+.leaders{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:18px}
+.leader{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line);min-height:380px;background:#000}
+.leader img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 0}
+.leader .in{position:absolute;left:0;right:0;bottom:0;padding:60px 20px 20px;background:linear-gradient(0deg,rgba(5,10,24,.97) 30%,rgba(5,10,24,0))}
+.leader .k{font-family:var(--display);font-size:58px;font-weight:700;line-height:.9;color:#fff}
+.leader .k small{font-size:14px;font-family:var(--text);font-weight:700;color:var(--ice);letter-spacing:.1em;text-transform:uppercase;margin-left:6px}
+.leader h3{font-family:var(--display);font-size:22px;font-weight:600;text-transform:uppercase;margin-top:6px}
+.leader p{font-size:12px;color:var(--mute);margin-top:4px}
+.acad{display:grid;grid-template-columns:1fr 1fr;border-radius:24px;overflow:hidden;background:var(--red)}
+.acad .tx{padding:clamp(28px,4vw,56px)}
+.acad h2{font-family:var(--display);font-weight:700;font-size:clamp(36px,4.6vw,64px);line-height:.92;text-transform:uppercase}
+.acad p{margin:16px 0 24px;line-height:1.6;max-width:440px}
+.acad ul{list-style:none;display:grid;gap:8px;margin-bottom:26px;font-weight:700}
+.acad li:before{content:"✦ ";opacity:.7}
+.acad .im{background:url(img/g-kids.webp) center/cover;min-height:320px}
+.acad .btn{background:#fff;color:var(--red)}
+.charity{display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:center;padding:clamp(24px,4vw,48px);border-radius:24px;border:1px solid rgba(227,38,43,.4);background:radial-gradient(ellipse at 100% 0%,rgba(227,38,43,.22),transparent 60%),var(--card)}
+.charity h2{font-family:var(--display);font-weight:700;font-size:clamp(34px,4.2vw,58px);line-height:.92;text-transform:uppercase;margin:14px 0}
+.charity p{color:#c6d2e6;line-height:1.6}
+.price{display:flex;gap:12px;margin:22px 0}
+.price div{flex:1;padding:16px;border-radius:14px;background:rgba(255,255,255,.05);border:1px solid var(--line)}
+.price b{display:block;font-family:var(--display);font-size:34px}
+.price span{font-size:12px;color:var(--mute)}
+@media (max-width:1060px){.trophies,.leaders{grid-template-columns:repeat(2,minmax(0,1fr))}.mc{display:none}}
+@media (max-width:760px){
+  .photo img,.player img{object-position:52% 20%}
+  .shade{background:linear-gradient(0deg,rgba(5,10,24,.97) 26%,rgba(5,10,24,.55) 52%,rgba(5,10,24,0) 74%)}
+  .content{right:var(--pad);bottom:40px}
+  .trophies,.leaders,.acad,.charity{grid-template-columns:1fr}
+  .leader{min-height:340px}
+}
+@media (prefers-reduced-motion:reduce){.beam{animation:none}}
+</style>
+</head>
+<body data-page="index">
+<section class="arena" id="arena" aria-label="Первый экран">
+  <div class="L photo" data-d="4"><img src="../../assets/a3-goal-black.webp" alt=""></div>
+  <div class="L" data-d="6" aria-hidden="true"><div class="beam b1"></div><div class="beam b2"></div><div class="beam b3"></div></div>
+  <div class="L giant" data-d="14" aria-hidden="true">РЕГИОН</div>
+  <div class="L redline" data-d="12" aria-hidden="true"></div>
+  <div class="L player" data-d="30"><img src="../../assets/a3-goal-black-cut.webp" alt="Игрок «Регион 23» в чёрной форме клуба празднует гол у борта"></div>
+  <div class="shade" aria-hidden="true"></div>
+  <canvas id="snow" aria-hidden="true"></canvas>
+  <div class="content">
+    <span class="tag"><i></i>Кубок Южной столицы · сезон 2026/27</span>
+    <h1>Хоккей <em>у моря</em><br>Ледяной характер</h1>
+    <p>«Регион 23» — хоккейная команда Анапы. Пятикратный чемпион Ночной хоккейной лиги Краснодарского края и первый обладатель Кубка Южной столицы.</p>
+    <div class="row"><a class="btn red" href="tickets.html">Билеты на матч</a><a class="btn line" href="team.html">Состав команды</a></div>
+  </div>
+  <div class="mcw">
+  <div class="mcC " aria-label="Ближайший матч">
+    <div class="top"><span>Благотворительный матч</span><b class="tnum">28.11 · 18:00</b></div>
+    <div class="vsC"><div><img src="../../assets/logo.svg" alt=""><b>Регион 23</b><small>Анапа</small></div><i>×</i><div><img src="img/crest-titan.png" alt=""><b>Титан</b><small>Ставрополь</small></div></div>
+    <div class="perf" aria-hidden="true"></div>
+    <div class="cdC tnum" data-count="2026-11-28T18:00:00+03:00"><div><b>00</b><span>дн</span></div><div><b>00</b><span>ч</span></div><div><b>00</b><span>мин</span></div><div><b>00</b><span>сек</span></div></div>
+    <a class="stub" href="tickets.html"><span>Билет</span><b class="tnum">500 / 300 ₽</b><em>→</em></a>
+  </div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="h-results">
+  <div class="wrap">
+    <div class="shead rv"><div><span class="eyebrow">Матч-центр</span><h2 id="h-results">Сезон <em>2026/27</em></h2></div><a class="more" href="matches.html">Все матчи →</a></div>
+    <div class="card rv">
+      <div class="mrow"><div class="d tnum">28.11<small>Сб · 18:00</small></div><div class="t"><img src="../../assets/logo.svg" alt="">Регион 23</div><div class="score u">18:00<small>Анапа</small></div><div class="t r">Титан<span class="crest">ТИ</span></div><div class="x"><span class="chip red">Благотворительный</span><a class="btn red sm" href="tickets.html">Билеты</a></div></div>
+      <div class="mrow"><div class="d tnum">22.11<small>Кубок Южной столицы</small></div><div class="t"><img src="../../assets/logo.svg" alt="">Регион 23</div><div class="score w tnum">2:0<small>Победа</small></div><div class="t r">One Timer<span class="crest">OT</span></div><div class="x">Лучший игрок<b style="color:#fff">Артём Россохатский</b></div></div>
+      <div class="mrow"><div class="d tnum">21.11<small>Кубок Южной столицы</small></div><div class="t"><img src="../../assets/logo.svg" alt="">Регион 23</div><div class="score w tnum">10:1<small>Победа</small></div><div class="t r">One Timer<span class="crest">OT</span></div><div class="x">Лучший игрок<b style="color:#fff">Даниил Ильин</b></div></div>
+      <div class="mrow"><div class="d tnum">22.11<small>НХЛ края</small></div><div class="t"><span class="crest">ГВ</span>Гвардия</div><div class="score w tnum">3:6<small>Победа</small></div><div class="t r">Регион 23<img src="../../assets/logo.svg" alt=""></div><div class="x">Кубанка<b style="color:#fff">Даниил Гасюков</b></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec alt" aria-labelledby="h-tro">
+  <div class="wrap">
+    <div class="shead rv"><div><span class="eyebrow">Трофеи и цифры</span><h2 id="h-tro">Чемпионский <em>характер</em></h2></div><a class="more" href="club.html">История клуба →</a></div>
+    <div class="sv-b">
+      <div class="bt bmain rv" style="background-image:url(img/g-cup1.webp)"><div><b>5×</b><h3>Чемпион НХЛ Краснодарского края</h3><p>Пятый титул — финал 22 марта 2026 в Ice Palace</p></div></div>
+      <div class="bt red rv"><b>8/8</b><h3>Побед в сезоне 26/27</h3></div>
+      <div class="bt rv"><b>59:10</b><h3>Шайбы в сезоне</h3></div>
+      <div class="bt rv"><b>№1</b><h3>Обладатель Кубка Южной столицы</h3><p>Первый турнир в истории, MVP — Сергей Купцов</p></div>
+      <div class="bt ice rv"><b>4</b><h3>Награды НХЛ края 25/26</h3><p>Бомбардир, защитник, вратарь и тренер</p></div>
+      <div class="bt wide rv"><div class="yrs"><span><b>2022</b>Чемпион «Лиги Надежды. МК», Сочи</span><span><b>2025</b>Серебро «Лиги Надежды. БК», Сириус</span><span><b>2019</b>Год основания клуба</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="h-lead">
+  <div class="wrap">
+    <div class="shead rv"><div><span class="eyebrow">Лидеры сезона 2025/26</span><h2 id="h-lead">Лучшие <em>в НХЛ края</em></h2></div><p>Индивидуальные награды регионального чемпионата Ночной хоккейной лиги 25/26 — все у игроков «Региона 23».</p></div>
+    <div class="leaders">
+      <div class="leader pc-like rv"><div class="pc ph" style="position:absolute;inset:0;aspect-ratio:auto;border:0"><img class="mono" src="../../assets/logo.svg" alt=""></div><div class="in"><div class="k">150<small>шайб в НХЛ</small></div><h3>Дмитрий Кушнерёв</h3><p>Лучший бомбардир, снайпер, ассистент и нападающий. Член Клуба Макарова.</p></div></div>
+      <div class="leader rv"><img src="img/p-kupriyanov.webp" alt="Александр Куприянов"><div class="in"><div class="k">A<small>ассистент</small></div><h3>Александр Куприянов</h3><p>Лучший защитник НХЛ края 25/26</p></div></div>
+      <div class="leader rv"><img src="img/p-denisyuk.webp" alt="Кирилл Денисюк"><div class="in"><div class="k">G<small>вратарь</small></div><h3>Кирилл Денисюк</h3><p>Лучший вратарь НХЛ края 25/26</p></div></div>
+      <div class="leader rv"><img src="img/p-gasyukov.webp" alt="Даниил Гасюков"><div class="in"><div class="k">HC<small>тренер</small></div><h3>Даниил Гасюков</h3><p>Лучший тренер НХЛ края 25/26</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec alt" aria-labelledby="h-news">
+  <div class="wrap">
+    <div class="shead rv"><div><span class="eyebrow">Новости</span><h2 id="h-news">Из <em>раздевалки</em></h2></div><a class="more" href="media.html">Все новости →</a></div>
+    <div class="grid g3" data-feed data-limit="3">
+      <a class="card news rv" href="media.html"><div class="im"><img src="img/g-action2.webp" alt="" loading="lazy"></div><div class="bd"><time>22.11.2026</time><h3>Два матча — две победы над One Timer</h3><p>10:1 и 2:0 дома. Лучшими стали новички — Даниил Ильин и Артём Россохатский.</p></div></a>
+      <a class="card news rv" href="media.html"><div class="im"><img src="img/g-bench.webp" alt="" loading="lazy"></div><div class="bd"><time>17.11.2026</time><h3>Камбэк в Краснодаре</h3><p>Старт Кубка Южной столицы: «Ключ» обыгран 3:2 по буллитам. Решающий бросок — Максим Полежаев.</p></div></a>
+      <a class="card news rv" href="tickets.html"><div class="im"><img src="img/g-fans1.webp" alt="" loading="lazy"></div><div class="bd"><time>13.11.2026</time><h3>Хоккей во имя добра</h3><p>28 ноября — матч с «Титаном» в Анапе. Гость — Алексей Касатонов, все сборы — фонду «Капельки Добра».</p></div></a>
+    </div>
+    <p class="feedstate" data-feedstate></p>
+  </div>
+</section>
+
+<section class="sec" aria-label="Благотворительный матч">
+  <div class="wrap">
+    <div class="charity rv">
+      <div><span class="tag"><i></i>28 ноября · 18:00 · Анапа</span><h2>Регион 23 — Титан</h2><p>Благотворительный матч при поддержке Федерации хоккея города-курорта Анапа и Ночной хоккейной лиги. Приглашённый гость — Алексей Касатонов, двукратный олимпийский чемпион. Все средства от билетов — фонду «Капельки Добра», который помогает детям с аутизмом, синдромом Дауна и ДЦП.</p></div>
+      <div><div class="price"><div><b class="tnum">500 ₽</b><span>взрослый</span></div><div><b class="tnum">300 ₽</b><span>детский</span></div></div><a class="btn red" href="tickets.html">Как купить билет</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec alt" aria-label="Детская академия">
+  <div class="wrap">
+    <div class="acad rv">
+      <div class="tx"><span class="eyebrow" style="color:#fff;opacity:.8">Хоккейная академия «Регион 23»</span><h2>Первый лёд — бесплатно</h2><p>Детская хоккейная академия Анапы: занятия с 3 лет, тренеры Даниил Гасюков (СКА) и Сергей Купцов (КХЛ). Лёд в парке «Джунгли».</p><ul><li>Форма выдаётся бесплатно</li><li>Первая тренировка — бесплатно</li><li>Летний кэмп у моря</li></ul><a class="btn" href="../../kids/site/index.html">Сайт академии →</a></div>
+      <div class="im" role="img" aria-label="Юные хоккеисты академии на льду"></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="h-part">
+  <div class="wrap">
+    <div class="shead rv"><div><span class="eyebrow">Партнёры</span><h2 id="h-part">С <em>нами</em></h2></div><a class="more" href="https://t.me/XKREGION23" target="_blank" rel="noopener">Стать партнёром →</a></div>
+    <div class="pA"><div class="marq" style="--dur:36s"><ul><li><img class="plogo r" src="img/partners/nhl.png" alt="Ночная хоккейная лига"></li><li><img class="plogo r" src="img/partners/fha.png" alt="Федерация хоккея города-курорта Анапа"></li><li><img class="plogo w" src="img/partners/coffeelike.png" alt="Coffee Like"></li><li><img class="plogo w" src="img/partners/alfa.png" alt="Альфа-Банк"></li><li><img class="plogo w" src="img/partners/kapelki.png" alt="Благотворительный фонд «Капельки Добра»"></li><li><span class="wm wm-sans">Барбершоп №1</span></li><li><span class="wm wm-cond">Автомойка «Байкал»</span></li><li><span class="wm wm-cond">Lions Parking</span></li></ul><ul aria-hidden="true"><li><img class="plogo r" src="img/partners/nhl.png" alt="Ночная хоккейная лига"></li><li><img class="plogo r" src="img/partners/fha.png" alt="Федерация хоккея города-курорта Анапа"></li><li><img class="plogo w" src="img/partners/coffeelike.png" alt="Coffee Like"></li><li><img class="plogo w" src="img/partners/alfa.png" alt="Альфа-Банк"></li><li><img class="plogo w" src="img/partners/kapelki.png" alt="Благотворительный фонд «Капельки Добра»"></li><li><span class="wm wm-sans">Барбершоп №1</span></li><li><span class="wm wm-cond">Автомойка «Байкал»</span></li><li><span class="wm wm-cond">Lions Parking</span></li></ul></div></div>
+  </div>
+</section>
+
+<script src="site.js"></script>
+<script src="../../assets/anim.js"></script>
+<script src="../../assets/media.js"></script>
+<script>
+(()=>{const a=document.getElementById('arena'),L=[...a.querySelectorAll('.L')],reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+let mx=0,my=0,cx=0,cy=0;a.addEventListener('pointermove',e=>{mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5});
+const cv=document.getElementById('snow'),c=cv.getContext('2d');let W,H;const dpr=Math.min(devicePixelRatio,2);
+function rs(){W=a.clientWidth;H=a.clientHeight;cv.width=W*dpr;cv.height=H*dpr;c.setTransform(dpr,0,0,dpr,0,0)}rs();addEventListener('resize',rs);
+const P=[...Array(100)].map(()=>{const z=Math.random();return{x:Math.random(),y:Math.random(),z,r:z<.85?Math.random()*1.4+.3:Math.random()*4+2}});
+(function t(){cx+=(mx-cx)*.06;cy+=(my-cy)*.06;const sy=Math.min(scrollY,innerHeight);
+ for(const l of L){const d=+l.dataset.d;l.style.transform=`translate3d(${-cx*d}px,${-cy*d*.6+sy*(d/90)}px,0)`}
+ c.clearRect(0,0,W,H);for(const p of P){p.y+=.0008+p.z*.0018;p.x+=.0003;if(p.y>1.02){p.y=-.02;p.x=Math.random()}if(p.x>1.02)p.x=-.02;
+ c.fillStyle=`rgba(220,240,255,${p.r>2?.16:.5})`;c.beginPath();c.arc(p.x*W-cx*p.z*40,p.y*H,p.r,0,7);c.fill()}
+ if(!reduce)requestAnimationFrame(t)})();})();
+</script>
+</body>
+</html>

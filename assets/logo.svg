@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Регион 23">
+  <!-- Реконструкция знака клуба для концептов. Для продакшна нужен оригинальный вектор от клуба. -->
+  <rect width="100" height="100" fill="#E3262B"/>
+  <g fill="none" stroke="#fff" stroke-width="7" stroke-linecap="square" stroke-linejoin="miter">
+    <path d="M17 24 H45 V50 H21 V76 H45"/>
+    <path d="M55 24 H83 V76 H55"/>
+    <path d="M59 50 H83"/>
+  </g>
+  <g stroke="#fff" stroke-width="3.2">
+    <path d="M60 60 H76"/>
+    <path d="M64 66 H76"/>
+  </g>
+</svg>

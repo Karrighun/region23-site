@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Медиа — ХК «Регион 23»</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Extra+Condensed:ital,wght@0,700;0,800;0,900;1,800;1,900&family=Onest:wght@400;500;600;700;800&family=Unbounded:wght@700;800&family=Golos+Text:wght@400;500;600;700&family=Dela+Gothic+One&family=Russo+One&family=Oswald:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+<style>
+.lead{display:grid;grid-template-columns:1.4fr 1fr;border-radius:22px;overflow:hidden;background:var(--card);border:1px solid var(--line)}
+.lead .im{min-height:380px;background:url(img/g-action2.webp) center/cover}
+.lead .bd{padding:clamp(24px,3vw,40px);display:flex;flex-direction:column;gap:14px;justify-content:center}
+.lead h2{font-family:var(--display);font-size:clamp(30px,3.4vw,48px);text-transform:uppercase;line-height:.95}
+.lead p{color:#c6d2e6;line-height:1.65}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:40px 0 18px}
+.tabs button{font:700 13px var(--text);color:var(--w);background:rgba(255,255,255,.05);border:1px solid var(--line);padding:10px 16px;border-radius:30px;cursor:pointer}
+.tabs button[aria-pressed="true"]{background:var(--red);border-color:var(--red)}
+.news[hidden]{display:none}
+.vids{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.vid{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:16/10;background:#000;border:1px solid var(--line)}
+.vid img{width:100%;height:100%;object-fit:cover;opacity:.65;transition:opacity .3s,transform .5s}
+.vid:hover img{opacity:.85;transform:scale(1.04)}
+.vid .pl{position:absolute;left:50%;top:50%;transform:translate(-50%,-60%);width:64px;height:64px;border-radius:50%;background:var(--red);display:grid;place-items:center}
+.vid .ttl{position:absolute;left:0;right:0;bottom:0;padding:30px 16px 14px;background:linear-gradient(0deg,rgba(5,10,24,.95),transparent);font-family:var(--display);font-size:18px;text-transform:uppercase}
+.vid .ttl small{display:block;font-family:var(--text);font-size:11px;color:var(--mute);text-transform:none;letter-spacing:.04em}
+.masonry{columns:4 240px;column-gap:12px}
+.masonry img{width:100%;border-radius:14px;margin-bottom:12px;break-inside:avoid}
+@media (max-width:900px){.lead{grid-template-columns:1fr}.lead .im{min-height:240px}.vids{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.vids{grid-template-columns:1fr}}
+</style>
+</head>
+<body data-page="media">
+<section class="phero">
+  <div class="bg" style="background-image:url(img/g-fans1.webp)"></div>
+  <div class="ghost" aria-hidden="true">МЕДИА</div>
+  <div class="wrap">
+    <span class="eyebrow">Новости, видео, фото</span>
+    <h1>Из <em>раздевалки</em></h1>
+    <p>Всё, что происходит с командой на льду и вне его. Свежие новости выходят в Telegram-канале @XKREGION23 и в MAX.</p>
+  </div>
+</section>
+
+<section class="sec" aria-label="Новости">
+  <div class="wrap">
+    <article class="lead rv">
+      <div class="im" role="img" aria-label="Игровой момент «Региона 23»"></div>
+      <div class="bd"><span class="chip red">Кубок Южной столицы · 22.11.2026</span><h2>One Timer — дважды. 10:1 и 2:0</h2><p>Действующий чемпион принял в Анапе сочинский One Timer и забрал оба матча. Лучшими стали новички: Даниил Ильин в первой игре и Артём Россохатский во второй. «Кажется, новички у нас долго раскачиваться не любят».</p><a class="more" href="matches.html">Матч-центр →</a></div>
+    </article>
+
+    <div class="tabs" role="group" aria-label="Тип новостей">
+      <button type="button" data-feedtab="#news" data-r="" aria-pressed="true">Все</button>
+      <button type="button" data-feedtab="#news" data-r="Матчи" aria-pressed="false">Матчи</button>
+      <button type="button" data-feedtab="#news" data-r="Клуб" aria-pressed="false">Клуб</button>
+      <button type="button" data-feedtab="#news" data-r="Академия" aria-pressed="false">Академия</button>
+    </div>
+    <div class="grid g3" id="news" data-feed data-limit="12">
+      <article class="card news rv" data-t="m"><div class="im"><img src="img/g-bench.webp" alt="" loading="lazy"></div><div class="bd"><time>17.11.2026</time><h3>«Могнули „Ключ“»</h3><p>Первый матч сезона в Кубке Южной столицы — камбэк в Краснодаре и победа 3:2 по буллитам. Шайба в основное время и решающий буллит — Максим Полежаев.</p></div></article>
+      <article class="card news rv" data-t="m"><div class="im"><img src="img/g-action1.webp" alt="" loading="lazy"></div><div class="bd"><time>16.11.2026</time><h3>15:2 с «Черномортранснефтью»</h3><p>Серия НХЛ продолжается. Фирменную кубанку лучшего игрока Александр Батырев передал Григорию Ворвулеву.</p></div></article>
+      <article class="card news rv" data-t="c"><div class="im"><img src="img/g-fans2.webp" alt="" loading="lazy"></div><div class="bd"><time>13.11.2026</time><h3>Хоккей во имя добра</h3><p>28 ноября в 18:00 — благотворительный матч с «Титаном». Гость — Алексей Касатонов, сборы — фонду «Капельки Добра».</p></div></article>
+      <article class="card news rv" data-t="m"><div class="im"><img src="img/g-faceoff.webp" alt="" loading="lazy"></div><div class="bd"><time>08.11.2026</time><h3>9:0 со «Штормом»</h3><p>Третий матч сезона НХЛ без зрителей, но с хорошим хоккеем. Игрок матча — Александр Батырев, 4 очка.</p></div></article>
+      <article class="card news rv" data-t="m"><div class="im"><img src="img/g-action3.webp" alt="" loading="lazy"></div><div class="bd"><time>02.11.2026</time><h3>Победа над «Гвардией»</h3><p>2:3 в Краснодаре. Лучшим игроком матча стал Артём Селиверстов.</p></div></article>
+      <article class="card news rv" data-t="m"><div class="im"><img src="img/g-team1.webp" alt="" loading="lazy"></div><div class="bd"><time>30.10.2026</time><h3>Сезон НХЛ открыт: 11:0</h3><p>Новичок лиги «АО Черномортранснефть» стал первым соперником. Матч прошёл без зрителей — ждём всех в Краснодаре.</p></div></article>
+      <article class="card news rv" data-t="k"><div class="im"><img src="img/g-kids.webp" alt="" loading="lazy"></div><div class="bd"><time>27.10.2026</time><h3>Ледовые страсти юга</h3><p>В парке «Джунгли» прошли день открытых дверей академии, детский матч и мастер-класс для будущих хоккеистов.</p></div></article>
+      <article class="card news rv" data-t="c"><div class="im"><img src="img/g-cup1.webp" alt="" loading="lazy"></div><div class="bd"><time>07.10.2026</time><h3>Кубок Южной столицы: новый сезон</h3><p>Четыре сильнейшие команды юга: One Timer (Сочи), «Регион 23» (Анапа), «Ключ» (Краснодар), «Титан» (Ставрополь).</p></div></article>
+      <article class="card news rv" data-t="k"><div class="im"><img src="img/g-face.webp" alt="" loading="lazy"></div><div class="bd"><time>04.08.2026</time><h3>Станислав Мариев — в «Ямале»</h3><p>Первый воспитанник Анапы, который сыграет в Первой лиге — второй по значимости в стране.</p></div></article>
+    </div>
+  </div>
+</section>
+
+<p class="wrap feedstate" data-feedstate style="margin-top:-60px;margin-bottom:60px"></p>
+<section class="sec alt" aria-labelledby="h-vid">
+  <div class="wrap">
+    <div class="shead rv"><div><span class="eyebrow">Видео</span><h2 id="h-vid">Видео <em>из раздевалки</em></h2></div><p>Ролики из Telegram-канала клуба — смотрятся прямо на сайте. Прямые эфиры матчей — в <a href="https://vkvideo.ru/" style="text-decoration:underline">VK Видео</a>.</p></div>
+    <div class="vids" data-media="video" data-limit="12">
+      <a class="vid rv" href="https://vkvideo.ru/video-226956322_456239626"><img src="img/g-bench.webp" alt="" loading="lazy"><span class="pl"><svg width="20" height="22" viewBox="0 0 20 22"><path d="M0 0l20 11L0 22z" fill="#fff"/></svg></span><span class="ttl">Ключ — Регион 23<small>Прямой эфир · 16.11.2026</small></span></a>
+      <a class="vid rv" href="https://t.me/XKREGION23"><img src="img/g-face.webp" alt="" loading="lazy"><span class="pl"><svg width="20" height="22" viewBox="0 0 20 22"><path d="M0 0l20 11L0 22z" fill="#fff"/></svg></span><span class="ttl">Игрок с микрофоном<small>Сергей Купцов · 17.11.2026</small></span></a>
+      <a class="vid rv" href="https://t.me/XKREGION23"><img src="img/g-action2.webp" alt="" loading="lazy"><span class="pl"><svg width="20" height="22" viewBox="0 0 20 22"><path d="M0 0l20 11L0 22z" fill="#fff"/></svg></span><span class="ttl">Что было на льду<small>Матч с «Ключом» · 19.11.2026</small></span></a>
+    </div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="h-ph">
+  <div class="wrap">
+    <div class="shead rv"><div><span class="eyebrow">Фото</span><h2 id="h-ph">Сезон <em>в кадрах</em></h2></div></div>
+    <div class="masonry" data-media="photo" data-limit="40">
+      <img src="img/g-action1.webp" alt="Игровой момент у ворот" loading="lazy">
+      <img src="img/g-face.webp" alt="Игрок в чёрной форме у борта" loading="lazy">
+      <img src="img/g-team1.webp" alt="Команда" loading="lazy">
+      <img src="img/g-cup2.webp" alt="Трофей" loading="lazy">
+      <img src="img/g-fans1.webp" alt="Болельщики" loading="lazy">
+      <img src="img/g-action3.webp" alt="Игровой момент" loading="lazy">
+      <img src="img/g-faceoff.webp" alt="Вбрасывание" loading="lazy">
+      <img src="img/g-team2.webp" alt="Команда с кубком" loading="lazy">
+      <img src="img/g-bench.webp" alt="Скамейка" loading="lazy">
+      <img src="img/g-fans2.webp" alt="Трибуна" loading="lazy">
+    </div>
+  </div>
+</section>
+<script src="site.js"></script>
+<script src="../../assets/anim.js"></script>
+<script src="../../assets/media.js"></script>
+</body>
+</html>

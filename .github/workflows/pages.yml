@@ -1,0 +1,45 @@
+name: Сайт и новости из Telegram
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: ffmpeg
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+      - name: Новости из Telegram
+        continue-on-error: true
+        run: |
+          python tools/tg_news.py --channel XKREGION23 --out adult/site/data
+          python tools/tg_news.py --channel hk_region23_kids --out kids/site/data
+          python tools/prune_data.py adult/site/data kids/site/data
+      - name: Сохранить новости в репозитории
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898499+github-actions[bot]@users.noreply.github.com"
+          git add -A adult/site/data kids/site/data
+          git diff --cached --quiet || (git commit -m "Новости из Telegram" && git push)
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+      - id: deploy
+        uses: actions/deploy-pages@v4
