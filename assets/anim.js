@@ -8,8 +8,8 @@
   var st = document.createElement('style');
   st.textContent =
     '.rv,.js .rv.pre{transform:none;opacity:1}' +
-    '.rv{transition:opacity .45s ease,filter .5s ease,transform .6s ' + E + '}' +
-    '.rv.pre{opacity:0;filter:blur(10px);transform:scale(1.03);transition:none}' +
+    '.rv{transition:opacity .55s ease,filter .6s ease,transform .75s ' + E + '}' +
+    '.rv.pre{opacity:0;filter:blur(12px);transform:scale(1.04);transition:none}' +
     '.rv.done{filter:none}';
   document.head.appendChild(st);
   var els = [].slice.call(document.querySelectorAll('.rv'));
@@ -19,9 +19,9 @@
   });
   if (reduce || !('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('done'); }); return; }
   function show(e) { e.classList.remove('pre'); setTimeout(function () { e.classList.add('done'); }, 800); }
-  els.forEach(function (e) { if (e.getBoundingClientRect().top > innerHeight * .92) e.classList.add('pre'); else e.classList.add('done'); });
+  els.forEach(function (e) { if (e.getBoundingClientRect().top > innerHeight * .85) e.classList.add('pre'); else e.classList.add('done'); });
   var io = new IntersectionObserver(function (es) {
     es.forEach(function (x) { if (x.isIntersecting) { show(x.target); io.unobserve(x.target); } });
-  }, { rootMargin: '0px 0px 6% 0px' });
+  }, { rootMargin: '0px 0px -15% 0px' });
   els.forEach(function (e) { if (e.classList.contains('pre')) io.observe(e); });
 })();

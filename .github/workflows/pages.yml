@@ -36,7 +36,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898499+github-actions[bot]@users.noreply.github.com"
           git add -A adult/site/data kids/site/data
-          git diff --cached --quiet || (git commit -m "Новости из Telegram" && git push)
+          git diff --cached --quiet || (git commit -m "Новости из Telegram" && git pull --rebase -X theirs origin main && git push)
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

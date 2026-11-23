@@ -133,14 +133,9 @@ img{display:block;max-width:100%}
 /* ===== v2: правки по отзыву ===== */
 /* 1. Шрифты: переключаются атрибутом data-font на <html> (по умолчанию A) */
 :root{--display:"Sofia Sans Extra Condensed","Arial Narrow",sans-serif;--text:Onest,system-ui,sans-serif;--dw:900;--ds:italic;--dt:.01em}
-html[data-font="b"]{--display:Unbounded,sans-serif;--text:"Golos Text",system-ui,sans-serif;--dw:800;--ds:normal;--dt:-.02em}
-html[data-font="c"]{--display:"Dela Gothic One",sans-serif;--text:Manrope,system-ui,sans-serif;--dw:400;--ds:normal;--dt:0}
-html[data-font="d"]{--display:"Russo One",sans-serif;--text:"Golos Text",system-ui,sans-serif;--dw:400;--ds:normal;--dt:0}
-html[data-font="e"]{--display:Oswald,sans-serif;--text:Manrope,system-ui,sans-serif;--dw:700;--ds:normal;--dt:0}
 h1,h2,h3,h4,.giant,.ghost,.stat b,.score,.tro b,.leader .k,.big .mid,.cd b,.ticket h2,.pod b{font-weight:var(--dw)!important;font-style:var(--ds);letter-spacing:var(--dt)}
 /* 2. Без наложений строк: нормальный интерлиньяж у всех заголовков (диакритика Ё, Й не налезает) */
 h1,h2,h3,h4{line-height:1.06!important;padding-top:.04em}
-html[data-font="b"] h1,html[data-font="b"] h2{line-height:1.12!important}
 /* 3. Без скруглённых «карточек»: острые углы, плоские блоки, разделители линиями */
 *,*:before,*:after{border-radius:0!important}
 .tag i,.pl,.dot{border-radius:50%!important}
@@ -164,7 +159,7 @@ html[data-font="b"] h1,html[data-font="b"] h2{line-height:1.12!important}
 @media (max-width:1060px){.phero{padding-top:200px}}
 .ticket:before,.ticket:after{display:none!important}
 /* 5. Переключатель шрифтов (только для презентации концепта) */
-.fontsw{position:fixed;z-index:70;right:16px;bottom:16px;display:flex;align-items:center;gap:2px;background:#0b1430;border:1px solid var(--line);padding:4px;font:700 12px var(--text)}
+.fontsw{display:none;position:fixed;z-index:70;right:16px;bottom:16px;display:flex;align-items:center;gap:2px;background:#0b1430;border:1px solid var(--line);padding:4px;font:700 12px var(--text)}
 .fontsw span{padding:0 8px;color:var(--mute)}
 .fontsw button{font:700 12px var(--text);color:var(--w);background:none;border:0;padding:8px 10px;cursor:pointer}
 .fontsw button[aria-pressed="true"]{background:var(--red)}

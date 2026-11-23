@@ -53,16 +53,8 @@
   });
   runCount(document);
 
-  // ---- шрифты: ?font=a|b|c|d|e или кнопки внизу справа (для выбора на этапе концепта) ----
-  var FONTS={a:'Sofia Sans Extra Condensed + Onest',b:'Unbounded + Golos Text',c:'Dela Gothic One + Manrope',d:'Russo One + Golos Text',e:'Oswald + Manrope (было)'};
-  var fq=(location.search.match(/font=([a-e])/)||[])[1],fs;try{fs=localStorage.getItem('r23font')}catch(e){}
-  function setFont(k){document.documentElement.dataset.font=k;try{localStorage.setItem('r23font',k)}catch(e){}
-    [].forEach.call(document.querySelectorAll('.fontsw button'),function(b){b.setAttribute('aria-pressed',b.dataset.k===k)})}
-  var sw=document.createElement('div');sw.className='fontsw';sw.setAttribute('role','group');sw.setAttribute('aria-label','Вариант шрифта');
-  sw.innerHTML='<span>Шрифт</span>'+Object.keys(FONTS).map(function(k){return '<button type="button" data-k="'+k+'" title="'+FONTS[k]+'">'+k.toUpperCase()+'</button>'}).join('');
-  document.body.appendChild(sw);
-  sw.addEventListener('click',function(e){var b=e.target.closest('button');if(b)setFont(b.dataset.k)});
-  setFont(fq||fs||'a');
+  // шрифт A (Sofia Sans Extra Condensed + Onest) — выбран клиентом
+  document.documentElement.dataset.font='a';
 
   // ---- новости из Telegram: <div data-feed data-limit="3" data-rubric="Матчи"> → карточки из data/news.json ----
   var feeds=[].slice.call(document.querySelectorAll('[data-feed]'));
