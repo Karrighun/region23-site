@@ -1,4 +1,4 @@
-/* ХК «Регион 23» — взрослый сайт. Стиль продолжает A3 «Арена»: тёмно-синяя арена, чёрная форма, красный клуба, Oswald + Manrope. */
+/* ХК «Регион 23» — взрослый сайт. Стиль продолжает A3 «Арена»: темно-синяя арена, черная форма, красный клуба, Oswald + Manrope. */
 :root{
   --n0:#050a18;--n1:#0a1636;--n2:#13265a;--card:#0c1530;--line:rgba(191,227,255,.13);
   --red:#E3262B;--red2:#ff353b;--ice:#bfe3ff;--w:#f4f7fb;--mute:#93a3c2;--win:#5fe39a;--loss:#ff7a7e;
@@ -134,9 +134,9 @@ img{display:block;max-width:100%}
 /* 1. Шрифты: переключаются атрибутом data-font на <html> (по умолчанию A) */
 :root{--display:"Sofia Sans Extra Condensed","Arial Narrow",sans-serif;--text:Onest,system-ui,sans-serif;--dw:900;--ds:italic;--dt:.01em}
 h1,h2,h3,h4,.giant,.ghost,.stat b,.score,.tro b,.leader .k,.big .mid,.cd b,.ticket h2,.pod b{font-weight:var(--dw)!important;font-style:var(--ds);letter-spacing:var(--dt)}
-/* 2. Без наложений строк: нормальный интерлиньяж у всех заголовков (диакритика Ё, Й не налезает) */
+/* 2. Без наложений строк: нормальный интерлиньяж у всех заголовков (диакритика Е, Й не налезает) */
 h1,h2,h3,h4{line-height:1.06!important;padding-top:.04em}
-/* 3. Без скруглённых «карточек»: острые углы, плоские блоки, разделители линиями */
+/* 3. Без скругленных «карточек»: острые углы, плоские блоки, разделители линиями */
 *,*:before,*:after{border-radius:0!important}
 .tag i,.pl,.dot{border-radius:50%!important}
 .card,.tro,.val,.arena-c,.pod,.side .card,.summary .card,.nums .card,.how,.faq details{background:none!important;border:0!important;border-top:2px solid var(--line)!important;box-shadow:none!important}
@@ -172,7 +172,7 @@ h1,h2,h3,h4{line-height:1.06!important;padding-top:.04em}
 .vsw button{font:700 13px var(--text);color:var(--mute);background:none;border:1px solid var(--line);padding:10px 14px;cursor:pointer}
 .vsw button[aria-selected=true]{color:#fff;background:var(--red);border-color:var(--red)}
 .sv[hidden]{display:none!important}
-/* A — карточки-счётчики */
+/* A — карточки-счетчики */
 .sv-a{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
 .scard{position:relative;background:linear-gradient(180deg,#0f1b3d,#0a1330);border:1px solid var(--line);border-top:3px solid var(--red);padding:22px 22px 20px;display:flex;flex-direction:column;gap:12px}
 .scard .top{display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:600;color:var(--mute)}
@@ -294,7 +294,7 @@ h1,h2,h3,h4{line-height:1.06!important;padding-top:.04em}
 @media (max-width:1000px){.nB{grid-template-columns:1fr}.nB .poster{max-width:420px}.wide3{grid-template-columns:1fr 1fr}.wide3 .t3{grid-column:1/-1;order:-1;border-bottom:1px solid var(--line)}.cdW{border-left:0}.wide3 .go{grid-column:1/-1;justify-content:center}}
 @media (max-width:560px){.nC .bt3{grid-template-columns:1fr 1fr}.nC .mid{grid-column:1/-1;order:-1}.cdL div{min-width:0;flex:1}.wide3 .t3 b{font-size:20px}.wide3 .t3 img{width:36px;height:36px}}
 
-/* ==== партнёры: варианты ==== */
+/* ==== партнеры: варианты ==== */
 .wm{display:inline-flex;align-items:center;white-space:nowrap;color:#dfe7f5;opacity:.82;transition:opacity .25s,color .25s}
 .wm-serif{font:italic 600 26px/1 Georgia,"Times New Roman",serif}
 .wm-sans{font:800 22px/1 var(--text);letter-spacing:-.01em}
@@ -326,7 +326,7 @@ h1,h2,h3,h4{line-height:1.06!important;padding-top:.04em}
 .cdn b{display:block;font-family:var(--display);font-size:30px;line-height:1}
 .cdn span{font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.1em}
 
-/* первый экран: билет на ближайший матч (выбран вариант C, спокойная тёмная версия) */
+/* первый экран: билет на ближайший матч (выбран вариант C, спокойная темная версия) */
 .mcC{position:absolute;right:var(--pad);bottom:clamp(40px,8vh,90px);width:min(360px,92vw);border-radius:18px!important;overflow:hidden;background:rgba(7,14,34,.74);border:1px solid rgba(191,227,255,.16);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 30px 70px rgba(0,0,0,.45);color:var(--w)}
 .mcC .top{display:flex;justify-content:space-between;align-items:center;padding:16px 22px;border-bottom:1px solid rgba(191,227,255,.1);font:700 11px var(--text);letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
 .mcC .top span:before{content:"";display:inline-block;width:6px;height:6px;background:var(--red);margin-right:8px;vertical-align:1px}
@@ -347,10 +347,10 @@ h1,h2,h3,h4{line-height:1.06!important;padding-top:.04em}
 .mcC .stub b{font-family:var(--display);font-size:24px;margin-left:auto}
 .mcC .stub em{font-style:normal;color:var(--red);font-size:20px}
 @media (max-width:1300px){.mcC{width:380px}.mcC .vsC img{width:58px;height:58px}.mcC .cdC b{font-size:28px}}
-/* отступ между «Ближайшим матчем» и календарём */
+/* отступ между «Ближайшим матчем» и календарем */
 .sec.tight-b{padding-bottom:clamp(24px,3vw,40px)}
 .sec.tight-t{padding-top:clamp(24px,3vw,40px)}
-/* логотипы партнёров в ленте */
+/* логотипы партнеров в ленте */
 .marq .plogo{height:64px;width:auto;opacity:.85;transition:opacity .25s}
 .marq .plogo.w{height:40px}
 .marq li:hover .plogo{opacity:1}

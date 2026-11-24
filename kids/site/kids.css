@@ -1,5 +1,5 @@
-/* Детский сайт «Регион 23 · Хоккейная академия». Стиль M1: светлый лёд, Unbounded + Nunito, красный клуба.
-   Правила: без скруглённых карточек (срезанный угол / линия сверху), без точек в заголовках, line-height заголовков ≥1.06 */
+/* Детский сайт «Регион 23 · Хоккейная академия». Стиль M1: светлый лед, Unbounded + Nunito, красный клуба.
+   Правила: без скругленных карточек (срезанный угол / линия сверху), без точек в заголовках, line-height заголовков ≥1.06 */
 :root{--bg:#dde4eb;--ice:#eef3f7;--paper:#f7f9fb;--ink:#0f1730;--mute:#4f5b74;--line:rgba(15,23,48,.14);--red:#E3262B;--red2:#b9161b;--blue:#1d4fa8;--navy:#0f1730;
   --h:"Unbounded",system-ui,sans-serif;--t:"Nunito",system-ui,sans-serif;--pad:clamp(16px,4vw,56px);--cut:18px}
 *{box-sizing:border-box;margin:0;padding:0;border-radius:0}
@@ -301,3 +301,26 @@ h1 em,h2 em{font-style:normal;color:var(--red)}
 .dirline{display:flex;align-items:center;gap:16px;margin:-6px 0 26px;padding:12px 16px 12px 12px;background:var(--paper);border-left:4px solid var(--red);text-decoration:none;color:var(--ink);font-size:16px;line-height:1.45}
 .dirline img{width:56px;height:56px;object-fit:cover;object-position:50% 15%;flex:none}
 @media (max-width:760px){.director{grid-template-columns:1fr}.director .ph{max-width:420px}.dfacts{grid-template-columns:1fr}.dfacts div{border-bottom:1px solid rgba(255,255,255,.16);padding:12px 0}}
+
+/* ===== шрифт как на взрослом сайте: Sofia Sans Extra Condensed (заголовки) + Onest (текст) ===== */
+:root{--h:"Sofia Sans Extra Condensed","Arial Narrow",sans-serif;--t:Onest,system-ui,-apple-system,"Segoe UI",sans-serif}
+h1,h2,h3,h4{font-weight:900;font-style:italic;text-transform:uppercase;letter-spacing:.01em;line-height:1}
+h1{font-size:clamp(48px,7.4vw,112px)}
+h2{font-size:clamp(36px,4.8vw,72px)}
+h3{font-size:clamp(24px,2.2vw,32px)}
+.brand{font-style:italic;font-weight:900;font-size:20px;letter-spacing:.02em;text-transform:uppercase}
+.group .yr,.steps li:before,.facts b,.offers b,.dfacts b,.kv b,.card .im.ini,.coach .ph.ini{font-style:italic}
+.faq summary,.contact-list b,.maplink span,.soon b{font-family:var(--t);font-weight:700}
+h1 em,h2 em{font-style:italic}
+.phead h1{font-size:clamp(52px,7.6vw,116px)}
+.hero h1{font-size:clamp(56px,6.4vw,118px);letter-spacing:.01em;line-height:.95}
+.director h2{font-size:clamp(40px,5vw,72px)}
+
+/* бесконечная лента фотографий */
+.strip-m{overflow:hidden;padding:6px 0}
+.strip-m .track,.strip-m .dup{display:flex;gap:6px}
+.strip-m .track{width:max-content;animation:stripm 70s linear infinite}
+.strip-m:hover .track{animation-play-state:paused}
+.strip-m img{height:clamp(220px,26vw,380px);aspect-ratio:3/4;width:auto;object-fit:cover;flex:none}
+@keyframes stripm{to{transform:translateX(calc(-50% - 3px))}}
+@media (prefers-reduced-motion:reduce){.strip-m .track{animation:none}}

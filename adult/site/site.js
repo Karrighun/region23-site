@@ -1,4 +1,4 @@
-/* Общая шапка, меню, подвал и мелкая анимация для страниц adult/site/*.html. Страница задаёт <body data-page="matches"> */
+/* Общая шапка, меню, подвал и мелкая анимация для страниц adult/site/*.html. Страница задает <body data-page="matches"> */
 (function(){
   document.documentElement.classList.add('js');
   var page=document.body.dataset.page||'';
@@ -31,7 +31,7 @@
 
   // появление блоков — assets/anim.js (4 варианта)
 
-  // ---- варианты блоков (.vsw → .sv[data-v]) и счётчики [data-countup] ----
+  // ---- варианты блоков (.vsw → .sv[data-v]) и счетчики [data-countup] ----
   function runCount(scope){
     [].forEach.call(scope.querySelectorAll('[data-countup]'),function(el){
       if(el._done)return;el._done=1;
@@ -62,9 +62,9 @@
   var feeds=[].slice.call(document.querySelectorAll('[data-feed]'));
   if(feeds.length&&window.fetch){
     fetch('data/news.json',{cache:'no-cache'}).then(function(r){return r.ok?r.json():Promise.reject()}).then(function(d){
-      var esc=function(s){return String(s||'').replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
+      var esc=function(s){return String(s||'').replace(/ё/g,'е').replace(/Ё/g,'Е').replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
       var fmt=function(iso){var t=new Date(iso);return isNaN(t)?'':t.toLocaleDateString('ru-RU',{day:'2-digit',month:'2-digit',year:'numeric'})};
-      function more(box){var n=box.children.length,lim=8,nx=box.nextElementSibling;if(nx&&nx.classList.contains('morebtn'))nx.remove();if(innerWidth>760||n<=lim+2)return;[].slice.call(box.children,lim).forEach(function(c){c.hidden=true});var b=document.createElement('button');b.type='button';b.className='morebtn';b.textContent='Показать ещё';b.addEventListener('click',function(){var h=[].filter.call(box.children,function(c){return c.hidden});h.slice(0,lim).forEach(function(c){c.hidden=false});if(h.length<=lim)b.remove()});box.after(b)}
+      function more(box){var n=box.children.length,lim=8,nx=box.nextElementSibling;if(nx&&nx.classList.contains('morebtn'))nx.remove();if(innerWidth>760||n<=lim+2)return;[].slice.call(box.children,lim).forEach(function(c){c.hidden=true});var b=document.createElement('button');b.type='button';b.className='morebtn';b.textContent='Показать еще';b.addEventListener('click',function(){var h=[].filter.call(box.children,function(c){return c.hidden});h.slice(0,lim).forEach(function(c){c.hidden=false});if(h.length<=lim)b.remove()});box.after(b)}
       function render(box){var lim=+(box.dataset.limit||9),rb=box.dataset.rubric||'';
         var items=d.items.filter(function(p){return (p.image||p.tgvideo)&&(!rb||p.rubric===rb)}).slice(0,lim);
         box.innerHTML=items.map(function(p){return '<a class="card news" href="'+esc(p.url)+'" target="_blank" rel="noopener"'+(p.video?' data-play="'+esc(p.video)+'" data-poster="'+esc(p.image)+'" data-caption="'+esc(p.title)+'" data-date="'+esc(p.date)+'"':'')+'>'+(p.image?'<div class="im'+(p.w&&p.h&&Math.abs(p.w/p.h-1)>.08?' fit" style="--t:url('+esc(p.image)+')':'')+'"><img src="'+esc(p.image)+'" alt="" loading="lazy">'+(p.video?'<span class="playb sm"></span>':'')+'</div>':'<div class="im '+(p.thumb?'tthumb" style="--t:url('+esc(p.thumb)+')"><img src="'+esc(p.thumb)+'" alt="" loading="lazy">':'noimg">')+'<span class="playb sm"></span><em>'+(p.dur?esc(p.dur)+' · ':'')+'Видео в Telegram</em></div>')+'<div class="bd"><span class="src">'+esc(p.rubric)+' · Telegram</span><time>'+fmt(p.date)+'</time><h3>'+esc(p.title)+'</h3>'+(p.text?'<p>'+esc(p.text.slice(0,180))+(p.text.length>180?'…':'')+'</p>':'')+'</div></a>'}).join('');more(box);}
@@ -76,7 +76,7 @@
     }).catch(function(){/* нет ленты — остаются статичные карточки */});
   }
 
-  // обратный отсчёт: <div data-count="2026-11-28T18:00:00+03:00"> с четырьмя <b>
+  // обратный отсчет: <div data-count="2026-11-28T18:00:00+03:00"> с четырьмя <b>
   [].forEach.call(document.querySelectorAll('[data-count]'),function(box){
     var t=new Date(box.dataset.count),b=box.querySelectorAll('b');
     function tick(){var s=Math.max(0,(t-new Date())/1000);[s/86400,s%86400/3600,s%3600/60,s%60].forEach(function(v,i){if(b[i])b[i].textContent=String(Math.floor(v)).padStart(2,'0')})}

@@ -36,13 +36,13 @@
     '.mlb .x{top:8px;right:8px}.mlb .pv{left:6px;top:50%;margin-top:-26px}.mlb .nx{right:6px;top:50%;margin-top:-26px}' +
     '@media (max-width:700px){.mlb .st{inset:56px 0 86px}.mlb .pv,.mlb .nx{top:auto;bottom:16px;margin:0}.mlb .cp{left:66px;right:66px;bottom:14px;flex-direction:column;align-items:flex-start;gap:4px;font-size:12px}.mv{grid-template-columns:repeat(2,1fr)}.mv a.wide{grid-column:span 2}}';
   var st = document.createElement('style'); st.textContent = css; document.head.appendChild(st);
-  var esc = function (s) { return String(s || '').replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+  var esc = function (s) { return String(s || '').replace(/ё/g, 'е').replace(/Ё/g, 'Е').replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
   var fmt = function (iso) { var t = new Date(iso); return isNaN(t) ? '' : t.toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric' }); };
 
   // ---- окно просмотра ----
   var dlg = document.createElement('dialog'); dlg.className = 'mlb'; dlg.setAttribute('aria-label', 'Просмотр');
   dlg.innerHTML = '<div class="st"></div><div class="cp"><span></span><a target="_blank" rel="noopener">Пост в Telegram</a></div>' +
-    '<button class="x" type="button" aria-label="Закрыть">×</button><button class="pv" type="button" aria-label="Назад">←</button><button class="nx" type="button" aria-label="Вперёд">→</button>';
+    '<button class="x" type="button" aria-label="Закрыть">×</button><button class="pv" type="button" aria-label="Назад">←</button><button class="nx" type="button" aria-label="Вперед">→</button>';
   document.body.appendChild(dlg);
   var list = [], cur = 0;
   function show(i) {
@@ -89,7 +89,7 @@
       }).join('');
       if (innerWidth <= 760 && box.children.length > 8) { /* телефон: показываем по 6 */
         [].slice.call(box.children, 6).forEach(function (c) { c.hidden = true; });
-        var mb = document.createElement('button'); mb.type = 'button'; mb.className = 'morebtn'; mb.textContent = 'Показать ещё';
+        var mb = document.createElement('button'); mb.type = 'button'; mb.className = 'morebtn'; mb.textContent = 'Показать еще';
         mb.addEventListener('click', function () { var h = [].filter.call(box.children, function (c) { return c.hidden; }); h.slice(0, 6).forEach(function (c) { c.hidden = false; }); if (h.length <= 6) mb.remove(); });
         box.after(mb);
       }
