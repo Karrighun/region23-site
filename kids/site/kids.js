@@ -17,7 +17,7 @@
   f.innerHTML='<div class="wrap"><div class="cols">'+
    '<div><a class="brand" href="index.html"><img src="../../assets/logo.svg" alt=""><span>РЕГИОН KIDS<small>хоккейная академия · Анапа</small></span></a><p style="margin-top:14px;max-width:340px;line-height:1.6;color:rgba(255,255,255,.7)">Детская хоккейная академия ХК «Регион 23». Учим кататься и играть с 3 лет. Форма и первая тренировка бесплатно.</p></div>'+
    '<div><h4>Разделы</h4>'+NAV.map(function(n){return '<a href="'+n[0]+'.html">'+n[1]+'</a>'}).join('')+'<a href="../../adult/site/index.html">Взрослая команда</a></div>'+
-   '<div><h4>Запись</h4><a class="tnum" href="tel:+79826729292">+7 (982) 672-92-92</a><p>Сергей Сергеевич</p><a href="https://t.me/hk_region23_kids">Telegram академии</a><a href="https://t.me/XKREGION23">Telegram команды</a></div>'+
+   '<div><h4>Запись</h4><a class="tnum" href="tel:+79826729292">+7 (982) 672-92-92</a><p>Сергей Сергеевич Купцов, директор академии</p><a href="https://t.me/hk_region23_kids">Telegram академии</a><a href="https://t.me/XKREGION23">Telegram команды</a></div>'+
    '<div><h4>Где тренируемся</h4><p>Ледовый каток «Джунгли»</p><p>Анапа, Котломской проезд, 1</p></div>'+
    '</div><div class="bottom"><span>© 2019–2026 ХК «Регион 23»</span><span>Концепт сайта · данные из Telegram-канала академии на 23.11.2026</span></div></div>';
   document.body.appendChild(f);
