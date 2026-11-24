@@ -41,8 +41,34 @@
     }).catch(function(){});
   }
 
-  // форма записи: в концепте ничего не отправляет, только показывает, что заявка принята
+  // кнопки «Записаться» на любой странице запоминают, откуда пришли: это попадёт в заявку
+  document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href*="contacts.html#form"]');
+    if(a)try{sessionStorage.setItem('r23from',JSON.stringify({from:location.href,btn:a.textContent.trim().slice(0,60)}))}catch(_){}});
+
+  // форма записи → POST /api/lead (сервер region23-lead шлёт заявку ботом в MAX)
   var fm=document.querySelector('form[data-signup]');
-  if(fm)fm.addEventListener('submit',function(e){e.preventDefault();if(!fm.reportValidity())return;
-    var ok=fm.querySelector('.ok');ok.hidden=false;ok.textContent='Спасибо! Тренер перезвонит, чтобы выбрать день пробной тренировки (в концепте заявка никуда не отправляется)';fm.querySelector('button').disabled=true});
+  if(fm){
+    var t0=Date.now(),msg=fm.querySelector('.ok'),btn=fm.querySelector('button[type=submit]'),ph=fm.elements.phone;
+    var digits=function(s){var d=s.replace(/\D/g,'');if(d.length===11&&/^[78]/.test(d))d=d.slice(1);return d};
+    ph.addEventListener('input',function(){ph.setCustomValidity('')});
+    var say=function(text,bad){msg.hidden=false;msg.textContent=text;msg.classList.toggle('err',!!bad)};
+    fm.addEventListener('submit',function(e){e.preventDefault();
+      ph.setCustomValidity(/^9\d{9}$/.test(digits(ph.value))?'':'Введите мобильный номер: +7 и 10 цифр');
+      if(!fm.reportValidity())return;
+      var src={};try{src=JSON.parse(sessionStorage.getItem('r23from')||'{}')}catch(_){}
+      var body={t:(Date.now()-t0)/1000,page:location.href.split('#')[0],from:src.from||document.referrer||'',btn:src.btn||''};
+      ['parent','phone','child','year','level','note','website'].forEach(function(k){body[k]=fm.elements[k]?fm.elements[k].value:''});
+      btn.disabled=true;say('Отправляем заявку…');
+      fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})
+        .then(function(r){return r.json().catch(function(){return {ok:false}})})
+        .then(function(j){
+          if(j&&j.ok){fm.reset();say('Заявка отправлена. Тренер перезвонит, чтобы выбрать день пробной тренировки.');
+            try{sessionStorage.removeItem('r23from')}catch(_){}
+            setTimeout(function(){btn.disabled=false},8000);return}
+          btn.disabled=false;
+          if(j&&j.field&&fm.elements[j.field])fm.elements[j.field].focus();
+          say('Ошибка: '+((j&&j.error)||'заявка не отправилась. Позвоните нам: +7 (982) 672-92-92'),1)})
+        .catch(function(){btn.disabled=false;say('Ошибка: нет связи с сервером. Проверьте интернет или позвоните: +7 (982) 672-92-92',1)});
+    });
+  }
 })();

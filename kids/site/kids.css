@@ -201,6 +201,9 @@ h1 em,h2 em{font-style:normal;color:var(--red)}
 .form input,.form select,.form textarea{font:600 17px/1.4 var(--t);color:var(--ink);background:#fff;border:0;border-bottom:2px solid var(--ink);padding:14px}
 .form input:focus,.form select:focus,.form textarea:focus{outline:none;border-bottom-color:var(--red)}
 .form .ok{grid-column:1/-1;font-weight:800;color:var(--blue)}
+.form .ok.err{color:var(--red)}
+.form .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.form button:disabled{opacity:.6;cursor:default}
 @media (max-width:640px){.form{grid-template-columns:1fr}}
 .contact-list{display:grid;gap:22px}
 .contact-list div{border-top:3px solid var(--ink);padding-top:14px}
