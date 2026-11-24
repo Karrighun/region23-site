@@ -399,3 +399,8 @@ h1,h2,h3,h4{line-height:1.06!important;padding-top:.04em}
 .card.news .im.tthumb img{height:auto;max-height:100%;width:auto;max-width:100%;margin:0}
 
 [data-media]>[hidden]{display:none!important}
+
+/* пункт меню «Детская академия»: в центре, светло-ледяной */
+.menu a.nav-kids{background:var(--ice);color:#0a1636!important;opacity:1;font-weight:700;margin:0 6px;border-bottom:0!important}
+.menu a.nav-kids:hover{background:#fff}
+@media (max-width:1060px){.menu a.nav-kids{margin:6px 4px}}

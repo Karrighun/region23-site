@@ -3,7 +3,9 @@
   document.documentElement.classList.add('js');
   var page=document.body.dataset.page||'';
   var NAV=[['index','Главная'],['matches','Матчи'],['team','Команда'],['club','Клуб'],['media','Медиа'],['tickets','Билеты']];
-  var links=NAV.map(function(n){return '<a href="'+n[0]+'.html"'+(n[0]===page?' aria-current="page"':'')+'>'+n[1]+'</a>'}).join('')+'<a href="../../kids/site/index.html">Академия</a>';
+  var link=function(n){return '<a href="'+n[0]+'.html"'+(n[0]===page?' aria-current="page"':'')+'>'+n[1]+'</a>'};
+  // «Детская академия» — в середине меню и выделена цветом
+  var links=NAV.slice(0,3).map(link).join('')+'<a class="nav-kids" href="../../kids/site/index.html">Детская академия</a>'+NAV.slice(3).map(link).join('');
   var hdr=document.createElement('header');hdr.className='hdr';
   hdr.innerHTML='<div class="in"><a class="brand" href="index.html" aria-label="Регион 23 — на главную"><img src="../../assets/logo.svg" alt=""><span>РЕГИОН 23<small>хоккейная команда · Анапа</small></span></a>'+
     '<nav class="menu" aria-label="Разделы сайта">'+links+'</nav>'+
