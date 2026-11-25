@@ -47,7 +47,7 @@
   document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href*="contacts.html#form"]');
     if(a)try{sessionStorage.setItem('r23from',JSON.stringify({from:location.href,btn:a.textContent.trim().slice(0,60)}))}catch(_){}});
 
-  // форма записи → POST /api/lead (сервер region23-lead шлёт заявку ботом в MAX)
+  // форма записи → POST /api/lead (сервер region23-lead шлёт заявку ботом в Telegram)
   var fm=document.querySelector('form[data-signup]');
   if(fm){
     var t0=Date.now(),msg=fm.querySelector('.ok'),btn=fm.querySelector('button[type=submit]'),ph=fm.elements.phone;
