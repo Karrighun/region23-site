@@ -74,3 +74,17 @@
     });
   }
 })();
+
+/* чистые адреса на боевых доменах: без index.html, переходы между сайтами — сразу на нужный домен
+   (локально и в артефакте ссылки остаются относительными, чтобы всё открывалось без сервера) */
+(function(){
+  if(!/(^|\.)hkregion23\.ru$/.test(location.hostname))return;
+  var A='https://hkregion23.ru/',K='https://academy.hkregion23.ru/';
+  function fix(h){
+    h=h.replace(/^\.\.\/\.\.\/adult\/site\//,A).replace(/^\.\.\/\.\.\/kids\/site\//,K);
+    var s=h.replace(/(^|\/)index\.html(?=$|[#?])/,'$1');
+    if(s!==h&&(s===''||/^[#?]/.test(s)))s='./'+s;
+    return s;
+  }
+  [].forEach.call(document.querySelectorAll('a[href]'),function(a){var h=a.getAttribute('href'),n=fix(h);if(n!==h)a.setAttribute('href',n)});
+})();
