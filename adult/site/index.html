@@ -185,13 +185,15 @@
 (()=>{const a=document.getElementById('arena'),L=[...a.querySelectorAll('.L')],reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 let mx=0,my=0,cx=0,cy=0;a.addEventListener('pointermove',e=>{mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5});
 const cv=document.getElementById('snow'),c=cv.getContext('2d');let W,H;const dpr=Math.min(devicePixelRatio,2);
-function rs(){W=a.clientWidth;H=a.clientHeight;cv.width=W*dpr;cv.height=H*dpr;c.setTransform(dpr,0,0,dpr,0,0)}rs();addEventListener('resize',rs);
+function rs(){if(a.clientWidth===W&&Math.abs(a.clientHeight-H)<120)return;W=a.clientWidth;H=a.clientHeight;cv.width=W*dpr;cv.height=H*dpr;c.setTransform(dpr,0,0,dpr,0,0)}rs();addEventListener('resize',rs);
+// цикл снега и параллакса работает только пока первый экран виден — иначе на телефоне он отнимает кадры у прокрутки
+let vis=true,run=false;new IntersectionObserver(es=>{vis=es[0].isIntersecting;if(vis&&!run&&!reduce){run=true;requestAnimationFrame(t)}}).observe(a);
 const P=[...Array(100)].map(()=>{const z=Math.random();return{x:Math.random(),y:Math.random(),z,r:z<.85?Math.random()*1.4+.3:Math.random()*4+2}});
-(function t(){cx+=(mx-cx)*.06;cy+=(my-cy)*.06;const sy=Math.min(scrollY,innerHeight);
+function t(){if(!vis){run=false;return}cx+=(mx-cx)*.06;cy+=(my-cy)*.06;const sy=Math.min(scrollY,innerHeight);
  for(const l of L){const d=+l.dataset.d;l.style.transform=`translate3d(${-cx*d}px,${-cy*d*.6+sy*(d/90)}px,0)`}
  c.clearRect(0,0,W,H);for(const p of P){p.y+=.0008+p.z*.0018;p.x+=.0003;if(p.y>1.02){p.y=-.02;p.x=Math.random()}if(p.x>1.02)p.x=-.02;
  c.fillStyle=`rgba(220,240,255,${p.r>2?.16:.5})`;c.beginPath();c.arc(p.x*W-cx*p.z*40,p.y*H,p.r,0,7);c.fill()}
- if(!reduce)requestAnimationFrame(t)})();})();
+ if(!reduce)requestAnimationFrame(t)}run=true;t();})();
 </script>
 </body>
 </html>

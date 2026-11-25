@@ -10,7 +10,9 @@
     '.rv,.js .rv.pre{transform:none;opacity:1}' +
     '.rv{transition:opacity .55s ease,filter .6s ease,transform .75s ' + E + '}' +
     '.rv.pre{opacity:0;filter:blur(12px);transform:scale(1.04);transition:none}' +
-    '.rv.done{filter:none}';
+    '.rv.done{filter:none}' +
+    /* на телефонах и тач-экранах — без blur: размытие крупных фото при скролле дает рывки (iOS) */
+    '@media (hover:none),(max-width:900px){.rv.pre{filter:none;transform:translate3d(0,18px,0)}.rv{transition:opacity .5s ease,transform .6s ' + E + '}}';
   document.head.appendChild(st);
   var els = [].slice.call(document.querySelectorAll('.rv'));
   els.forEach(function (e) {

@@ -8,7 +8,7 @@
   var css='.le{position:absolute;inset:0;will-change:transform;transform-origin:50% 90%}'+
     '.le>*{position:absolute;inset:0;width:100%;height:100%}'+
     '.le img.full{object-fit:cover;-webkit-mask-image:radial-gradient(ellipse 72% 80% at 50% 44%,#000 60%,transparent 98%);mask-image:radial-gradient(ellipse 72% 80% at 50% 44%,#000 60%,transparent 98%)}'+
-    '.le .irises{-webkit-mask-image:url('+A+'m1-eyemask.png);mask-image:url('+A+'m1-eyemask.png);-webkit-mask-size:100% 100%;mask-size:100% 100%;mask-mode:luminance}'+
+    '.le .irises{-webkit-mask-image:url('+A+'m1-eyemask-a.png);mask-image:url('+A+'m1-eyemask-a.png);-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;mask-mode:alpha}'+
     '.le .irises img{position:absolute;height:auto;will-change:transform}'+
     '.le .shade{pointer-events:none}'+
     '.le .hl i{position:absolute;border-radius:50%;background:#fff;will-change:transform}'+
