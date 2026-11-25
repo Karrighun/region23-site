@@ -57,10 +57,13 @@ dialog.pcd[open]{animation:plin .35s cubic-bezier(.2,.7,.1,1)}
 .coach.lead{grid-template-columns:240px 1fr;border-color:rgba(227,38,43,.45);background:linear-gradient(110deg,rgba(227,38,43,.16),var(--card) 55%)}
 .coach .pc .badge,.coach .pc .num{z-index:1}
 .coach.lead ul li+li:before{content:"·";margin-right:8px;color:var(--mute);font-weight:700}
-.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:56px 0 8px}
-.tabs button{font:700 14px var(--text);color:#fff;background:rgba(255,255,255,.04);border:1px solid var(--line);padding:13px 20px;cursor:pointer;letter-spacing:.02em}
-.tabs button[aria-selected="true"]{background:var(--red);border-color:var(--red)}
-.tabs button:hover{background:rgba(255,255,255,.1)}.tabs button[aria-selected="true"]:hover{background:var(--red)}
+.tabbar{display:flex;align-items:center;gap:14px 20px;flex-wrap:wrap;margin:0 0 26px;padding:16px 18px;background:linear-gradient(110deg,rgba(227,38,43,.14),rgba(255,255,255,.03) 60%);border:1px solid rgba(227,38,43,.35)}
+.tlabel{font:700 12px var(--text);letter-spacing:.16em;text-transform:uppercase;color:var(--ice)}
+.tabs{display:flex;gap:8px;flex-wrap:wrap}
+.tabs button{font:800 15px var(--text);color:#fff;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.28);padding:14px 22px;cursor:pointer;letter-spacing:.02em;transition:background .2s,box-shadow .2s}
+.tabs button:hover{background:rgba(255,255,255,.12)}
+.tabs button[aria-selected="true"]{background:var(--red);border-color:var(--red);box-shadow:0 0 0 3px rgba(227,38,43,.25),0 8px 28px rgba(227,38,43,.45)}
+@media (max-width:600px){.tabbar{padding:12px}.tabs{width:100%}.tabs button{flex:1;padding:13px 10px;font-size:14px}}
 .lineup .grp:first-child{margin-top:28px}
 .crew{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
 .mate{display:flex;align-items:center;gap:18px;padding:18px 20px;border-radius:22px;background:var(--card);border:1px solid var(--line)}
@@ -83,16 +86,16 @@ dialog.pcd[open]{animation:plin .35s cubic-bezier(.2,.7,.1,1)}
 
 <section class="sec" aria-label="Состав команды">
   <div class="wrap">
-    <nav class="filter" aria-label="Разделы состава"><a href="#c">Капитан</a><a href="#nhl">Состав НХЛ края</a><a href="#kus">Состав Кубка Южной столицы</a><a href="#s">Тренеры</a><a href="#st">Персонал</a></nav>
+    <div class="tabbar"><span class="tlabel">Состав на турнир</span><div class="tabs" role="tablist" aria-label="Составы по турнирам">
+      <button type="button" role="tab" id="tab-nhl" aria-controls="nhl" aria-selected="true">НХЛ края</button>
+      <button type="button" role="tab" id="tab-kus" aria-controls="kus" aria-selected="false" tabindex="-1">Кубок Южной столицы</button>
+    </div></div>
+    <nav class="filter" aria-label="Разделы состава"><a href="#c">Капитан</a><a href="#s">Тренеры</a><a href="#st">Персонал</a></nav>
 
     <div class="grp" id="c"><h3>Капитан</h3>
       <div class="coach lead rv"><div class="pc"><span class="badge">K</span><span class="num">13</span><img src="img/p-mariev.webp" alt="Дмитрий Мариев" loading="lazy"></div><div><span class="eyebrow">Капитан</span><h4>Дмитрий Павлович Мариев</h4><p>Руководитель команды и идейный лидер «Региона 23». Капитан, нападающий, №13.</p><ul><li class="chip red">Капитан команды</li><li class="chip">Руководитель команды</li><li class="chip">Идейный лидер</li></ul></div></div>
     </div>
 
-    <div class="tabs" role="tablist" aria-label="Составы по турнирам">
-      <button type="button" role="tab" id="tab-nhl" aria-controls="nhl" aria-selected="true">НХЛ края</button>
-      <button type="button" role="tab" id="tab-kus" aria-controls="kus" aria-selected="false" tabindex="-1">Кубок Южной столицы</button>
-    </div>
     <div class="lineup" id="nhl" role="tabpanel" aria-labelledby="tab-nhl">
       <div class="grp" id="nhl-g"><h3>Вратари <span>1</span></h3>
         <div class="roster">
@@ -146,7 +149,7 @@ dialog.pcd[open]{animation:plin .35s cubic-bezier(.2,.7,.1,1)}
           <div class="pc ph rv"><span class="num">99</span><img class="mono" src="../../assets/logo.svg" alt=""><div class="cap"><b>Артем Икамацких</b><span>Защитник</span></div></div>
         </div>
       </div>
-      <div class="grp" id="kus-f"><h3>Нападающие <span>18</span></h3>
+      <div class="grp" id="kus-f"><h3>Нападающие <span>17</span></h3>
         <div class="roster">
           <div class="pc ph rv"><span class="num">8</span><img class="mono" src="../../assets/logo.svg" alt=""><div class="cap"><b>Святослав Большаков</b><span>Нападающий</span></div></div>
           <div class="pc ph rv"><span class="num">11</span><img class="mono" src="../../assets/logo.svg" alt=""><div class="cap"><b>Антон Фофанов</b><span>Нападающий</span></div></div>
@@ -156,7 +159,6 @@ dialog.pcd[open]{animation:plin .35s cubic-bezier(.2,.7,.1,1)}
           <div class="pc ph rv"><span class="num">29</span><img class="mono" src="../../assets/logo.svg" alt=""><div class="cap"><b>Максим Полежаев</b><span>Нападающий</span></div></div>
           <div class="pc rv"><span class="num">31</span><img src="img/p-belous.webp" alt="Дмитрий Белоус" loading="lazy"><div class="cap"><b>Дмитрий Белоус</b><span>Нападающий</span></div></div>
           <div class="pc ph rv"><span class="num">39</span><img class="mono" src="../../assets/logo.svg" alt=""><div class="cap"><b>Виктор Колобов</b><span>Нападающий</span></div></div>
-          <div class="pc rv"><span class="num">47</span><img src="img/p-kuptsov.webp" alt="Сергей Купцов" loading="lazy"><div class="cap"><b>Сергей Купцов</b><span>Нападающий · консультант команды</span></div></div>
           <div class="pc rv"><span class="badge">A</span><span class="num">55</span><img src="img/p-khakimov.webp" alt="Тагир Хакимов" loading="lazy"><div class="cap"><b>Тагир Хакимов</b><span>Нападающий · ассистент капитана</span></div></div>
           <div class="pc ph rv"><span class="num">69</span><img class="mono" src="../../assets/logo.svg" alt=""><div class="cap"><b>Иван Трофимов</b><span>Нападающий</span></div></div>
           <div class="pc ph rv"><span class="num">77</span><img class="mono" src="../../assets/logo.svg" alt=""><div class="cap"><b>Руслан Миникаев</b><span>Нападающий</span></div></div>
