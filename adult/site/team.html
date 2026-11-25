@@ -56,6 +56,7 @@ dialog.pcd[open]{animation:plin .35s cubic-bezier(.2,.7,.1,1)}
 @media (max-width:760px){.pcd .in{grid-template-columns:1fr}.pcd .ph{aspect-ratio:4/3}.pcd .bd{border-left:0;border-top:3px solid var(--red)}}
 .coach.lead{grid-template-columns:240px 1fr;border-color:rgba(227,38,43,.45);background:linear-gradient(110deg,rgba(227,38,43,.16),var(--card) 55%)}
 .coach .pc .badge,.coach .pc .num{z-index:1}
+.coach.lead ul li+li:before{content:"·";margin-right:8px;color:var(--mute);font-weight:700}
 .crew{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
 .mate{display:flex;align-items:center;gap:18px;padding:18px 20px;border-radius:22px;background:var(--card);border:1px solid var(--line)}
 .mate .ini{flex:none;width:72px;height:72px;display:grid;place-items:center;background:radial-gradient(ellipse at 50% 30%,#1b2a55,#060b18);font-family:var(--display);font-weight:700;font-size:26px;color:var(--ice)}
@@ -80,7 +81,7 @@ dialog.pcd[open]{animation:plin .35s cubic-bezier(.2,.7,.1,1)}
     <nav class="filter" aria-label="Разделы состава"><a href="#c">Капитан</a><a href="#g">Вратари</a><a href="#d">Защитники</a><a href="#f">Нападающие</a><a href="#s">Тренеры</a><a href="#st">Персонал</a></nav>
 
     <div class="grp" id="c"><h3>Капитан</h3>
-      <div class="coach lead rv"><div class="pc"><span class="badge">K</span><span class="num">13</span><img src="img/p-mariev.webp" alt="Дмитрий Мариев" loading="lazy"></div><div><span class="eyebrow">Руководитель команды · капитан</span><h4>Дмитрий Павлович Мариев</h4><p>Руководитель команды и идейный лидер «Региона 23». Капитан, нападающий, №13.</p><ul><li class="chip red">Капитан команды</li><li class="chip">Руководитель команды</li><li class="chip">Идейный лидер</li></ul></div></div>
+      <div class="coach lead rv"><div class="pc"><span class="badge">K</span><span class="num">13</span><img src="img/p-mariev.webp" alt="Дмитрий Мариев" loading="lazy"></div><div><span class="eyebrow">Капитан</span><h4>Дмитрий Павлович Мариев</h4><p>Руководитель команды и идейный лидер «Региона 23». Капитан, нападающий, №13.</p><ul><li class="chip red">Капитан команды</li><li class="chip">Руководитель команды</li><li class="chip">Идейный лидер</li></ul></div></div>
     </div>
 
     <div class="grp" id="g"><h3>Вратари <span>1</span></h3>
