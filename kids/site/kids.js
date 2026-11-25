@@ -5,7 +5,9 @@
   document.documentElement.classList.add('js');
   var page=document.body.dataset.page||'';
   var NAV=[['index','Главная'],['groups','Группы и расписание'],['coaches','Тренеры'],['camp','Лагерь и сборы'],['news','Новости'],['contacts','Контакты']];
-  var links=NAV.map(function(n){return '<a href="'+n[0]+'.html"'+(n[0]===page?' aria-current="page"':'')+'>'+n[1]+'</a>'}).join('')+'<a href="../../adult/site/index.html">Взрослая команда</a>';
+  var link=function(n){return '<a href="'+n[0]+'.html"'+(n[0]===page?' aria-current="page"':'')+'>'+n[1]+'</a>'};
+  // «Взрослая команда» — в середине меню и выделена цветом (зеркально «Детской академии» на взрослом сайте)
+  var links=NAV.slice(0,3).map(link).join('')+'<a class="nav-adult" href="../../adult/site/index.html">Взрослая команда</a>'+NAV.slice(3).map(link).join('');
   var hdr=document.createElement('header');hdr.className='hdr';
   hdr.innerHTML='<div class="in"><a class="brand" href="index.html" aria-label="Регион 23 Kids — на главную"><img src="../../assets/logo.svg" alt=""><span>РЕГИОН KIDS<small>хоккейная академия · Анапа</small></span></a>'+
     '<nav class="menu" aria-label="Разделы сайта">'+links+'</nav>'+

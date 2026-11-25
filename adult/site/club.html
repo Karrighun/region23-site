@@ -30,6 +30,11 @@
 .gal{display:grid;grid-template-columns:2fr 1fr 1fr;grid-auto-rows:220px;gap:12px}
 .gal img{width:100%;height:100%;object-fit:cover;object-position:50% 22%}
 .gal .tall{grid-row:span 2}
+.plist{list-style:none;margin:22px 0 0;display:grid;gap:14px}
+.plist li{color:#c6d2e6;line-height:1.6;font-size:16px;padding-left:16px;border-left:2px solid var(--red)}
+.plist b{display:block;color:#fff;font-family:var(--display);font-size:22px;text-transform:uppercase;letter-spacing:.02em;line-height:1.1;margin-bottom:2px}
+.pcta{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;margin-top:26px;color:var(--mute);font-size:14px}
+.pcta span a{color:#fff;text-decoration:underline}
 @media (max-width:900px){.intro{grid-template-columns:1fr}.nums{grid-template-columns:repeat(2,minmax(0,1fr))}.values{grid-template-columns:1fr}.gal{grid-template-columns:1fr 1fr}.gal .tall{grid-row:auto}}
 @media (max-width:600px){.tl:before{left:8px}.ev{grid-template-columns:1fr;gap:6px;padding-left:30px}.ev:before{left:2px}.ev .y{text-align:left}}
 </style>
@@ -50,7 +55,8 @@
     <div class="intro">
       <div class="rv">
         <span class="eyebrow">Кто мы</span>
-        <p style="margin-top:16px">Мы играем в Ночной хоккейной лиге Краснодарского края и в Кубке Южной столицы, ездим на всероссийский Фестиваль хоккея в Сочи. Большая часть команды живет у моря, а тренируется на льду Анапы, Краснодара и станицы Северской.</p>
+        <p style="margin-top:16px">Самый титулованный любительский хоккейный клуб Краснодарского края и участник крупнейших любительских турниров России. Продвигаем хоккей и здоровый образ жизни.</p>
+        <p>Мы играем в Ночной хоккейной лиге Краснодарского края и в Кубке Южной столицы, ездим на всероссийский Фестиваль хоккея в Сочи. Большая часть команды живет у моря, а тренируется на льду Анапы, Краснодара и станицы Северской.</p>
         <p>Капитан — Дмитрий Павлович Мариев. Главный тренер — Даниил Гасюков, воспитанник СКА. Второй тренер и президент Федерации хоккея Анапы — экс-игрок КХЛ Сергей Купцов.</p>
         <p>Вне льда — благотворительные матчи, мастер-классы для детей, «Игрок с микрофоном» и много юмора в канале.</p>
       </div>
@@ -71,6 +77,9 @@
     <div class="tl">
       <div class="ev rv"><div class="y">2019</div><div><h3>Основание клуба</h3><p>16 октября 2019 года в Анапе появляется любительская хоккейная команда «Регион 23».</p></div></div>
       <div class="ev rv"><div class="y">2022</div><div><h3>Чемпионы «Лиги Надежды. МК»</h3><p>Победа на всероссийском фестивале Ночной хоккейной лиги в Сочи (#СочиФест22).</p></div></div>
+      <div class="ev rv"><div class="y">2023</div><div><h3>Армавир и Майкоп</h3><p>Победа в турнире по хоккею в Армавире и в турнире 3×3 в Майкопе.</p></div></div>
+      <div class="ev rv"><div class="y">2024</div><div><h3>Армавир и Кубок главы Адыгеи</h3><p>Победа в турнире взрослых любительских команд в Армавире, бронза «Кубка главы Республики Адыгея».</p></div></div>
+      <div class="ev rv"><div class="y">2025</div><div><h3>Кубок Гвардии</h3><p>Победа в турнире «Кубок Гвардии», Краснодар.</p></div></div>
       <div class="ev rv"><div class="y">2025</div><div><h3>Серебро «Лиги Надежды. БК»</h3><p>ФОНБЕТ Фестиваль хоккея, Сириус. Константин Игнатьев — лучший защитник фестиваля.</p></div></div>
       <div class="ev rv"><div class="y">2026</div><div><h3>Пятый титул НХЛ края и первый Кубок Южной столицы</h3><p>Март: финал Ночной хоккейной лиги в Ice Palace и досрочная победа в Кубке Южной столицы. Май: 4-е место на #ХоккейФест2026 в Сириусе, Кушнерев вступает в Клуб Макарова.</p></div></div>
       <div class="ev rv"><div class="y">2026</div><div><h3>Детская академия</h3><p>Июль: «Встречайте, наша первая детская хоккейная команда Анапы!». Летом — кэмп GASYUKOV / KUPTSOV, осенью — набор в садиках и день открытых дверей в парке «Джунгли».</p></div></div>
@@ -90,6 +99,24 @@
   </div>
 </section>
 
+<section class="sec" id="partners" aria-labelledby="h-part">
+  <div class="wrap">
+    <div class="intro">
+      <div class="rv">
+        <span class="eyebrow">Партнерам</span>
+        <h2 id="h-part" style="margin-top:10px">Ваш бренд <em>на льду</em> и в дороге</h2>
+        <ul class="plist">
+          <li><b>Игровая форма</b>Логотип партнера на свитерах, гамашах и тренировочной экипировке команды.</li>
+          <li><b>Фирменный автобус</b>Автобус команды ездит по всему Краснодарскому краю, и его видят в каждом городе, куда мы приезжаем на матчи.</li>
+          <li><b>Рекламные интеграции</b>Бренд партнера в символике и контенте клуба, как «Авто Регион 23» на форме и экипировке.</li>
+        </ul>
+        <div class="pcta"><a class="btn red" href="tel:+79628535375">Стать партнером</a><span>+7 (962) 853-53-75, Мария · <a href="https://t.me/XKREGION23" target="_blank" rel="noopener">Telegram</a></span></div>
+      </div>
+      <div class="im rv"><img src="img/g-bus.webp" alt="Фирменный автобус ХК «Регион 23»" loading="lazy" style="object-position:50% 50%"></div>
+    </div>
+  </div>
+</section>
+
 <section class="sec alt" aria-label="Фото">
   <div class="wrap">
     <div class="shead rv"><div><span class="eyebrow">Фото</span><h2>Из <em>архива</em></h2></div><a class="more" href="media.html">Медиа →</a></div>
@@ -99,6 +126,11 @@
       <img src="img/g-cup1.webp" alt="Кубок" loading="lazy">
       <img src="img/g-action3.webp" alt="Игровой момент" loading="lazy">
       <img src="img/g-team2.webp" alt="Команда с трофеем" loading="lazy">
+      <img class="tall" src="img/g-sochi22.webp" alt="Чемпионы «Лиги Надежды. МК», Ночная лига, Сочи 2022" loading="lazy" style="object-position:50% 50%">
+      <img src="img/g-champs.webp" alt="Команда с медалями Ночной хоккейной лиги" loading="lazy" style="object-position:50% 50%">
+      <img src="img/g-top.webp" alt="Команда у ворот перед игрой, вид сверху" loading="lazy" style="object-position:50% 40%">
+      <img src="img/g-faceoff.webp" alt="Вбрасывание" loading="lazy">
+      <img src="img/g-bench.webp" alt="Скамейка команды" loading="lazy">
     </div>
   </div>
 </section>

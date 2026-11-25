@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Шрифты академии</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0f1730;--ink:#fff;--mute:rgba(255,255,255,.66);--red:#E3262B;--line:rgba(255,255,255,.14)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{background:var(--bg);color:var(--ink);font:500 15px/1.45 Onest,system-ui,sans-serif;display:flex;flex-direction:column}
+.bar{display:flex;align-items:center;gap:16px;padding:12px 16px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.bar h1{font-size:15px;font-weight:800;letter-spacing:.02em;white-space:nowrap}
+.bar h1 span{color:var(--mute);font-weight:500}
+.opts{display:flex;gap:6px;flex-wrap:wrap}
+.opts button{font:700 13px/1 Onest,sans-serif;color:var(--ink);background:rgba(255,255,255,.06);border:1px solid var(--line);padding:9px 12px;cursor:pointer;min-height:38px;text-align:left}
+.opts button[aria-pressed="true"]{background:var(--red);border-color:var(--red)}
+.opts button small{display:block;font-weight:500;font-size:11px;opacity:.75;margin-top:3px}
+.info{padding:10px 16px;color:var(--mute);font-size:13px;border-bottom:1px solid var(--line)}
+.info b{color:#fff}
+.views{display:flex;gap:6px;margin-left:auto}
+.views button{font:700 12px/1 Onest,sans-serif;color:var(--ink);background:none;border:1px solid var(--line);padding:8px 10px;cursor:pointer}
+.views button[aria-pressed="true"]{background:#fff;color:var(--bg)}
+.stage{flex:1;display:flex;justify-content:center;background:#060b1a;min-height:0}
+iframe{border:0;width:100%;height:100%;background:#dde4eb;transition:width .25s}
+.stage.phone iframe{width:390px;max-width:100%;box-shadow:0 0 0 1px var(--line)}
+@media (max-width:700px){.views{display:none}.bar{gap:10px}.opts button small{display:none}}
+</style>
+</head>
+<body>
+<div class="bar">
+  <h1>Шрифт академии <span>· выберите вариант</span></h1>
+  <div class="opts" id="opts" role="group" aria-label="Варианты шрифтов"></div>
+  <div class="views" role="group" aria-label="Ширина"><button type="button" data-v="desk" aria-pressed="true">Десктоп</button><button type="button" data-v="phone" aria-pressed="false">Телефон</button></div>
+</div>
+<div class="info" id="info"></div>
+<div class="stage" id="stage"><iframe id="fr" src="site/index.html" title="Главная академии"></iframe></div>
+<script>
+/* Варианты: заголовки (h) + текст (t). css — поправки к заголовкам под характер шрифта (поверх kids.css). */
+var V=[
+ {id:'A',name:'Unbounded + Nunito',note:'широкий округлый, дружелюбный',
+  fam:'Unbounded:wght@600;700;800;900&family=Nunito:wght@500;600;700;800;900',
+  h:'"Unbounded"',t:'"Nunito"',
+  css:'h1,h2,h3,h4{font-style:normal;text-transform:none;letter-spacing:-.02em;line-height:1.08;font-weight:800}h1,.hero h1{font-size:clamp(38px,4.8vw,76px)}.phead h1{font-size:clamp(36px,4.8vw,74px)}h2{font-size:clamp(26px,3.3vw,48px)}h3{font-size:clamp(19px,1.6vw,24px)}.brand{font-style:normal;font-size:15px}h1 em,h2 em{font-style:normal}'},
+ {id:'B',name:'Rubik',note:'мягкий геометрический, легко читается',
+  fam:'Rubik:ital,wght@0,500;0,600;0,700;0,800;0,900;1,800;1,900',
+  h:'"Rubik"',t:'"Rubik"',
+  css:'h1,h2,h3,h4{font-style:normal;text-transform:none;letter-spacing:-.02em;line-height:1.04;font-weight:900}h1,.hero h1{font-size:clamp(44px,5.6vw,90px)}.phead h1{font-size:clamp(42px,5.6vw,88px)}h2{font-size:clamp(30px,3.7vw,56px)}h3{font-size:clamp(21px,1.8vw,27px);font-weight:800}.brand{font-style:normal;font-size:16px}h1 em,h2 em{font-style:normal}'},
+ {id:'C',name:'Exo 2 курсив',note:'спортивный, ощущение скорости',
+  fam:'Exo+2:ital,wght@0,500;0,600;0,700;0,800;1,800;1,900',
+  h:'"Exo 2"',t:'"Exo 2"',
+  css:'h1,h2,h3,h4{font-style:italic;text-transform:uppercase;letter-spacing:0;line-height:1;font-weight:900}h1,.hero h1{font-size:clamp(42px,5.4vw,88px)}.phead h1{font-size:clamp(40px,5.4vw,86px)}h2{font-size:clamp(28px,3.6vw,54px)}h3{font-size:clamp(20px,1.7vw,26px);font-weight:800}.brand{font-size:16px}'},
+ {id:'D',name:'Russo One + Manrope',note:'как на клубных афишах, но не узкий',
+  fam:'Russo+One&family=Manrope:wght@500;600;700;800',
+  h:'"Russo One"',t:'"Manrope"',
+  css:'h1,h2,h3,h4{font-style:normal;text-transform:uppercase;letter-spacing:0;line-height:1.02;font-weight:400}h1,.hero h1{font-size:clamp(38px,5vw,82px)}.phead h1{font-size:clamp(36px,5vw,80px)}h2{font-size:clamp(26px,3.3vw,50px)}h3{font-size:clamp(19px,1.6vw,24px)}.brand{font-style:normal;font-weight:400;font-size:16px}h1 em,h2 em{font-style:normal}.group .yr,.steps li:before,.facts b,.offers b,.dfacts b,.kv b,.card .im.ini,.coach .ph.ini{font-style:normal;font-weight:400}'},
+ {id:'E',name:'Dela Gothic One + Onest',note:'жирный мультяшный гротеск, ярко и по-детски',
+  fam:'Dela+Gothic+One&family=Onest:wght@400;500;600;700;800',
+  h:'"Dela Gothic One"',t:'Onest',
+  css:'h1,h2,h3,h4{font-style:normal;text-transform:none;letter-spacing:-.01em;line-height:1.06;font-weight:400}h1,.hero h1{font-size:clamp(38px,4.8vw,78px)}.phead h1{font-size:clamp(36px,4.8vw,76px)}h2{font-size:clamp(26px,3.3vw,48px)}h3{font-size:clamp(19px,1.6vw,24px)}.brand{font-style:normal;font-weight:400;font-size:15px}h1 em,h2 em{font-style:normal}.group .yr,.steps li:before,.facts b,.offers b,.dfacts b,.kv b,.card .im.ini,.coach .ph.ini{font-style:normal;font-weight:400}'},
+ {id:'F',name:'Montserrat Alternates + Nunito',note:'игривые буквы, мягкий текст',
+  fam:'Montserrat+Alternates:wght@600;700;800;900&family=Nunito:wght@500;600;700;800;900',
+  h:'"Montserrat Alternates"',t:'"Nunito"',
+  css:'h1,h2,h3,h4{font-style:normal;text-transform:none;letter-spacing:-.02em;line-height:1.06;font-weight:800}h1,.hero h1{font-size:clamp(40px,5vw,80px)}.phead h1{font-size:clamp(38px,5vw,78px)}h2{font-size:clamp(28px,3.4vw,50px)}h3{font-size:clamp(20px,1.7vw,25px)}.brand{font-style:normal;font-size:15px}h1 em,h2 em{font-style:normal}'},
+ {id:'0',name:'Сейчас',note:'для сравнения',fam:'',h:'',t:'',css:''}
+];
+var fr=document.getElementById('fr'),opts=document.getElementById('opts'),info=document.getElementById('info'),cur=V[0];
+V.forEach(function(v){var b=document.createElement('button');b.type='button';b.dataset.id=v.id;b.innerHTML=(v.id==='0'?'Сейчас':v.id+' · '+v.name)+'<small>'+v.note+'</small>';b.onclick=function(){pick(v)};opts.appendChild(b)});
+function apply(){
+  var d;try{d=fr.contentDocument}catch(e){return}if(!d||!d.head)return;
+  ['fontlab-link','fontlab-css'].forEach(function(id){var o=d.getElementById(id);if(o)o.remove()});
+  if(!cur.fam)return;
+  var l=d.createElement('link');l.id='fontlab-link';l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?family='+cur.fam+'&display=swap';d.head.appendChild(l);
+  var s=d.createElement('style');s.id='fontlab-css';s.textContent=':root{--h:'+cur.h+',system-ui,sans-serif;--t:'+cur.t+',system-ui,sans-serif}'+cur.css;d.head.appendChild(s);
+}
+function pick(v){cur=v;[].forEach.call(opts.children,function(b){b.setAttribute('aria-pressed',b.dataset.id===v.id)});
+  info.innerHTML=v.id==='0'?'<b>Сейчас на сайте:</b> Sofia Sans Extra Condensed + Onest, тот же шрифт, что у взрослой команды.':'<b>Вариант '+v.id+':</b> заголовки — '+v.h.replace(/"/g,'')+', текст — '+v.t.replace(/"/g,'')+'. Листайте страницу внутри рамки, меню и ссылки работают.';
+  apply();try{history.replaceState(null,'','#'+v.id)}catch(e){}}
+fr.addEventListener('load',apply);
+[].forEach.call(document.querySelectorAll('.views button'),function(b){b.onclick=function(){document.getElementById('stage').classList.toggle('phone',b.dataset.v==='phone');[].forEach.call(document.querySelectorAll('.views button'),function(x){x.setAttribute('aria-pressed',x===b)})}});
+function fromHash(){var h=(location.hash||'').slice(1);pick(V.filter(function(v){return v.id===h})[0]||V[0])}
+addEventListener('hashchange',fromHash);fromHash();
+</script>
+</body>
+</html>

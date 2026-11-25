@@ -242,7 +242,7 @@ h1 em,h2 em{font-style:normal;color:var(--red)}
 .card .im.poster img{width:auto;max-width:100%;height:auto;max-height:600px}
 
 .im.noimg{background:#0f1730 url(../../assets/logo.svg) no-repeat 50% 40%/22%;display:block}
-.im.noimg em{position:absolute;left:0;right:0;bottom:14px;text-align:center;font:700 12px/1 Onest,Nunito,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.75);font-style:normal}
+.im.noimg em{position:absolute;left:0;right:0;bottom:14px;text-align:center;font:700 12px/1 var(--t);letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.75);font-style:normal}
 .im.noimg .playb{top:40%;opacity:.95}
 
 /* обложка длинного видео: маленькая картинка в родном размере поверх размытой подложки */
@@ -250,7 +250,7 @@ h1 em,h2 em{font-style:normal;color:var(--red)}
 .im.tthumb:before{content:"";position:absolute;inset:-30px;background:var(--t) center/cover;filter:blur(22px) brightness(.5)}
 .news .im.tthumb img,.card .im.tthumb img{position:relative;z-index:1;display:block;width:auto;max-width:100%;height:100%;max-height:320px;margin:0 auto;object-fit:contain}
 .im.tthumb .playb{z-index:2}
-.im.tthumb em{z-index:2;position:absolute;left:0;right:0;bottom:12px;text-align:center;font:700 12px/1 Onest,Nunito,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#fff;font-style:normal;text-shadow:0 1px 6px rgba(0,0,0,.8)}
+.im.tthumb em{z-index:2;position:absolute;left:0;right:0;bottom:12px;text-align:center;font:700 12px/1 var(--t);letter-spacing:.1em;text-transform:uppercase;color:#fff;font-style:normal;text-shadow:0 1px 6px rgba(0,0,0,.8)}
 
 /* лагеря прошли — плашка «скоро новые смены» */
 .soon{display:flex;flex-direction:column;gap:4px;margin-top:22px;padding:14px 18px;border-left:4px solid var(--red);background:rgba(255,255,255,.08);max-width:520px}
@@ -305,19 +305,19 @@ h1 em,h2 em{font-style:normal;color:var(--red)}
 .dirline img{width:56px;height:56px;object-fit:cover;object-position:50% 15%;flex:none}
 @media (max-width:760px){.director{grid-template-columns:1fr}.director .ph{max-width:420px}.dfacts{grid-template-columns:1fr}.dfacts div{border-bottom:1px solid rgba(255,255,255,.16);padding:12px 0}}
 
-/* ===== шрифт как на взрослом сайте: Sofia Sans Extra Condensed (заголовки) + Onest (текст) ===== */
-:root{--h:"Sofia Sans Extra Condensed","Arial Narrow",sans-serif;--t:Onest,system-ui,-apple-system,"Segoe UI",sans-serif}
-h1,h2,h3,h4{font-weight:900;font-style:italic;text-transform:uppercase;letter-spacing:.01em;line-height:1}
-h1{font-size:clamp(48px,7.4vw,112px)}
-h2{font-size:clamp(36px,4.8vw,72px)}
-h3{font-size:clamp(24px,2.2vw,32px)}
-.brand{font-style:italic;font-weight:900;font-size:20px;letter-spacing:.02em;text-transform:uppercase}
+/* ===== шрифт академии: Exo 2 (вариант C со стенда kids/fonts.html, выбран 25.11.2026) — заголовки курсив капс, текст Exo 2 ===== */
+:root{--h:"Exo 2",system-ui,-apple-system,"Segoe UI",sans-serif;--t:"Exo 2",system-ui,-apple-system,"Segoe UI",sans-serif}
+h1,h2,h3,h4{font-weight:900;font-style:italic;text-transform:uppercase;letter-spacing:0;line-height:1}
+h1{font-size:clamp(42px,5.4vw,88px)}
+h2{font-size:clamp(28px,3.6vw,54px)}
+h3{font-size:clamp(20px,1.7vw,26px);font-weight:800}
+.brand{font-style:italic;font-weight:900;font-size:16px;letter-spacing:.02em;text-transform:uppercase}
 .group .yr,.steps li:before,.facts b,.offers b,.dfacts b,.kv b,.card .im.ini,.coach .ph.ini{font-style:italic}
 .faq summary,.contact-list b,.maplink span,.soon b{font-family:var(--t);font-weight:700}
 h1 em,h2 em{font-style:italic}
-.phead h1{font-size:clamp(52px,7.6vw,116px)}
-.hero h1{font-size:clamp(56px,6.4vw,118px);letter-spacing:.01em;line-height:.95}
-.director h2{font-size:clamp(40px,5vw,72px)}
+.phead h1{font-size:clamp(40px,5.4vw,86px)}
+.hero h1{font-size:clamp(42px,5.4vw,88px);letter-spacing:0;line-height:1}
+.director h2{font-size:clamp(30px,3.8vw,56px)}
 
 /* бесконечная лента фотографий */
 .strip-m{overflow:hidden;padding:6px 0}
@@ -327,3 +327,12 @@ h1 em,h2 em{font-style:italic}
 .strip-m img{height:clamp(220px,26vw,380px);aspect-ratio:3/4;width:auto;object-fit:cover;flex:none}
 @keyframes stripm{to{transform:translateX(calc(-50% - 3px))}}
 @media (prefers-reduced-motion:reduce){.strip-m .track{animation:none}}
+
+/* партнерство со спортивной школой (из презентации клуба) */
+.schoolline{margin-top:28px;padding:16px 20px;background:var(--paper);border-left:4px solid var(--red);font-size:16px;line-height:1.55;color:var(--ink);max-width:980px}
+.schoolline b{display:block;font-family:var(--t);font-weight:800;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin-bottom:4px}
+
+/* «Взрослая команда» в центре меню, выделена — как «Детская академия» на взрослом сайте */
+.menu a.nav-adult{background:var(--navy);color:#fff!important;border-bottom-color:transparent!important;margin:0 6px}
+.menu a.nav-adult:hover{background:var(--red)}
+@media (max-width:760px){.menu a.nav-adult{order:-1;margin:6px 8px 6px 0}}
