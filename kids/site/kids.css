@@ -336,3 +336,6 @@ h1 em,h2 em{font-style:italic}
 .menu a.nav-adult{background:var(--navy);color:#fff!important;border-bottom-color:transparent!important;margin:0 6px}
 .menu a.nav-adult:hover{background:var(--red)}
 @media (max-width:760px){.menu a.nav-adult{order:-1;margin:6px 8px 6px 0}}
+
+/* готовые карточки тренеров (3:4, текст на картинке) */
+.director .ph:has(img[src*="c-"]),.coach .ph:has(img[src*="c-"]){aspect-ratio:3/4;background:#0b1430}
