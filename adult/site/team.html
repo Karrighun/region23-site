@@ -57,6 +57,11 @@ dialog.pcd[open]{animation:plin .35s cubic-bezier(.2,.7,.1,1)}
 .coach.lead{grid-template-columns:240px 1fr;border-color:rgba(227,38,43,.45);background:linear-gradient(110deg,rgba(227,38,43,.16),var(--card) 55%)}
 .coach .pc .badge,.coach .pc .num{z-index:1}
 .coach.lead ul li+li:before{content:"·";margin-right:8px;color:var(--mute);font-weight:700}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:56px 0 8px}
+.tabs button{font:700 14px var(--text);color:#fff;background:rgba(255,255,255,.04);border:1px solid var(--line);padding:13px 20px;cursor:pointer;letter-spacing:.02em}
+.tabs button[aria-selected="true"]{background:var(--red);border-color:var(--red)}
+.tabs button:hover{background:rgba(255,255,255,.1)}.tabs button[aria-selected="true"]:hover{background:var(--red)}
+.lineup .grp:first-child{margin-top:28px}
 .crew{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
 .mate{display:flex;align-items:center;gap:18px;padding:18px 20px;border-radius:22px;background:var(--card);border:1px solid var(--line)}
 .mate .ini{flex:none;width:72px;height:72px;display:grid;place-items:center;background:radial-gradient(ellipse at 50% 30%,#1b2a55,#060b18);font-family:var(--display);font-weight:700;font-size:26px;color:var(--ice)}
@@ -72,48 +77,96 @@ dialog.pcd[open]{animation:plin .35s cubic-bezier(.2,.7,.1,1)}
   <div class="wrap">
     <span class="eyebrow">Состав · сезон 2026/27</span>
     <h1>Наша <em>команда</em></h1>
-    <p>Вратари, защитники, нападающие, тренеры и персонал «Региона 23». Руководитель команды и капитан — Дмитрий Мариев, ассистенты капитана — Александр Куприянов и Тагир Хакимов.</p>
+    <p>Составы на НХЛ края и Кубок Южной столицы, тренеры и персонал «Региона 23». Руководитель команды и капитан — Дмитрий Мариев, ассистенты капитана — Александр Куприянов и Тагир Хакимов.</p>
   </div>
 </section>
 
 <section class="sec" aria-label="Состав команды">
   <div class="wrap">
-    <nav class="filter" aria-label="Разделы состава"><a href="#c">Капитан</a><a href="#g">Вратари</a><a href="#d">Защитники</a><a href="#f">Нападающие</a><a href="#s">Тренеры</a><a href="#st">Персонал</a></nav>
+    <nav class="filter" aria-label="Разделы состава"><a href="#c">Капитан</a><a href="#nhl">Состав НХЛ края</a><a href="#kus">Состав Кубка Южной столицы</a><a href="#s">Тренеры</a><a href="#st">Персонал</a></nav>
 
     <div class="grp" id="c"><h3>Капитан</h3>
       <div class="coach lead rv"><div class="pc"><span class="badge">K</span><span class="num">13</span><img src="img/p-mariev.webp" alt="Дмитрий Мариев" loading="lazy"></div><div><span class="eyebrow">Капитан</span><h4>Дмитрий Павлович Мариев</h4><p>Руководитель команды и идейный лидер «Региона 23». Капитан, нападающий, №13.</p><ul><li class="chip red">Капитан команды</li><li class="chip">Руководитель команды</li><li class="chip">Идейный лидер</li></ul></div></div>
     </div>
 
-    <div class="grp" id="g"><h3>Вратари <span>1</span></h3>
-      <div class="roster">
-        <div class="pc rv"><span class="num">60</span><img src="img/p-denisyuk.webp" alt="Кирилл Денисюк" loading="lazy"><div class="cap"><b>Кирилл Денисюк</b><span>Вратарь · Жлобин, Беларусь</span><em>Лучший вратарь НХЛ края 25/26</em></div></div>
+    <div class="tabs" role="tablist" aria-label="Составы по турнирам">
+      <button type="button" role="tab" id="tab-nhl" aria-controls="nhl" aria-selected="true">НХЛ края</button>
+      <button type="button" role="tab" id="tab-kus" aria-controls="kus" aria-selected="false" tabindex="-1">Кубок Южной столицы</button>
+    </div>
+    <div class="lineup" id="nhl" role="tabpanel" aria-labelledby="tab-nhl">
+      <div class="grp" id="nhl-g"><h3>Вратари <span>1</span></h3>
+        <div class="roster">
+          <div class="pc rv"><span class="num">60</span><img src="img/p-denisyuk.webp" alt="Кирилл Денисюк" loading="lazy"><div class="cap"><b>Кирилл Денисюк</b><span>Вратарь · Жлобин, Беларусь</span><em>Лучший вратарь НХЛ края 25/26</em></div></div>
+        </div>
+      </div>
+      <div class="grp" id="nhl-d"><h3>Защитники <span>5</span></h3>
+        <div class="roster">
+          <div class="pc rv"><span class="badge">A</span><span class="num">9</span><img src="img/p-kupriyanov.webp" alt="Александр Куприянов" loading="lazy"><div class="cap"><b>Александр Куприянов</b><span>Защитник · ассистент капитана</span><em>Лучший защитник НХЛ края 25/26 · 50 матчей за клуб</em></div></div>
+          <div class="pc ph rv"><span class="num">16</span><img class="mono" src="../../assets/logo.svg" alt=""><div class="cap"><b>Александр Батырев</b><span>Защитник</span><em>MVP матча со «Штормом» — 4 очка</em></div></div>
+          <div class="pc ph rv"><span class="num">22</span><img class="mono" src="../../assets/logo.svg" alt=""><div class="cap"><b>Роман Коновалов</b><span>Защитник</span></div></div>
+          <div class="pc rv"><span class="num">23</span><img src="img/p-seliverstov.webp" alt="Артем Селиверстов" loading="lazy"><div class="cap"><b>Артем Селиверстов</b><span>Защитник</span></div></div>
+          <div class="pc rv"><span class="num">33</span><img src="img/p-vorvulev.webp" alt="Григорий Ворвулев" loading="lazy"><div class="cap"><b>Григорий Ворвулев</b><span>Защитник</span></div></div>
+        </div>
+      </div>
+      <div class="grp" id="nhl-f"><h3>Нападающие <span>12</span></h3>
+        <div class="roster">
+          <div class="pc ph rv"><span class="num">11</span><img class="mono" src="../../assets/logo.svg" alt=""><div class="cap"><b>Дмитрий Черепанов</b><span>Нападающий</span></div></div>
+          <div class="pc ph rv"><span class="num">12</span><img class="mono" src="../../assets/logo.svg" alt=""><div class="cap"><b>Амир Мамадекубов</b><span>Нападающий</span></div></div>
+          <div class="pc rv"><span class="num">18</span><img src="img/p-lavronenko.webp" alt="Александр Лавроненко" loading="lazy"><div class="cap"><b>Александр Лавроненко</b><span>Нападающий</span><em>Лучший нападающий Кубка ЮС 25/26</em></div></div>
+          <div class="pc rv"><span class="num">31</span><img src="img/p-belous.webp" alt="Дмитрий Белоус" loading="lazy"><div class="cap"><b>Дмитрий Белоус</b><span>Нападающий</span></div></div>
+          <div class="pc ph rv"><span class="num">44</span><img class="mono" src="../../assets/logo.svg" alt=""><div class="cap"><b>Даниил Ильин</b><span>Нападающий</span></div></div>
+          <div class="pc rv"><span class="badge">A</span><span class="num">55</span><img src="img/p-khakimov.webp" alt="Тагир Хакимов" loading="lazy"><div class="cap"><b>Тагир Хакимов</b><span>Нападающий · ассистент капитана</span></div></div>
+          <div class="pc ph rv"><span class="num">77</span><img class="mono" src="../../assets/logo.svg" alt=""><div class="cap"><b>Руслан Миникаев</b><span>Нападающий</span></div></div>
+          <div class="pc rv"><span class="num">88</span><img src="img/p-michurin.webp" alt="Александр Мичурин" loading="lazy"><div class="cap"><b>Александр Мичурин</b><span>Нападающий</span></div></div>
+          <div class="pc ph rv"><span class="num">91</span><img class="mono" src="../../assets/logo.svg" alt=""><div class="cap"><b>Дмитрий Кушнерев</b><span>Нападающий</span><em>150 шайб в НХЛ · Клуб Макарова</em></div></div>
+          <div class="pc rv"><span class="num">92</span><img src="img/p-yunusov.webp" alt="Руслан Юнусов" loading="lazy"><div class="cap"><b>Руслан Юнусов</b><span>Нападающий</span></div></div>
+          <div class="pc rv"><span class="num">96</span><img src="img/p-kartezhnikov.webp" alt="Максим Картежников" loading="lazy"><div class="cap"><b>Максим Картежников</b><span>Нападающий</span><em>100 шайб в НХЛ</em></div></div>
+          <div class="pc rv"><span class="num">97</span><img src="img/p-belyaev.webp" alt="Георгий Беляев" loading="lazy"><div class="cap"><b>Георгий Беляев</b><span>Нападающий</span></div></div>
+        </div>
       </div>
     </div>
 
-    <div class="grp" id="d"><h3>Защитники <span>5</span></h3>
-      <div class="roster">
-        <div class="pc rv"><span class="badge">A</span><span class="num">9</span><img src="img/p-kupriyanov.webp" alt="Александр Куприянов" loading="lazy"><div class="cap"><b>Александр Куприянов</b><span>Защитник · ассистент капитана</span><em>Лучший защитник НХЛ края 25/26 · 50 матчей за клуб</em></div></div>
-        <div class="pc ph rv"><span class="num">16</span><img class="mono" src="../../assets/logo.svg" alt=""><div class="cap"><b>Александр Батырев</b><span>Защитник</span><em>MVP матча со «Штормом» — 4 очка</em></div></div>
-        <div class="pc ph rv"><span class="num">22</span><img class="mono" src="../../assets/logo.svg" alt=""><div class="cap"><b>Роман Коновалов</b><span>Защитник</span></div></div>
-        <div class="pc rv"><span class="num">23</span><img src="img/p-seliverstov.webp" alt="Артем Селиверстов" loading="lazy"><div class="cap"><b>Артем Селиверстов</b><span>Защитник</span></div></div>
-        <div class="pc rv"><span class="num">33</span><img src="img/p-vorvulev.webp" alt="Григорий Ворвулев" loading="lazy"><div class="cap"><b>Григорий Ворвулев</b><span>Защитник</span></div></div>
+    <div class="lineup" id="kus" role="tabpanel" aria-labelledby="tab-kus" hidden>
+      <div class="grp" id="kus-g"><h3>Вратари <span>3</span></h3>
+        <div class="roster">
+          <div class="pc rv"><span class="num">1</span><img src="img/p-belousov.webp" alt="Владимир Белоусов" loading="lazy"><div class="cap"><b>Владимир Белоусов</b><span>Вратарь</span><em>Лучший игрок финала НХЛ края 2026</em></div></div>
+          <div class="pc rv"><span class="num">60</span><img src="img/p-denisyuk.webp" alt="Кирилл Денисюк" loading="lazy"><div class="cap"><b>Кирилл Денисюк</b><span>Вратарь · Жлобин, Беларусь</span><em>Лучший вратарь НХЛ края 25/26</em></div></div>
+          <div class="pc ph rv"><span class="num">83</span><img class="mono" src="../../assets/logo.svg" alt=""><div class="cap"><b>Туранцев</b><span>Вратарь</span></div></div>
+        </div>
       </div>
-    </div>
-
-    <div class="grp" id="f"><h3>Нападающие <span>12</span></h3>
-      <div class="roster">
-        <div class="pc ph rv"><span class="num">11</span><img class="mono" src="../../assets/logo.svg" alt=""><div class="cap"><b>Дмитрий Черепанов</b><span>Нападающий</span></div></div>
-        <div class="pc ph rv"><span class="num">12</span><img class="mono" src="../../assets/logo.svg" alt=""><div class="cap"><b>Амир Мамадекубов</b><span>Нападающий</span></div></div>
-        <div class="pc rv"><span class="num">18</span><img src="img/p-lavronenko.webp" alt="Александр Лавроненко" loading="lazy"><div class="cap"><b>Александр Лавроненко</b><span>Нападающий</span><em>Лучший нападающий Кубка ЮС 25/26</em></div></div>
-        <div class="pc rv"><span class="num">31</span><img src="img/p-belous.webp" alt="Дмитрий Белоус" loading="lazy"><div class="cap"><b>Дмитрий Белоус</b><span>Нападающий</span></div></div>
-        <div class="pc ph rv"><span class="num">44</span><img class="mono" src="../../assets/logo.svg" alt=""><div class="cap"><b>Даниил Ильин</b><span>Нападающий</span></div></div>
-        <div class="pc rv"><span class="badge">A</span><span class="num">55</span><img src="img/p-khakimov.webp" alt="Тагир Хакимов" loading="lazy"><div class="cap"><b>Тагир Хакимов</b><span>Нападающий · ассистент капитана</span></div></div>
-        <div class="pc ph rv"><span class="num">77</span><img class="mono" src="../../assets/logo.svg" alt=""><div class="cap"><b>Руслан Миникаев</b><span>Нападающий</span></div></div>
-        <div class="pc rv"><span class="num">88</span><img src="img/p-michurin.webp" alt="Александр Мичурин" loading="lazy"><div class="cap"><b>Александр Мичурин</b><span>Нападающий</span></div></div>
-        <div class="pc ph rv"><span class="num">91</span><img class="mono" src="../../assets/logo.svg" alt=""><div class="cap"><b>Дмитрий Кушнерев</b><span>Нападающий</span><em>150 шайб в НХЛ · Клуб Макарова</em></div></div>
-        <div class="pc rv"><span class="num">92</span><img src="img/p-yunusov.webp" alt="Руслан Юнусов" loading="lazy"><div class="cap"><b>Руслан Юнусов</b><span>Нападающий</span></div></div>
-        <div class="pc rv"><span class="num">96</span><img src="img/p-kartezhnikov.webp" alt="Максим Картежников" loading="lazy"><div class="cap"><b>Максим Картежников</b><span>Нападающий</span><em>100 шайб в НХЛ</em></div></div>
-        <div class="pc rv"><span class="num">97</span><img src="img/p-belyaev.webp" alt="Георгий Беляев" loading="lazy"><div class="cap"><b>Георгий Беляев</b><span>Нападающий</span></div></div>
+      <div class="grp" id="kus-d"><h3>Защитники <span>8</span></h3>
+        <div class="roster">
+          <div class="pc rv"><span class="badge">A</span><span class="num">9</span><img src="img/p-kupriyanov.webp" alt="Александр Куприянов" loading="lazy"><div class="cap"><b>Александр Куприянов</b><span>Защитник · ассистент капитана</span><em>Лучший защитник НХЛ края 25/26 · 50 матчей за клуб</em></div></div>
+          <div class="pc ph rv"><span class="num">16</span><img class="mono" src="../../assets/logo.svg" alt=""><div class="cap"><b>Александр Батырев</b><span>Защитник</span><em>MVP матча со «Штормом» — 4 очка</em></div></div>
+          <div class="pc rv"><span class="num">23</span><img src="img/p-seliverstov.webp" alt="Артем Селиверстов" loading="lazy"><div class="cap"><b>Артем Селиверстов</b><span>Защитник</span></div></div>
+          <div class="pc rv"><span class="num">33</span><img src="img/p-vorvulev.webp" alt="Григорий Ворвулев" loading="lazy"><div class="cap"><b>Григорий Ворвулев</b><span>Защитник</span></div></div>
+          <div class="pc ph rv"><span class="num">69</span><img class="mono" src="../../assets/logo.svg" alt=""><div class="cap"><b>Яных</b><span>Защитник</span></div></div>
+          <div class="pc rv"><span class="num">74</span><img src="img/p-kopylov.webp" alt="Валерий Копылов" loading="lazy"><div class="cap"><b>Валерий Копылов</b><span>Защитник</span></div></div>
+          <div class="pc ph rv"><span class="num">89</span><img class="mono" src="../../assets/logo.svg" alt=""><div class="cap"><b>Артем Россохатский</b><span>Защитник</span></div></div>
+          <div class="pc ph rv"><span class="num">99</span><img class="mono" src="../../assets/logo.svg" alt=""><div class="cap"><b>Артем Икамацких</b><span>Защитник</span></div></div>
+        </div>
+      </div>
+      <div class="grp" id="kus-f"><h3>Нападающие <span>18</span></h3>
+        <div class="roster">
+          <div class="pc ph rv"><span class="num">8</span><img class="mono" src="../../assets/logo.svg" alt=""><div class="cap"><b>Святослав Большаков</b><span>Нападающий</span></div></div>
+          <div class="pc ph rv"><span class="num">11</span><img class="mono" src="../../assets/logo.svg" alt=""><div class="cap"><b>Антон Фофанов</b><span>Нападающий</span></div></div>
+          <div class="pc rv"><span class="num">18</span><img src="img/p-lavronenko.webp" alt="Александр Лавроненко" loading="lazy"><div class="cap"><b>Александр Лавроненко</b><span>Нападающий</span><em>Лучший нападающий Кубка ЮС 25/26</em></div></div>
+          <div class="pc ph rv"><span class="num">20</span><img class="mono" src="../../assets/logo.svg" alt=""><div class="cap"><b>Даниил Ильин</b><span>Нападающий</span></div></div>
+          <div class="pc ph rv"><span class="num">22</span><img class="mono" src="../../assets/logo.svg" alt=""><div class="cap"><b>Роман Коновалов</b><span>Нападающий</span></div></div>
+          <div class="pc ph rv"><span class="num">29</span><img class="mono" src="../../assets/logo.svg" alt=""><div class="cap"><b>Максим Полежаев</b><span>Нападающий</span></div></div>
+          <div class="pc rv"><span class="num">31</span><img src="img/p-belous.webp" alt="Дмитрий Белоус" loading="lazy"><div class="cap"><b>Дмитрий Белоус</b><span>Нападающий</span></div></div>
+          <div class="pc ph rv"><span class="num">39</span><img class="mono" src="../../assets/logo.svg" alt=""><div class="cap"><b>Виктор Колобов</b><span>Нападающий</span></div></div>
+          <div class="pc rv"><span class="num">47</span><img src="img/p-kuptsov.webp" alt="Сергей Купцов" loading="lazy"><div class="cap"><b>Сергей Купцов</b><span>Нападающий · консультант команды</span></div></div>
+          <div class="pc rv"><span class="badge">A</span><span class="num">55</span><img src="img/p-khakimov.webp" alt="Тагир Хакимов" loading="lazy"><div class="cap"><b>Тагир Хакимов</b><span>Нападающий · ассистент капитана</span></div></div>
+          <div class="pc ph rv"><span class="num">69</span><img class="mono" src="../../assets/logo.svg" alt=""><div class="cap"><b>Иван Трофимов</b><span>Нападающий</span></div></div>
+          <div class="pc ph rv"><span class="num">77</span><img class="mono" src="../../assets/logo.svg" alt=""><div class="cap"><b>Руслан Миникаев</b><span>Нападающий</span></div></div>
+          <div class="pc rv"><span class="num">88</span><img src="img/p-michurin.webp" alt="Александр Мичурин" loading="lazy"><div class="cap"><b>Александр Мичурин</b><span>Нападающий</span></div></div>
+          <div class="pc ph rv"><span class="num">91</span><img class="mono" src="../../assets/logo.svg" alt=""><div class="cap"><b>Дмитрий Кушнерев</b><span>Нападающий</span><em>150 шайб в НХЛ · Клуб Макарова</em></div></div>
+          <div class="pc rv"><span class="num">92</span><img src="img/p-yunusov.webp" alt="Руслан Юнусов" loading="lazy"><div class="cap"><b>Руслан Юнусов</b><span>Нападающий</span></div></div>
+          <div class="pc rv"><span class="num">96</span><img src="img/p-kartezhnikov.webp" alt="Максим Картежников" loading="lazy"><div class="cap"><b>Максим Картежников</b><span>Нападающий</span><em>100 шайб в НХЛ</em></div></div>
+          <div class="pc rv"><span class="num">97</span><img src="img/p-belyaev.webp" alt="Георгий Беляев" loading="lazy"><div class="cap"><b>Георгий Беляев</b><span>Нападающий</span></div></div>
+          <div class="pc ph rv"><span class="num">99</span><img class="mono" src="../../assets/logo.svg" alt=""><div class="cap"><b>Амир Мамадекубов</b><span>Нападающий</span></div></div>
+        </div>
       </div>
     </div>
 
@@ -135,17 +188,25 @@ dialog.pcd[open]{animation:plin .35s cubic-bezier(.2,.7,.1,1)}
 <dialog class="pcd" id="pl" aria-labelledby="pl-n"><button class="x" type="button" aria-label="Закрыть">×</button><div class="in">
   <div class="ph"><img alt=""></div>
   <div class="bd"><div class="tags"></div><h2 id="pl-n"></h2><p class="ach"></p>
-    <dl><dt>Позиция</dt><dd data-f="pos"></dd><dt>Команда</dt><dd>ХК «Регион 23», Анапа</dd><dt>Сезон</dt><dd>2026/27 · НХЛ края, Кубок Южной столицы</dd></dl>
+    <dl><dt>Позиция</dt><dd data-f="pos"></dd><dt>Команда</dt><dd>ХК «Регион 23», Анапа</dd><dt>Сезон</dt><dd>2026/27</dd></dl>
     <a class="more" data-f="tg" target="_blank" rel="noopener">Новости об игроке в Telegram →</a>
     <div class="nav"><button type="button" data-d="-1">← Предыдущий</button><button type="button" data-d="1">Следующий →</button></div></div>
 </div></dialog>
 <script>
 (function(){
-  var cards=[].slice.call(document.querySelectorAll('.roster .pc')),d=document.getElementById('pl'),cur=0,FULL={};
+  var all=[].slice.call(document.querySelectorAll('.roster .pc')),cards=all,d=document.getElementById('pl'),cur=0,FULL={};
+  // вкладки составов: НХЛ края / Кубок Южной столицы; ссылки #nhl и #kus открывают нужную
+  var tabs=[].slice.call(document.querySelectorAll('.tabs [role=tab]'));
+  function show(id,focus){tabs.forEach(function(b){var on=b.getAttribute('aria-controls')===id;b.setAttribute('aria-selected',on);b.tabIndex=on?0:-1;document.getElementById(b.getAttribute('aria-controls')).hidden=!on;if(on&&focus)b.focus()});
+    cards=[].slice.call(document.querySelectorAll('#'+id+' .roster .pc'))}
+  tabs.forEach(function(b,i){b.addEventListener('click',function(){show(b.getAttribute('aria-controls'));try{history.replaceState(null,'','#'+b.getAttribute('aria-controls'))}catch(e){}});
+    b.addEventListener('keydown',function(e){var k=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0;if(k){e.preventDefault();var nb=tabs[(i+k+tabs.length)%tabs.length];show(nb.getAttribute('aria-controls'),true)}})});
+  function fromHash(){var h=(location.hash||'').slice(1).split('-')[0];if(h==='nhl'||h==='kus')show(h)}
+  addEventListener('hashchange',fromHash);show('nhl');fromHash();
   function load(u){var i=FULL[u];if(!i){i=FULL[u]=new Image();i.decoding='async';i.src=u}
     return i.decode?i.decode().catch(function(){}):Promise.resolve()}
   // все полноразмерные фото (~17 × 40 КБ) подгружаем в фоне после загрузки страницы
-  addEventListener('load',function(){(window.requestIdleCallback||setTimeout)(function(){cards.forEach(function(c){var im=c.querySelector('img:not(.mono)');if(im)load(im.getAttribute('src').replace('img/p-','img/full/p-'))})})});
+  addEventListener('load',function(){(window.requestIdleCallback||setTimeout)(function(){all.forEach(function(c){var im=c.querySelector('img:not(.mono)');if(im)load(im.getAttribute('src').replace('img/p-','img/full/p-'))})})});
   function open(i){cur=(i+cards.length)%cards.length;var c=cards[cur],img=c.querySelector('img:not(.mono)');
     var name=c.querySelector('.cap b').textContent,role=c.querySelector('.cap span').textContent,em=c.querySelector('.cap em');
     var ph=d.querySelector('.ph'),pi=ph.querySelector('img');
@@ -159,7 +220,7 @@ dialog.pcd[open]{animation:plin .35s cubic-bezier(.2,.7,.1,1)}
     var b=c.querySelector('.badge'),n=c.querySelector('.num'),t=[];
     if(b)t.push('<span class="r">'+(b.textContent==='K'?'Капитан':'Ассистент капитана')+'</span>');
     if(n)t.push('<span>№ '+n.textContent+'</span>');
-    t.push('<span>'+c.closest('.grp').querySelector('h3').firstChild.textContent.trim()+'</span>');
+    t.push('<span>'+c.closest('.grp').querySelector('h3').firstChild.textContent.trim()+'</span>');var lu=c.closest('.lineup');if(lu)t.push('<span>'+document.getElementById('tab-'+lu.id).textContent+'</span>');
     d.querySelector('.tags').innerHTML=t.join('');
     d.querySelector('#pl-n').textContent=name;
     d.querySelector('[data-f=pos]').textContent=role;
@@ -167,8 +228,8 @@ dialog.pcd[open]{animation:plin .35s cubic-bezier(.2,.7,.1,1)}
     d.querySelector('[data-f=tg]').href='https://t.me/s/XKREGION23?q='+encodeURIComponent(name.split(' ').pop());
     if(!d.open)d.showModal();
   }
-  cards.forEach(function(c,i){c.tabIndex=0;c.setAttribute('role','button');c.setAttribute('aria-label','Карточка: '+c.querySelector('.cap b').textContent);
-    c.addEventListener('click',function(){open(i)});c.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open(i)}})});
+  all.forEach(function(c){c.tabIndex=0;c.setAttribute('role','button');c.setAttribute('aria-label','Карточка: '+c.querySelector('.cap b').textContent);
+    c.addEventListener('click',function(){open(cards.indexOf(c))});c.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open(cards.indexOf(c))}})});
   d.querySelector('.x').addEventListener('click',function(){d.close()});
   d.addEventListener('click',function(e){if(e.target===d)d.close();var b=e.target.closest('[data-d]');if(b)open(cur+ +b.dataset.d)});
   d.addEventListener('keydown',function(e){if(e.key==='ArrowRight')open(cur+1);if(e.key==='ArrowLeft')open(cur-1)});
