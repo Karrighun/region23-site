@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Extra+Condensed:ital,wght@0,700;0,800;0,900;1,800;1,900&family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="site.css">
 <style>
-.grp{margin-top:56px}
+.grp{margin-top:56px;scroll-margin-top:110px}
 .grp:first-of-type{margin-top:0}
 .grp h3{font-family:var(--display);font-size:clamp(26px,3vw,38px);text-transform:uppercase;display:flex;align-items:baseline;gap:14px;margin-bottom:18px}
 .grp h3 span{font-family:var(--text);font-size:13px;color:var(--mute);font-weight:600;letter-spacing:.06em}
@@ -80,17 +80,17 @@ dialog.pcd[open]{animation:plin .35s cubic-bezier(.2,.7,.1,1)}
   <div class="wrap">
     <span class="eyebrow">Состав · сезон 2026/27</span>
     <h1>Наша <em>команда</em></h1>
-    <p>Составы на НХЛ края и Кубок Южной столицы, тренеры и персонал «Региона 23». Руководитель команды и капитан — Дмитрий Мариев, ассистенты капитана — Александр Куприянов и Тагир Хакимов.</p>
+    <p>Составы на Ночную хоккейную лигу и Кубок Южной столицы, тренеры и персонал «Региона 23». Руководитель команды и капитан — Дмитрий Мариев, ассистенты капитана — Александр Куприянов и Тагир Хакимов.</p>
   </div>
 </section>
 
 <section class="sec" aria-label="Состав команды">
   <div class="wrap">
     <div class="tabbar"><span class="tlabel">Состав на турнир</span><div class="tabs" role="tablist" aria-label="Составы по турнирам">
-      <button type="button" role="tab" id="tab-nhl" aria-controls="nhl" aria-selected="true">НХЛ края</button>
+      <button type="button" role="tab" id="tab-nhl" aria-controls="nhl" aria-selected="true">Ночная хоккейная лига</button>
       <button type="button" role="tab" id="tab-kus" aria-controls="kus" aria-selected="false" tabindex="-1">Кубок Южной столицы</button>
     </div></div>
-    <nav class="filter" aria-label="Разделы состава"><a href="#c">Капитан</a><a href="#s">Тренеры</a><a href="#st">Персонал</a></nav>
+    <nav class="filter" aria-label="Разделы состава"><a href="#c">Капитан</a><a href="#nhl-g" data-pos="g">Вратари</a><a href="#nhl-d" data-pos="d">Защитники</a><a href="#nhl-f" data-pos="f">Нападающие</a><a href="#s">Тренеры</a><a href="#st">Персонал</a></nav>
 
     <div class="grp" id="c"><h3>Капитан</h3>
       <div class="coach lead rv"><div class="pc"><span class="badge">K</span><span class="num">13</span><img src="img/p-mariev.webp" alt="Дмитрий Мариев" loading="lazy"></div><div><span class="eyebrow">Капитан</span><h4>Дмитрий Павлович Мариев</h4><p>Руководитель команды и идейный лидер «Региона 23». Капитан, нападающий, №13.</p><ul><li class="chip red">Капитан команды</li><li class="chip">Руководитель команды</li><li class="chip">Идейный лидер</li></ul></div></div>
@@ -199,7 +199,8 @@ dialog.pcd[open]{animation:plin .35s cubic-bezier(.2,.7,.1,1)}
   // вкладки составов: НХЛ края / Кубок Южной столицы; ссылки #nhl и #kus открывают нужную
   var tabs=[].slice.call(document.querySelectorAll('.tabs [role=tab]'));
   function show(id,focus){tabs.forEach(function(b){var on=b.getAttribute('aria-controls')===id;b.setAttribute('aria-selected',on);b.tabIndex=on?0:-1;document.getElementById(b.getAttribute('aria-controls')).hidden=!on;if(on&&focus)b.focus()});
-    cards=[].slice.call(document.querySelectorAll('#'+id+' .roster .pc'))}
+    cards=[].slice.call(document.querySelectorAll('#'+id+' .roster .pc'));
+    [].forEach.call(document.querySelectorAll('.filter [data-pos]'),function(l){l.href='#'+id+'-'+l.dataset.pos})}
   tabs.forEach(function(b,i){b.addEventListener('click',function(){show(b.getAttribute('aria-controls'));try{history.replaceState(null,'','#'+b.getAttribute('aria-controls'))}catch(e){}});
     b.addEventListener('keydown',function(e){var k=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0;if(k){e.preventDefault();var nb=tabs[(i+k+tabs.length)%tabs.length];show(nb.getAttribute('aria-controls'),true)}})});
   function fromHash(){var h=(location.hash||'').slice(1).split('-')[0];if(h==='nhl'||h==='kus')show(h)}
