@@ -18,7 +18,7 @@
     var W=J.frame[0],H=J.frame[1];
     var le=document.createElement('div');le.className='le';
     le.innerHTML='<img class="full" src="'+A+'m1-base.webp" alt="Маскот академии «Регион 23» — мальчик-хоккеист в чёрной форме клуба, следит глазами за курсором">'+
-      '<div class="irises"></div><img class="full shade" src="'+A+'m1-shade-a.png" alt="" aria-hidden="true"><div class="hl" aria-hidden="true"></div>'+
+      '<div class="irises"></div><img class="full shade" src="'+A+'m1-shade-b.png" alt="" aria-hidden="true"><div class="hl" aria-hidden="true"></div>'+
       '<img class="full blink" src="'+A+'p3d-B.webp" alt="" aria-hidden="true">';
     box.appendChild(le);
     var ir=le.querySelector('.irises'),hl=le.querySelector('.hl'),eyes=[];
