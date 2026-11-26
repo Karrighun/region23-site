@@ -20,9 +20,47 @@
    '<div><a class="brand" href="index.html"><img src="../../assets/logo.svg" alt=""><span>РЕГИОН KIDS<small>хоккейная академия · Анапа</small></span></a><p style="margin-top:14px;max-width:340px;line-height:1.6;color:rgba(255,255,255,.7)">Детская хоккейная академия ХК «Регион 23». Учим кататься и играть с 3 лет. Форма и первая тренировка бесплатно.</p></div>'+
    '<div><h4>Разделы</h4>'+NAV.map(function(n){return '<a href="'+n[0]+'.html">'+n[1]+'</a>'}).join('')+'<a href="../../adult/site/index.html">Взрослая команда</a></div>'+
    '<div><h4>Запись</h4><a class="tnum" href="tel:+79826729292">+7 (982) 672-92-92</a><p>Сергей Сергеевич Купцов, директор академии</p><a href="https://t.me/hk_region23_kids">Telegram академии</a><a href="https://t.me/XKREGION23">Telegram команды</a></div>'+
-   '<div><h4>Где тренируемся</h4><p>Ледовый каток «Джунгли»</p><p>Анапа, Котломской проезд, 1</p></div>'+
+   '<div class="xm-col"><h4>Где тренируемся</h4>'+
+     '<div class="xmap"><button class="xm-card" type="button" aria-expanded="false" aria-controls="xm-body">'+
+       '<span class="xm-top"><svg class="xm-ico" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2Z"/><path d="M9 4v14M15 6v14"/></svg><span class="xm-live"><i></i>на карте</span></span>'+
+       '<b>Ледовый каток «Джунгли»</b><span class="xm-addr">Анапа, Котломской проезд, 1</span><span class="xm-line"></span><span class="xm-hint">Показать на карте</span></button>'+
+       '<div class="xm-body" id="xm-body" hidden><div class="xm-map"></div>'+
+       '<div class="xm-foot"><span class="xm-coord">44.9037° N · 37.3229° E</span><span class="xm-btns">'+
+         '<a class="xm-btn red" href="https://yandex.ru/maps/?rtext=~44.903651%2C37.322896&rtt=auto" target="_blank" rel="noopener">Маршрут</a>'+
+         '<a class="xm-btn" href="https://yandex.ru/maps/org/74044996616/?ll=37.322432%2C44.903807&z=17" target="_blank" rel="noopener">Открыть в Яндекс Картах</a>'+
+         '<button class="xm-btn ghost xm-close" type="button">Свернуть</button></span></div></div></div></div>'+
    '</div><div class="bottom"><span>© 2019–2026 ХК «Регион 23»</span><span>Концепт сайта · данные из Telegram-канала академии на 23.11.2026</span></div></div>';
   document.body.appendChild(f);
+
+  // карта катка в подвале: компактная карточка → по клику раскрывается на всю ширину с Яндекс Картой (в духе expand-map)
+  (function(){
+    var col=f.querySelector('.xm-col'),box=f.querySelector('.xmap'),btn=box.querySelector('.xm-card'),body=box.querySelector('.xm-body'),map=box.querySelector('.xm-map');
+    var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,busy=false;
+    var SRC='https://yandex.ru/map-widget/v1/?ll=37.322896%2C44.903651&z=17&pt=37.322896%2C44.903651%2Cpm2rdl&l=map';
+    function morph(change,after){
+      var a=box.getBoundingClientRect();change();var b=box.getBoundingClientRect();
+      if(reduce||!box.animate){after&&after();return}
+      busy=true;box.style.overflow='hidden';
+      var an=box.animate([{width:a.width+'px',height:a.height+'px'},{width:b.width+'px',height:b.height+'px'}],{duration:560,easing:'cubic-bezier(.22,1,.36,1)'});
+      an.onfinish=an.oncancel=function(){box.style.overflow='';busy=false;after&&after()};
+    }
+    function open(){
+      if(busy)return;
+      // карту грузим, когда блок уже раскрыт: иначе Яндекс запоминает узкий размер и на телефоне рисует полоску
+      morph(function(){col.classList.add('wide');box.classList.add('open');body.hidden=false;btn.setAttribute('aria-expanded','true')},
+        function(){if(!map.firstChild){var fr=document.createElement('iframe');fr.src=SRC;fr.title='Ледовый каток «Джунгли» на Яндекс Картах';fr.allowFullscreen=true;map.appendChild(fr)}
+          requestAnimationFrame(function(){box.classList.add('shown')})});
+      setTimeout(function(){box.scrollIntoView({behavior:reduce?'auto':'smooth',block:'nearest'})},reduce?0:380);
+    }
+    function close(){
+      if(busy)return;box.classList.remove('shown');
+      morph(function(){col.classList.remove('wide');box.classList.remove('open');body.hidden=true;btn.setAttribute('aria-expanded','false')});
+      btn.focus();
+    }
+    btn.addEventListener('click',function(){box.classList.contains('open')?close():open()});
+    box.querySelector('.xm-close').addEventListener('click',close);
+    addEventListener('keydown',function(e){if(e.key==='Escape'&&box.classList.contains('open'))close()});
+  })();
 
   // появление блоков — assets/anim.js (4 варианта)
 

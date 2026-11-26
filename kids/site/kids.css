@@ -339,3 +339,35 @@ h1 em,h2 em{font-style:italic}
 
 /* готовые карточки тренеров (3:4, текст на картинке) */
 .director .ph:has(img[src*="c-"]),.coach .ph:has(img[src*="c-"]){aspect-ratio:3/4;background:#0b1430}
+
+/* ===== карта катка в подвале (expand-map): компактная карточка → карта на всю ширину ===== */
+.ftr .xm-col.wide{grid-column:1/-1;order:9}
+.xmap{position:relative;max-width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:16px;color:#fff;box-shadow:0 10px 40px rgba(0,0,0,.25)}
+.xm-card{display:block;width:100%;text-align:left;padding:16px 18px 14px;border-radius:16px;cursor:pointer;color:inherit;transition:background .25s}
+.xm-card:hover{background:rgba(255,255,255,.05)}
+.xm-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}
+.xm-ico{color:#5fe3a1}
+.xm-live{display:inline-flex;align-items:center;gap:6px;font:800 10px/1 var(--t);letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.xm-live i{width:7px;height:7px;border-radius:50%;background:#2fd48a;box-shadow:0 0 0 0 rgba(47,212,138,.6);animation:xmPulse 2s infinite}
+@keyframes xmPulse{70%{box-shadow:0 0 0 8px rgba(47,212,138,0)}100%{box-shadow:0 0 0 0 rgba(47,212,138,0)}}
+.xm-card b{display:block;font:800 16px/1.25 var(--t);color:#fff}
+.xm-addr{display:block;font-size:13px;color:rgba(255,255,255,.65);margin-top:3px}
+.xm-line{display:block;height:2px;width:38%;margin-top:12px;background:linear-gradient(90deg,#2fd48a,rgba(47,212,138,0));transition:width .6s cubic-bezier(.22,1,.36,1)}
+.xm-card:hover .xm-line,.xmap.open .xm-line{width:100%}
+.xm-hint{display:block;margin-top:10px;font:700 12px/1 var(--t);color:rgba(255,255,255,.55)}
+.xmap.open .xm-hint{display:none}
+.xmap.open .xm-card{padding-bottom:12px}
+.xm-body{padding:0 12px 12px}
+.xm-map{position:relative;height:clamp(260px,38vw,420px);border-radius:12px;overflow:hidden;background:#1a2547;opacity:0;transform:scale(.97);filter:blur(6px);transition:opacity .45s ease,transform .6s cubic-bezier(.22,1,.36,1),filter .45s ease}
+.xmap.shown .xm-map{opacity:1;transform:none;filter:none}
+.xm-map iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.xm-foot{display:flex;align-items:center;justify-content:space-between;gap:10px 16px;flex-wrap:wrap;padding:12px 4px 2px;opacity:0;transform:translateY(6px);transition:opacity .4s .15s,transform .5s .15s cubic-bezier(.22,1,.36,1)}
+.xmap.shown .xm-foot{opacity:1;transform:none}
+.xm-coord{font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:rgba(255,255,255,.6);letter-spacing:.02em}
+.xm-btns{display:flex;gap:8px;flex-wrap:wrap}
+.ftr .xm-btn{display:inline-flex;align-items:center;min-height:40px;padding:0 14px;font:800 13px/1 var(--t);color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:10px;line-height:1}
+.ftr .xm-btn.red{background:var(--red);border-color:var(--red)}
+.ftr .xm-btn:hover{background:rgba(255,255,255,.1)}.ftr .xm-btn.red:hover{filter:brightness(1.08);background:var(--red)}
+.xm-btn.ghost{background:none;cursor:pointer}
+@media (max-width:520px){.xm-btns{width:100%;display:grid;grid-template-columns:1fr 1fr}.ftr .xm-btn{justify-content:center;text-align:center}.ftr .xm-btns a:nth-child(2){grid-column:1/-1;order:-1}.xm-map{height:320px}}
+@media (prefers-reduced-motion:reduce){.xm-live i{animation:none}.xm-map,.xm-foot,.xm-line{transition:none}}
