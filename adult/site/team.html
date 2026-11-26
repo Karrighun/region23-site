@@ -75,7 +75,8 @@ dialog.pcd[open]{animation:plin .35s cubic-bezier(.2,.7,.1,1)}
 .pc .badge.wide small{font:700 10px/1 var(--text);letter-spacing:.08em;text-transform:uppercase}
 .pc .badge.wide{white-space:nowrap;top:10px;left:10px}
 @media (max-width:600px){.pc .badge.wide{height:22px;padding:0 7px;gap:5px;font-size:13px;top:8px;left:8px}.pc .badge.wide small{font-size:7.5px;letter-spacing:.05em}}
-.pc.asst{border-color:var(--red)!important;box-shadow:0 0 0 1px var(--red),0 10px 30px rgba(227,38,43,.28)}
+.pc.asst:before{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:var(--red);z-index:3}
+.pc.asst .badge{top:15px}
 .crew{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
 .mate{display:flex;align-items:center;gap:18px;padding:18px 20px;border-radius:22px;background:var(--card);border:1px solid var(--line)}
 .mate .ini{flex:none;width:72px;height:72px;display:grid;place-items:center;background:radial-gradient(ellipse at 50% 30%,#1b2a55,#060b18);font-family:var(--display);font-weight:700;font-size:26px;color:var(--ice)}
@@ -116,7 +117,7 @@ dialog.pcd[open]{animation:plin .35s cubic-bezier(.2,.7,.1,1)}
       </div>
       <div class="grp" id="nhl-d"><h3>Защитники <span>6</span></h3>
         <div class="roster">
-          <div class="pc card asst rv"><span class="badge wide">A<small>ассистент капитана</small></span><img src="img/c-kupriyanov.webp" alt="Александр Куприянов" loading="lazy"><div class="cap"><b>Александр Куприянов</b><span>Защитник · ассистент капитана</span><em>Лучший защитник НХЛ 25/26 · 50 матчей за клуб</em></div></div>
+          <div class="pc card asst rv"><span class="badge">A</span><img src="img/c-kupriyanov.webp" alt="Александр Куприянов" loading="lazy"><div class="cap"><b>Александр Куприянов</b><span>Защитник · ассистент капитана</span><em>Лучший защитник НХЛ 25/26 · 50 матчей за клуб</em></div></div>
           <div class="pc card rv"><img src="img/c-batyrev.webp" alt="Александр Батырев" loading="lazy"><div class="cap"><b>Александр Батырев</b><span>Защитник</span><em>MVP матча со «Штормом» — 4 очка</em></div></div>
           <div class="pc card rv"><img src="img/c-konovalov.webp" alt="Роман Коновалов" loading="lazy"><div class="cap"><b>Роман Коновалов</b><span>Защитник</span></div></div>
           <div class="pc card rv"><img src="img/c-seliverstov.webp" alt="Артем Селиверстов" loading="lazy"><div class="cap"><b>Артем Селиверстов</b><span>Защитник</span></div></div>
@@ -126,7 +127,7 @@ dialog.pcd[open]{animation:plin .35s cubic-bezier(.2,.7,.1,1)}
       </div>
       <div class="grp" id="nhl-f"><h3>Нападающие <span>12</span></h3>
         <div class="roster">
-          <div class="pc card asst rv"><span class="badge wide">A<small>ассистент капитана</small></span><img src="img/c-khakimov.webp" alt="Тагир Хакимов" loading="lazy"><div class="cap"><b>Тагир Хакимов</b><span>Нападающий · ассистент капитана</span></div></div>
+          <div class="pc card asst rv"><span class="badge">A</span><img src="img/c-khakimov.webp" alt="Тагир Хакимов" loading="lazy"><div class="cap"><b>Тагир Хакимов</b><span>Нападающий · ассистент капитана</span></div></div>
           <div class="pc card rv"><img src="img/c-cherepanov.webp" alt="Дмитрий Черепанов" loading="lazy"><div class="cap"><b>Дмитрий Черепанов</b><span>Нападающий</span></div></div>
           <div class="pc card rv"><img src="img/c-mamadekubov.webp" alt="Амир Мамадекубов" loading="lazy"><div class="cap"><b>Амир Мамадекубов</b><span>Нападающий</span></div></div>
           <div class="pc card rv"><img src="img/c-lavronenko.webp" alt="Александр Лавроненко" loading="lazy"><div class="cap"><b>Александр Лавроненко</b><span>Нападающий</span><em>Лучший нападающий Кубка ЮС 25/26</em></div></div>
@@ -152,7 +153,7 @@ dialog.pcd[open]{animation:plin .35s cubic-bezier(.2,.7,.1,1)}
       </div>
       <div class="grp" id="kus-d"><h3>Защитники <span>7</span></h3>
         <div class="roster">
-          <div class="pc card asst rv"><span class="badge wide">A<small>ассистент капитана</small></span><img src="img/c-kupriyanov.webp" alt="Александр Куприянов" loading="lazy"><div class="cap"><b>Александр Куприянов</b><span>Защитник · ассистент капитана</span><em>Лучший защитник НХЛ 25/26 · 50 матчей за клуб</em></div></div>
+          <div class="pc card asst rv"><span class="badge">A</span><img src="img/c-kupriyanov.webp" alt="Александр Куприянов" loading="lazy"><div class="cap"><b>Александр Куприянов</b><span>Защитник · ассистент капитана</span><em>Лучший защитник НХЛ 25/26 · 50 матчей за клуб</em></div></div>
           <div class="pc card rv"><img src="img/c-batyrev.webp" alt="Александр Батырев" loading="lazy"><div class="cap"><b>Александр Батырев</b><span>Защитник</span><em>MVP матча со «Штормом» — 4 очка</em></div></div>
           <div class="pc card rv"><img src="img/c-seliverstov.webp" alt="Артем Селиверстов" loading="lazy"><div class="cap"><b>Артем Селиверстов</b><span>Защитник</span></div></div>
           <div class="pc card rv"><img src="img/c-vorvulev.webp" alt="Григорий Ворвулев" loading="lazy"><div class="cap"><b>Григорий Ворвулев</b><span>Защитник</span></div></div>
@@ -163,7 +164,7 @@ dialog.pcd[open]{animation:plin .35s cubic-bezier(.2,.7,.1,1)}
       </div>
       <div class="grp" id="kus-f"><h3>Нападающие <span>17</span></h3>
         <div class="roster">
-          <div class="pc card asst rv"><span class="badge wide">A<small>ассистент капитана</small></span><img src="img/c-khakimov.webp" alt="Тагир Хакимов" loading="lazy"><div class="cap"><b>Тагир Хакимов</b><span>Нападающий · ассистент капитана</span></div></div>
+          <div class="pc card asst rv"><span class="badge">A</span><img src="img/c-khakimov.webp" alt="Тагир Хакимов" loading="lazy"><div class="cap"><b>Тагир Хакимов</b><span>Нападающий · ассистент капитана</span></div></div>
           <div class="pc ph rv"><span class="num">8</span><img class="mono" src="../../assets/logo.svg" alt=""><div class="cap"><b>Святослав Большаков</b><span>Нападающий</span></div></div>
           <div class="pc ph rv"><span class="num">11</span><img class="mono" src="../../assets/logo.svg" alt=""><div class="cap"><b>Антон Фофанов</b><span>Нападающий</span></div></div>
           <div class="pc card rv"><img src="img/c-lavronenko.webp" alt="Александр Лавроненко" loading="lazy"><div class="cap"><b>Александр Лавроненко</b><span>Нападающий</span><em>Лучший нападающий Кубка ЮС 25/26</em></div></div>
