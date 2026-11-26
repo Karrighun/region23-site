@@ -28,8 +28,8 @@
        '<div class="xm-foot"><span class="xm-coord">44.9037° N · 37.3229° E</span><span class="xm-btns">'+
          '<a class="xm-btn red" href="https://yandex.ru/maps/?rtext=~44.903651%2C37.322896&rtt=auto" target="_blank" rel="noopener">Маршрут</a>'+
          '<a class="xm-btn" href="https://yandex.ru/maps/org/74044996616/?ll=37.322432%2C44.903807&z=17" target="_blank" rel="noopener">Открыть в Яндекс Картах</a>'+
-         '<button class="xm-btn ghost xm-close" type="button">Свернуть</button></span></div></div></div></div>'+
-   '</div><div class="bottom"><span>© 2019–2026 ХК «Регион 23»</span><span>Концепт сайта · данные из Telegram-канала академии на 23.11.2026</span></div></div>';
+         '<button class="xm-btn xm-ghost xm-close" type="button">Свернуть</button></span></div></div></div></div>'+
+   '</div><div class="bottom"><span>© 2019–2026 ХК «Регион 23»</span><span>Официальный сайт детской хоккейной академии «Регион 23» · Анапа</span></div></div>';
   document.body.appendChild(f);
 
   // карта катка в подвале: компактная карточка → по клику раскрывается на всю ширину с Яндекс Картой (в духе expand-map)
@@ -48,7 +48,13 @@
       if(busy)return;
       // карту грузим, когда блок уже раскрыт: иначе Яндекс запоминает узкий размер и на телефоне рисует полоску
       morph(function(){col.classList.add('wide');box.classList.add('open');body.hidden=false;btn.setAttribute('aria-expanded','true')},
-        function(){if(!map.firstChild){var fr=document.createElement('iframe');fr.src=SRC;fr.title='Ледовый каток «Джунгли» на Яндекс Картах';fr.allowFullscreen=true;map.appendChild(fr)}
+        function(){
+          if(!map.firstChild){
+            var fr=document.createElement('iframe'),w0=0;fr.title='Ледовый каток «Джунгли» на Яндекс Картах';fr.allowFullscreen=true;map.appendChild(fr);
+            // ширину берем, когда блок уже раскрыт; если она потом заметно изменится — перезагружаем виджет (Яндекс меряет размер один раз)
+            requestAnimationFrame(function(){requestAnimationFrame(function(){w0=map.clientWidth;fr.src=SRC})});
+            if(window.ResizeObserver)new ResizeObserver(function(){var w=map.clientWidth;if(w0&&w&&Math.abs(w-w0)>24){w0=w;fr.src=SRC}}).observe(map);
+          }
           requestAnimationFrame(function(){box.classList.add('shown')})});
       setTimeout(function(){box.scrollIntoView({behavior:reduce?'auto':'smooth',block:'nearest'})},reduce?0:380);
     }

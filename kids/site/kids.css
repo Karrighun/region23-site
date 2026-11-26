@@ -368,6 +368,6 @@ h1 em,h2 em{font-style:italic}
 .ftr .xm-btn{display:inline-flex;align-items:center;min-height:40px;padding:0 14px;font:800 13px/1 var(--t);color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:10px;line-height:1}
 .ftr .xm-btn.red{background:var(--red);border-color:var(--red)}
 .ftr .xm-btn:hover{background:rgba(255,255,255,.1)}.ftr .xm-btn.red:hover{filter:brightness(1.08);background:var(--red)}
-.xm-btn.ghost{background:none;cursor:pointer}
+.xm-btn.xm-ghost{background:none;cursor:pointer}
 @media (max-width:520px){.xm-btns{width:100%;display:grid;grid-template-columns:1fr 1fr}.ftr .xm-btn{justify-content:center;text-align:center}.ftr .xm-btns a:nth-child(2){grid-column:1/-1;order:-1}.xm-map{height:320px}}
 @media (prefers-reduced-motion:reduce){.xm-live i{animation:none}.xm-map,.xm-foot,.xm-line{transition:none}}
