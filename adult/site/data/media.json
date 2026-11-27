@@ -1,7 +1,16 @@
 {
  "channel": "XKREGION23",
- "updated": "2026-11-27T14:12:42+00:00",
+ "updated": "2026-11-27T22:53:00+00:00",
  "items": [
+  {
+   "type": "photo",
+   "src": "data/img/2437_0.jpg",
+   "w": 640,
+   "h": 800,
+   "post": "https://t.me/XKREGION23/2437",
+   "date": "2026-11-27T16:56:38+00:00",
+   "caption": "ВАЖНАЯ ИНФОРМАЦИЯ"
+  },
   {
    "type": "photo",
    "src": "data/img/2434_0.jpg",
