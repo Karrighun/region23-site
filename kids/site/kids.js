@@ -3,6 +3,11 @@
    (обновляет tools/tg_news.py --channel hk_region23_kids --out kids/site/data, по cron раз в 15 минут) */
 (function(){
   document.documentElement.classList.add('js');
+  /* данные из админки (телефон, Telegram, эмблемы, правки ленты): при публикации сюда пишет region23-admin */
+  /*cms:cfg*/var CFG={"phone":"+7 (982) 672-92-92","contact":"Сергей Сергеевич Купцов, директор академии","tg":"hk_region23_kids","adultTg":"XKREGION23","about":"Детская хоккейная академия ХК «Регион 23». Учим кататься и играть с 3 лет. Форма и первая тренировка бесплатно.","arena":"Ледовый каток «Джунгли»","address":"Анапа, Котломской проезд, 1","extraLabel":"Детский сад","extraTitle":"Приедем к вам","extraText":"Ищем хоккейные таланты в садиках Анапы: напишите номер сада, и тренеры проведут занятие","crests":{},"news":{"hide":[],"pin":[],"add":[]}};/*/cms:cfg*/
+  window.CFG_CRESTS=CFG.crests||{};
+  var tel=function(p){var d=String(p||'').replace(/\D/g,'');if(d.length===11&&d[0]==='8')d='7'+d.slice(1);return '+'+d};
+  var hesc=function(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
   var page=document.body.dataset.page||'';
   var NAV=[['index','Главная'],['groups','Группы и расписание'],['coaches','Тренеры'],['camp','Лагерь и сборы'],['news','Новости'],['contacts','Контакты']];
   var link=function(n){return '<a href="'+n[0]+'.html"'+(n[0]===page?' aria-current="page"':'')+'>'+n[1]+'</a>'};
@@ -17,13 +22,13 @@
 
   var f=document.createElement('footer');f.className='ftr';
   f.innerHTML='<div class="wrap"><div class="cols">'+
-   '<div><a class="brand" href="index.html"><img src="../../assets/logo.svg" alt=""><span>РЕГИОН KIDS<small>хоккейная академия · Анапа</small></span></a><p style="margin-top:14px;max-width:340px;line-height:1.6;color:rgba(255,255,255,.7)">Детская хоккейная академия ХК «Регион 23». Учим кататься и играть с 3 лет. Форма и первая тренировка бесплатно.</p></div>'+
+   '<div><a class="brand" href="index.html"><img src="../../assets/logo.svg" alt=""><span>РЕГИОН KIDS<small>хоккейная академия · Анапа</small></span></a><p style="margin-top:14px;max-width:340px;line-height:1.6;color:rgba(255,255,255,.7)">'+hesc(CFG.about)+'</p></div>'+
    '<div><h4>Разделы</h4>'+NAV.map(function(n){return '<a href="'+n[0]+'.html">'+n[1]+'</a>'}).join('')+'<a href="../../adult/site/index.html">Взрослая команда</a></div>'+
-   '<div><h4>Запись</h4><a class="tnum" href="tel:+79826729292">+7 (982) 672-92-92</a><p>Сергей Сергеевич Купцов, директор академии</p><a href="https://t.me/hk_region23_kids">Telegram академии</a><a href="https://t.me/XKREGION23">Telegram команды</a></div>'+
+   '<div><h4>Запись</h4><a class="tnum" href="tel:'+tel(CFG.phone)+'">'+hesc(CFG.phone)+'</a><p>'+hesc(CFG.contact)+'</p><a href="https://t.me/'+hesc(CFG.tg)+'">Telegram академии</a><a href="https://t.me/'+hesc(CFG.adultTg)+'">Telegram команды</a></div>'+
    '<div class="xm-col"><h4>Где тренируемся</h4>'+
      '<div class="xmap"><button class="xm-card" type="button" aria-expanded="false" aria-controls="xm-body">'+
        '<span class="xm-top"><svg class="xm-ico" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2Z"/><path d="M9 4v14M15 6v14"/></svg><span class="xm-live"><i></i>на карте</span></span>'+
-       '<b>Ледовый каток «Джунгли»</b><span class="xm-addr">Анапа, Котломской проезд, 1</span><span class="xm-line"></span><span class="xm-hint">Показать на карте</span></button>'+
+       '<b>'+hesc(CFG.arena)+'</b><span class="xm-addr">'+hesc(CFG.address)+'</span><span class="xm-line"></span><span class="xm-hint">Показать на карте</span></button>'+
        '<div class="xm-body" id="xm-body" hidden><div class="xm-map"></div>'+
        '<div class="xm-foot"><span class="xm-coord">44.9037° N · 37.3229° E</span><span class="xm-btns">'+
          '<a class="xm-btn red" href="https://yandex.ru/maps/?rtext=~44.903651%2C37.322896&rtt=auto" target="_blank" rel="noopener">Маршрут</a>'+
@@ -70,15 +75,24 @@
 
   // появление блоков — assets/anim.js (4 варианта)
 
+
+  // правки ленты из админки: скрытые посты, закрепленные (первыми) и свои новости
+  function cmsNews(items){var n=CFG.news||{},hide=n.hide||[],pin=n.pin||[];
+    var all=(n.add||[]).map(function(p){return {title:p.title,text:p.text||'',date:p.date,image:p.image||'',url:p.url||'',rubric:p.rubric||'',custom:1,id:'custom:'+p.id}})
+      .concat(items.filter(function(p){return hide.indexOf(p.url)<0}));
+    var pinned=function(p){return pin.indexOf(p.custom?p.id:p.url)>-1};
+    all.sort(function(a,b){var pa=pinned(a),pb=pinned(b);if(pa!==pb)return pa?-1:1;return String(b.date).localeCompare(String(a.date))});
+    return all}
   var feeds=[].slice.call(document.querySelectorAll('[data-feed]'));
   if(feeds.length&&window.fetch){
     fetch('data/news.json',{cache:'no-cache'}).then(function(r){return r.ok?r.json():Promise.reject()}).then(function(d){
+      d.items=cmsNews(d.items||[]);
       var esc=function(s){return String(s||'').replace(/ё/g,'е').replace(/Ё/g,'Е').replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
       var fmt=function(iso){var t=new Date(iso);return isNaN(t)?'':t.toLocaleDateString('ru-RU',{day:'2-digit',month:'2-digit',year:'numeric'})};
       function more(box){var n=box.children.length,lim=8,nx=box.nextElementSibling;if(nx&&nx.classList.contains('morebtn'))nx.remove();if(innerWidth>760||n<=lim+2)return;[].slice.call(box.children,lim).forEach(function(c){c.hidden=true});var b=document.createElement('button');b.type='button';b.className='morebtn';b.textContent='Показать еще';b.addEventListener('click',function(){var h=[].filter.call(box.children,function(c){return c.hidden});h.slice(0,lim).forEach(function(c){c.hidden=false});if(h.length<=lim)b.remove()});box.after(b)}
       function render(box){var lim=+(box.dataset.limit||9),rb=box.dataset.rubric||'';
-        var items=d.items.filter(function(p){return (p.image||p.tgvideo)&&(!rb||p.rubric===rb)}).slice(0,lim);
-        box.innerHTML=items.map(function(p){return '<a class="card news" href="'+esc(p.url)+'" target="_blank" rel="noopener"'+(p.video?' data-play="'+esc(p.video)+'" data-poster="'+esc(p.image)+'" data-caption="'+esc(p.title)+'" data-date="'+esc(p.date)+'"':'')+'>'+(p.image?'<div class="im'+(p.w&&p.h&&Math.abs(p.w/p.h-1)>.08?' fit" style="--t:url('+esc(p.image)+')':'')+'"><img src="'+esc(p.image)+'" alt="" loading="lazy">'+(p.video?'<span class="playb sm"></span>':'')+'</div>':'<div class="im '+(p.thumb?'tthumb" style="--t:url('+esc(p.thumb)+')"><img src="'+esc(p.thumb)+'" alt="" loading="lazy">':'noimg">')+'<span class="playb sm"></span><em>'+(p.dur?esc(p.dur)+' · ':'')+'Видео в Telegram</em></div>')+'<div><span class="src">'+esc(p.rubric)+'</span><time>'+fmt(p.date)+'</time><h3>'+esc(p.title)+'</h3>'+(p.text?'<p>'+esc(p.text.slice(0,160))+(p.text.length>160?'…':'')+'</p>':'')+'</div></a>'}).join('');more(box);}
+        var items=d.items.filter(function(p){return (p.image||p.tgvideo||p.custom)&&(!rb||p.rubric===rb)}).slice(0,lim);
+        box.innerHTML=items.map(function(p){return '<a class="card news" href="'+esc(p.url||'news.html')+'"'+(p.url?' target="_blank" rel="noopener"':'')+(p.video?' data-play="'+esc(p.video)+'" data-poster="'+esc(p.image)+'" data-caption="'+esc(p.title)+'" data-date="'+esc(p.date)+'"':'')+'>'+(p.image?'<div class="im'+(p.w&&p.h&&Math.abs(p.w/p.h-1)>.08?' fit" style="--t:url('+esc(p.image)+')':'')+'"><img src="'+esc(p.image)+'" alt="" loading="lazy">'+(p.video?'<span class="playb sm"></span>':'')+'</div>':'<div class="im '+(p.thumb?'tthumb" style="--t:url('+esc(p.thumb)+')"><img src="'+esc(p.thumb)+'" alt="" loading="lazy">':'noimg">')+'<span class="playb sm"></span><em>'+(p.dur?esc(p.dur)+' · ':'')+'Видео в Telegram</em></div>')+'<div><span class="src">'+esc(p.rubric)+'</span><time>'+fmt(p.date)+'</time><h3>'+esc(p.title)+'</h3>'+(p.text?'<p>'+esc(p.text.slice(0,160))+(p.text.length>160?'…':'')+'</p>':'')+'</div></a>'}).join('');more(box);}
       feeds.forEach(render);
       [].forEach.call(document.querySelectorAll('[data-feedstate]'),function(el){el.textContent='Лента обновлена '+new Date(d.updated).toLocaleString('ru-RU')+' · источник: t.me/'+d.channel});
       [].forEach.call(document.querySelectorAll('[data-feedtab]'),function(b){b.addEventListener('click',function(){
@@ -113,8 +127,8 @@
             setTimeout(function(){btn.disabled=false},8000);return}
           btn.disabled=false;
           if(j&&j.field&&fm.elements[j.field])fm.elements[j.field].focus();
-          say('Ошибка: '+((j&&j.error)||'заявка не отправилась. Позвоните нам: +7 (982) 672-92-92'),1)})
-        .catch(function(){btn.disabled=false;say('Ошибка: нет связи с сервером. Проверьте интернет или позвоните: +7 (982) 672-92-92',1)});
+          say('Ошибка: '+((j&&j.error)||'заявка не отправилась. Позвоните нам: '+CFG.phone),1)})
+        .catch(function(){btn.disabled=false;say('Ошибка: нет связи с сервером. Проверьте интернет или позвоните: '+CFG.phone,1)});
     });
   }
 })();

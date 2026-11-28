@@ -1,6 +1,11 @@
 /* Общая шапка, меню, подвал и мелкая анимация для страниц adult/site/*.html. Страница задает <body data-page="matches"> */
 (function(){
   document.documentElement.classList.add('js');
+  /* данные из админки (телефон, Telegram, эмблемы, правки ленты): при публикации сюда пишет region23-admin */
+  /*cms:cfg*/var CFG={"phone":"+7 (962) 853-53-75","contact":"Мария, администратор","tg":"XKREGION23","kidsTg":"hk_region23_kids","max":"https://max.ru/","about":"Любительская хоккейная команда Анапы с 2019 года. Пятикратный чемпион Ночной хоккейной лиги Краснодарского края, первый обладатель Кубка Южной столицы.","arena":"Ледовый каток «Джунгли»","address":"Анапа, Котломской проезд, 1","away":"Выезды: Краснодар, Ice Palace · ст. Северская, «Клуб загородного отдыха» · Горячий Ключ, ЛД «Барс»","crests":{"Титан":"img/crest-titan2.webp","Гвардия":"img/crest-gvardiya.webp","One Timer":"img/crest-onetimer.webp","Ключ":"img/crest-klyuch.webp","Черномортранснефть":"img/crest-chtn.webp","Шторм":"img/crest-shtorm.webp"},"news":{"hide":[],"pin":[],"add":[]}};/*/cms:cfg*/
+  window.CFG_CRESTS=CFG.crests||{};
+  var tel=function(p){var d=String(p||'').replace(/\D/g,'');if(d.length===11&&d[0]==='8')d='7'+d.slice(1);return '+'+d};
+  var hesc=function(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
   var page=document.body.dataset.page||'';
   var NAV=[['index','Главная'],['matches','Матчи'],['team','Команда'],['club','Клуб'],['media','Медиа'],['tickets','Билеты']];
   var link=function(n){return '<a href="'+n[0]+'.html"'+(n[0]===page?' aria-current="page"':'')+'>'+n[1]+'</a>'};
@@ -22,19 +27,19 @@
 
   var f=document.createElement('footer');f.className='ftr';
   f.innerHTML='<div class="wrap"><div class="cols">'+
-   '<div><a class="brand" href="index.html"><img src="../../assets/logo.svg" alt=""><span>РЕГИОН 23<small>хоккейная команда · Анапа</small></span></a><p style="margin-top:14px;max-width:320px;line-height:1.6;color:var(--mute)">Любительская хоккейная команда Анапы с 2019 года. Пятикратный чемпион Ночной хоккейной лиги Краснодарского края, первый обладатель Кубка Южной столицы.</p></div>'+
+   '<div><a class="brand" href="index.html"><img src="../../assets/logo.svg" alt=""><span>РЕГИОН 23<small>хоккейная команда · Анапа</small></span></a><p style="margin-top:14px;max-width:320px;line-height:1.6;color:var(--mute)">'+hesc(CFG.about)+'</p></div>'+
    '<div><h4>Разделы</h4>'+NAV.map(function(n){return '<a href="'+n[0]+'.html">'+n[1]+'</a>'}).join('')+'<a href="../../kids/site/index.html">Детская академия</a></div>'+
-   '<div><h4>Связь</h4><p class="tnum">+7 (962) 853-53-75</p><p>Мария, администратор</p><a href="https://t.me/XKREGION23">Telegram @XKREGION23</a><a href="https://t.me/hk_region23_kids">Telegram академии</a><a href="https://max.ru/">Канал в MAX</a></div>'+
+   '<div><h4>Связь</h4><p class="tnum">'+hesc(CFG.phone)+'</p><p>'+hesc(CFG.contact)+'</p><a href="https://t.me/'+hesc(CFG.tg)+'">Telegram @'+hesc(CFG.tg)+'</a><a href="https://t.me/'+hesc(CFG.kidsTg)+'">Telegram академии</a>'+(CFG.max?'<a href="'+hesc(CFG.max)+'">Канал в MAX</a>':'')+'</div>'+
    '<div class="xm-col"><h4>Где играем</h4>'+
      '<div class="xmap"><button class="xm-card" type="button" aria-expanded="false" aria-controls="xm-body">'+
        '<span class="xm-top"><svg class="xm-ico" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2Z"/><path d="M9 4v14M15 6v14"/></svg><span class="xm-live"><i></i>домашний лед</span></span>'+
-       '<b>Ледовый каток «Джунгли»</b><span class="xm-addr">Анапа, Котломской проезд, 1</span><span class="xm-line"></span><span class="xm-hint">Показать на карте</span></button>'+
+       '<b>'+hesc(CFG.arena)+'</b><span class="xm-addr">'+hesc(CFG.address)+'</span><span class="xm-line"></span><span class="xm-hint">Показать на карте</span></button>'+
        '<div class="xm-body" id="xm-body" hidden><div class="xm-map"></div>'+
        '<div class="xm-foot"><span class="xm-coord">44.9037° N · 37.3229° E</span><span class="xm-btns">'+
          '<a class="xm-btn red" href="https://yandex.ru/maps/?rtext=~44.903651%2C37.322896&rtt=auto" target="_blank" rel="noopener">Маршрут</a>'+
          '<a class="xm-btn" href="https://yandex.ru/maps/org/74044996616/?ll=37.322432%2C44.903807&z=17" target="_blank" rel="noopener">Открыть в Яндекс Картах</a>'+
          '<button class="xm-btn xm-ghost xm-close" type="button">Свернуть</button></span></div></div></div>'+
-     '<p class="xm-away">Выезды: Краснодар, Ice Palace · ст. Северская, «Клуб загородного отдыха» · Горячий Ключ, ЛД «Барс»</p></div>'+
+     (CFG.away?'<p class="xm-away">'+hesc(CFG.away)+'</p>':'')+'</div>'+
    '</div><div class="bottom"><span>© 2019–2026 ХК «Регион 23»</span><span>Официальный сайт хоккейной команды «Регион 23» · Анапа</span></div></div>';
   document.body.appendChild(f);
 
@@ -104,15 +109,24 @@
   document.documentElement.dataset.font='a';
 
   // ---- новости из Telegram: <div data-feed data-limit="3" data-rubric="Матчи"> → карточки из data/news.json ----
+
+  // правки ленты из админки: скрытые посты, закрепленные (первыми) и свои новости
+  function cmsNews(items){var n=CFG.news||{},hide=n.hide||[],pin=n.pin||[];
+    var all=(n.add||[]).map(function(p){return {title:p.title,text:p.text||'',date:p.date,image:p.image||'',url:p.url||'',rubric:p.rubric||'',custom:1,id:'custom:'+p.id}})
+      .concat(items.filter(function(p){return hide.indexOf(p.url)<0}));
+    var pinned=function(p){return pin.indexOf(p.custom?p.id:p.url)>-1};
+    all.sort(function(a,b){var pa=pinned(a),pb=pinned(b);if(pa!==pb)return pa?-1:1;return String(b.date).localeCompare(String(a.date))});
+    return all}
   var feeds=[].slice.call(document.querySelectorAll('[data-feed]'));
   if(feeds.length&&window.fetch){
     fetch('data/news.json',{cache:'no-cache'}).then(function(r){return r.ok?r.json():Promise.reject()}).then(function(d){
+      d.items=cmsNews(d.items||[]);
       var esc=function(s){return String(s||'').replace(/ё/g,'е').replace(/Ё/g,'Е').replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
       var fmt=function(iso){var t=new Date(iso);return isNaN(t)?'':t.toLocaleDateString('ru-RU',{day:'2-digit',month:'2-digit',year:'numeric'})};
       function more(box){var n=box.children.length,lim=8,nx=box.nextElementSibling;if(nx&&nx.classList.contains('morebtn'))nx.remove();if(innerWidth>760||n<=lim+2)return;[].slice.call(box.children,lim).forEach(function(c){c.hidden=true});var b=document.createElement('button');b.type='button';b.className='morebtn';b.textContent='Показать еще';b.addEventListener('click',function(){var h=[].filter.call(box.children,function(c){return c.hidden});h.slice(0,lim).forEach(function(c){c.hidden=false});if(h.length<=lim)b.remove()});box.after(b)}
       function render(box){var lim=+(box.dataset.limit||9),rb=box.dataset.rubric||'';
-        var items=d.items.filter(function(p){return (p.image||p.tgvideo)&&(!rb||p.rubric===rb)}).slice(0,lim);
-        box.innerHTML=items.map(function(p){return '<a class="card news" href="'+esc(p.url)+'" target="_blank" rel="noopener"'+(p.video?' data-play="'+esc(p.video)+'" data-poster="'+esc(p.image)+'" data-caption="'+esc(p.title)+'" data-date="'+esc(p.date)+'"':'')+'>'+(p.image?'<div class="im'+(p.w&&p.h&&Math.abs(p.w/p.h-1)>.08?' fit" style="--t:url('+esc(p.image)+')':'')+'"><img src="'+esc(p.image)+'" alt="" loading="lazy">'+(p.video?'<span class="playb sm"></span>':'')+'</div>':'<div class="im '+(p.thumb?'tthumb" style="--t:url('+esc(p.thumb)+')"><img src="'+esc(p.thumb)+'" alt="" loading="lazy">':'noimg">')+'<span class="playb sm"></span><em>'+(p.dur?esc(p.dur)+' · ':'')+'Видео в Telegram</em></div>')+'<div class="bd"><span class="src">'+esc(p.rubric)+' · Telegram</span><time>'+fmt(p.date)+'</time><h3>'+esc(p.title)+'</h3>'+(p.text?'<p>'+esc(p.text.slice(0,180))+(p.text.length>180?'…':'')+'</p>':'')+'</div></a>'}).join('');more(box);}
+        var items=d.items.filter(function(p){return (p.image||p.tgvideo||p.custom)&&(!rb||p.rubric===rb)}).slice(0,lim);
+        box.innerHTML=items.map(function(p){return '<a class="card news" href="'+esc(p.url||'media.html')+'"'+(p.url?' target="_blank" rel="noopener"':'')+(p.video?' data-play="'+esc(p.video)+'" data-poster="'+esc(p.image)+'" data-caption="'+esc(p.title)+'" data-date="'+esc(p.date)+'"':'')+'>'+(p.image?'<div class="im'+(p.w&&p.h&&Math.abs(p.w/p.h-1)>.08?' fit" style="--t:url('+esc(p.image)+')':'')+'"><img src="'+esc(p.image)+'" alt="" loading="lazy">'+(p.video?'<span class="playb sm"></span>':'')+'</div>':'<div class="im '+(p.thumb?'tthumb" style="--t:url('+esc(p.thumb)+')"><img src="'+esc(p.thumb)+'" alt="" loading="lazy">':'noimg">')+'<span class="playb sm"></span><em>'+(p.dur?esc(p.dur)+' · ':'')+'Видео в Telegram</em></div>')+'<div class="bd"><span class="src">'+esc(p.rubric)+(p.custom?'':' · Telegram')+'</span><time>'+fmt(p.date)+'</time><h3>'+esc(p.title)+'</h3>'+(p.text?'<p>'+esc(p.text.slice(0,180))+(p.text.length>180?'…':'')+'</p>':'')+'</div></a>'}).join('');more(box);}
       feeds.forEach(function(box){render(box);box._render=render});
       [].forEach.call(document.querySelectorAll('[data-feedstate]'),function(el){el.textContent='Лента обновлена '+new Date(d.updated).toLocaleString('ru-RU')+' · источник: t.me/'+d.channel});
       [].forEach.call(document.querySelectorAll('[data-feedtab]'),function(b){b.addEventListener('click',function(){
@@ -131,10 +145,10 @@
 
 /* эмблемы соперников в списках матчей вместо буквенных значков */
 (function(){
-  var C={'Гвардия':'crest-gvardiya.webp','Шторм':'crest-shtorm.webp','Черномортранснефть':'crest-chtn.webp','Ключ':'crest-klyuch.webp','One Timer':'crest-onetimer.webp','Титан':'crest-titan2.webp'};
+  var C=window.CFG_CRESTS||{};
   [].forEach.call(document.querySelectorAll('.mrow .t .crest'),function(s){
     var name=s.parentNode.textContent.replace(s.textContent,'').replace(/­/g,'').trim(),f=C[name];
-    if(!f)return;var i=document.createElement('img');i.className='cimg';i.src='img/'+f;i.alt='';i.loading='lazy';s.replaceWith(i)});
+    if(!f)return;var i=document.createElement('img');i.className='cimg';i.src=f;i.alt='';i.loading='lazy';s.replaceWith(i)});
 })();
 
 /* чистые адреса на боевых доменах: без index.html, переходы между сайтами — сразу на нужный домен

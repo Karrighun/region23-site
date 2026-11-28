@@ -371,3 +371,9 @@ h1 em,h2 em{font-style:italic}
 .xm-btn.xm-ghost{background:none;cursor:pointer}
 @media (max-width:520px){.xm-btns{width:100%;display:grid;grid-template-columns:1fr 1fr}.ftr .xm-btn{justify-content:center;text-align:center}.ftr .xm-btns a:nth-child(2){grid-column:1/-1;order:-1}.xm-map{height:320px}}
 @media (prefers-reduced-motion:reduce){.xm-live i{animation:none}.xm-map,.xm-foot,.xm-line{transition:none}}
+
+/* ---- блоки из админки: цены и абонементы, «набор закрыт» ---- */
+.prices .card.price{padding-bottom:6px}
+.prices .card.price h3{margin-top:6px}
+.prices .card.price .pr{display:block;font-family:var(--h);font-weight:900;font-style:italic;font-size:clamp(30px,3vw,40px);line-height:1;margin:10px 0 8px;color:var(--ink)}
+.group h3 .closed{display:inline-block;vertical-align:middle;margin-left:10px;padding:4px 10px;background:var(--ink);color:#fff;font:800 12px/1 var(--t);letter-spacing:.08em;text-transform:uppercase}
